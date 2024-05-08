@@ -1,0 +1,13 @@
+/* ----------------------------------------Nav bar  */
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+li {
+    list-style: none;
+}
+
+.navbar {
+    background-color: bisque;
+}
