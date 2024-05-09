@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
-body {
-
-}
-
 /* ----------------------------------------Nav bar  */
 
 .dropdown-toggle::after {
@@ -26,56 +22,59 @@ nav {
     color: #6a6a6a;
 }
 
-.nav-item > a {
+.nav-item>a {
     font-size: 20px;
     color: #6a6a6a;
 }
 
 .custom-nav-li {
     color: #6a6a6a;
+    background-color: #EBEBEB;
+    border: 2px solid #ebebeb;
+    border-radius: 4px;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
 .custom-btn {
-    background-color: #EBEBEB; 
-    color: #aac297; 
-    border: 2px solid #aac297; 
-    border-radius: 4px; 
+    background-color: #EBEBEB;
+    color: #6a6a6a;
+    border: 2px solid #6a6a6a;
+    border-radius: 4px;
     text-decoration: none;
+    font-weight: 500;
     display: inline-block;
+    font-size: 20px;
+
+}
+
+.navbar-brand:hover,
+.custom-nav-li:hover {
+    color: #AEBDA1;
 }
 
 .custom-btn:hover {
-    background-color: #b1c1a5; 
-    color: #ffffff;
+    color: #AEBDA1;
+    border: 2px solid #AEBDA1;
+    text-decoration: none;
 }
 
 /* ---------------------------------index.html css */
 
-.display-flex {
-    display: flex;
-    height: 300px;
-}
-
 .hero {
-    position: relative;
-    overflow: hidden;
-    background-color: aquamarine;
+    background-size: cover;
+    background-color: burlywood;
     display: flex;
-    align-items: center;
-    flex: 50%;
-    
+    padding-left: 0;
 }
 
-.img-as-bg {
-    width: 100%;
-    height: auto;
+.hero>img {
+    max-width: 100%;
 }
 
 .hero-body {
     text-align: center;
-    padding: 20px;
     background-color: burlywood;
-    flex: 50%;
 }
 
 h1 {
@@ -91,17 +90,27 @@ button {
 
 .sub-header {
     text-align: center;
-    padding: 20px;
-    background-color: crimson;
-    flex: 50%;
+    background-color: white;
 }
 
 .subheader-img {
-    background-color: darkslateblue;
-    flex: 50%;
+    padding-right: 0px;
 }
 
-/* Responsive styles */
+.subheader-img>img {
+    max-width: 100%;
+    max-height: 50% auto;
+}
+
+/* ----------------------------------Footer */
+
+.footer {
+    background-color: #a4a4a4;
+    color: #000000;
+}
+
+
+/* -----------------------------Responsive styles */
 
 @media screen and (max-width: 767px) {
     h1 {
@@ -111,21 +120,11 @@ button {
     button {
         font-size: 14px;
     }
-
-    .display-flex {
-        display: block;
-    }
 }
 
 @media screen and (min-width: 768px) {
     .container-fluid {
         max-width: 90%;
-    }
-
-    .img-as-bg {
-        width: auto;
-        max-width: 50%;
-        height: auto;
     }
 
     h1 {
