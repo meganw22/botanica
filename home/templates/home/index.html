@@ -2,11 +2,34 @@
 {% load static %}
 
 {% block page_header %}
-<div class="container header-container">
+<div class="container-fluid ">
     <div class="row">
-        <div class="col bg-info">
-            
+        <div class="col display-flex">
+            <div class="hero">
+                <img class="img-as-bg" src="./media/swiss-cheese-plant.png" alt="Swiss Cheese Plant">
+            </div>
+            <div class="hero-body h-500">
+                <h1>Title</h1>
+                <div>Subtext</div>
+                <div>
+                    <button>Shop Plants</button>
+                    <button>Plant care tips</button>
+                </div>
+            </div>
         </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col display-flex">
+            <div class="sub-header">
+                <h2>Why choose Botanica</h2>
+                <p>We supply a huge selection of indoor plants, from easy care plants to needy ones!</p>    
+            </div>
+            <div class="subheader-img">
+                <img src="./media/monstera-deliciosa.png" alt="monstera deliciosa">
+            </div>
+        </div>
+        
     </div>
 </div>
 {% endblock %}
