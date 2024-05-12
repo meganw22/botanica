@@ -14,7 +14,27 @@ nav {
     Font-family: 'Fredoka', cursive;
     background-color: #EBEBEB;
     font-size: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
+
+/* Custom CSS for Navbar Toggler */
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler.collapsed .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.75)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M7 7l16 16M23 7L7 23'/%3E%3C/svg%3E");
+}
+
 
 .navbar-brand {
     font-size: 42px;
@@ -23,7 +43,7 @@ nav {
 }
 
 .nav-item>a {
-    font-size: 25px;
+    font-size: 22px;
     color: #6a6a6a;
 }
 
@@ -36,8 +56,12 @@ nav {
     padding-right: 2em;
 }
 
+.content-spacing {
+    padding-top: 95px; 
+}
+
 .custom-btn {
-    background-color: #EBEBEB;
+    background-color: rgba(0, 0, 0, 0);
     color: #6a6a6a;
     border: 2px solid #6a6a6a;
     border-radius: 4px;
@@ -91,6 +115,22 @@ button {
     font-size: 16px;
 }
 
+.hero-btn {
+    background-color: rgba(0, 0, 0, 0);
+    color: #000;
+    border: 2px solid #000;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-block;
+    font-size: 16px;
+    margin: 1em;
+}
+
+.hero-btn:hover {
+    color: #ffffff;
+}
+
 .sub-header {
     text-align: center;
     background-color: white;
@@ -119,12 +159,36 @@ button {
     justify-content: space-between;
 }
 
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
 
 /* ----------------------------------Footer */
 
 .footer {
     background-color: #a4a4a4;
     color: #000000;
+}
+
+.footer-socials a,
+.footer-links a {
+    color: #333; 
+    margin-right: 15px; 
+    font-size: 20px;
+}
+
+.footer-socials a:hover,
+.footer-links a:hover {
+    color: #555; 
 }
 
 

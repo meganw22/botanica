@@ -23,6 +23,7 @@
     {% endblock %}
 
     {% block corejs %}
+    
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -36,8 +37,8 @@
 </head>
 
 <body>
-    <header class="container-fluid fixed-top"></header>
-    <nav class="navbar navbar-expand-lg ">
+    <header class="container-fluid"></header>
+    <nav class="navbar navbar-expand-lg fixed-top">
         <a class="navbar-brand" href="{% url 'home' %}">Botanica</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
             aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -96,6 +97,14 @@
         </div>
     </nav>
 
+    <script>
+        $(document).ready(function () {
+            $('.navbar-toggler').click(function () {
+                $(this).toggleClass('collapsed');
+            });
+        });
+        </script>
+
     {% if messages %}
     <div class="message-container"></div>
     {% endif %}
@@ -109,9 +118,21 @@
     <!-- Footer -->
     <footer class="footer mt-auto py-3">
         <div class="container text-center">
-            <p class="m-0">
-                Botanica Houseplants | Copyright 2024
-            </p>
+            <div class="footer-links">
+                <a href="/about">About Us</a>
+                <a href="/contact">Contact</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/faq">FAQ</a>
+            </div>
+            <div class="footer-socials">
+                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+            <div class="footer-legal">
+                <p>&copy; 2024 Botanica Houseplants. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
