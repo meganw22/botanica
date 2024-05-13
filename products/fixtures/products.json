@@ -1,0 +1,242 @@
+[
+    {
+        "model": "products.Product",
+        "pk": 1,
+        "fields": {
+            "easy_name": "Spider Plant",
+            "scientific_name": "Chlorophytum comosum",
+            "height": "12-24 inches",
+            "care_level": "Easy",
+            "light_level": "Bright, indirect light",
+            "price": "10.00"
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 2,
+        "fields": {
+            "easy_name": "Snake Plant",
+            "scientific_name": "Sansevieria trifasciata",
+            "height": "18-30 inches",
+            "care_level": "Easy",
+            "light_level": "Low to bright, indirect light",
+            "price": "15.00"
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 3,
+        "fields": {
+            "easy_name": "Pothos",
+            "scientific_name": "Epipremnum aureum",
+            "height": "6-10 feet",
+            "care_level": "Easy",
+            "light_level": "Low to medium light",
+            "price": "12.00"
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 4,
+        "fields": {
+            "easy_name": "Peace Lily",
+            "scientific_name": "Spathiphyllum",
+            "height": "16-24 inches",
+            "care_level": "Moderate",
+            "light_level": "Low to medium light",
+            "price": "20.00"
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 5,
+        "fields": {
+            "easy_name": "Fiddle Leaf Fig",
+            "scientific_name": "Ficus lyrata",
+            "height": "up to 10 feet",
+            "care_level": "Challenging",
+            "light_level": "Bright, indirect light",
+            "price": "30.00"
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 6,
+        "fields": {
+            "easy_name": "Rubber Plant",
+            "scientific_name": "Ficus elastica",
+            "height": "6-10 feet",
+            "care_level": "Moderate",
+            "light_level": "Bright, indirect light",
+            "price": "25.00"
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 7,
+        "fields": {
+            "easy_name": "Aloe Vera",
+            "scientific_name": "Aloe barbadensis miller",
+            "height": "12-24 inches",
+            "care_level": "Easy",
+            "light_level": "Bright, indirect light",
+            "price": "8.00"
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 8,
+        "fields": {
+            "easy_name": "English Ivy",
+            "scientific_name": "Hedera helix",
+            "height": "20-40 feet",
+            "care_level": "Moderate",
+            "light_level": "Moderate to bright, indirect light",
+            "price": "12.00"
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 9,
+        "fields": {
+            "easy_name": "ZZ Plant",
+            "scientific_name": "Zamioculcas zamiifolia",
+            "height": "2-3 feet",
+            "care_level": "Easy",
+            "light_level": "Low to bright, indirect light",
+            "price": "20.00"
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 10,
+        "fields": {
+            "easy_name": "Monstera Deliciosa",
+            "scientific_name": "Monstera deliciosa",
+            "height": "3-10 feet",
+            "care_level": "Easy",
+            "light_level": "Bright, indirect light",
+            "price": "35.00"
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 11,
+        "fields": {
+            "easy_name": "Orchid",
+            "scientific_name": "Phalaenopsis sp.",
+            "height": "12-24 inches",
+            "care_level": "Challenging",
+            "light_level": "Bright, indirect light",
+            "price": "25.00"
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 12,
+        "fields": {
+            "easy_name": "Boston Fern",
+            "scientific_name": "Nephrolepis exaltata",
+            "height": "1-3 feet",
+            "care_level": "Moderate",
+            "light_level": "Bright, indirect light",
+            "price": "18.00"
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 13,
+        "fields": {
+            "easy_name": "Calathea",
+            "scientific_name": "Calathea spp.",
+            "height": "1-2 feet",
+            "care_level": "Challenging",
+            "light_level": "Low to medium light",
+            "price": "20.00"
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 14,
+        "fields": {
+            "easy_name": "Dracaena",
+            "scientific_name": "Dracaena spp.",
+            "height": "2-10 feet",
+            "care_level": "Easy",
+            "light_level": "Low to bright, indirect light",
+            "price": "15.00"
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 15,
+        "fields": {
+            "easy_name": "Jade Plant",
+            "scientific_name": "Crassula ovata",
+            "height": "1-5 feet",
+            "care_level": "Easy",
+            "light_level": "Bright light",
+            "price": "10.00"
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 16,
+        "fields": {
+            "easy_name": "Philodendron",
+            "scientific_name": "Philodendron spp.",
+            "height": "2-4 feet",
+            "care_level": "Easy",
+            "light_level": "Low to bright, indirect light",
+            "price": "20.00"
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 17,
+        "fields": {
+            "easy_name": "Yucca",
+            "scientific_name": "Yucca elephantipes",
+            "height": "3-4 feet",
+            "care_level": "Easy",
+            "light_level": "Bright light",
+            "price": "25.00"
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 18,
+        "fields": {
+            "easy_name": "Schefflera",
+            "scientific_name": "Schefflera arboricola",
+            "height": "3-6 feet",
+            "care_level": "Easy",
+            "light_level": "Moderate to bright, indirect light",
+            "price": "30.00"
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 19,
+        "fields": {
+            "easy_name": "Bamboo Palm",
+            "scientific_name": "Chamaedorea seifrizii",
+            "height": "4-12 feet",
+            "care_level": "Easy",
+            "light_level": "Bright, indirect light",
+            "price": "35.00"
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 20,
+        "fields": {
+            "easy_name": "Cactus",
+            "scientific_name": "Cactaceae family",
+            "height": "Variable",
+            "care_level": "Easy",
+            "light_level": "Full sun",
+            "price": "5.00"
+        }
+    }
+]
