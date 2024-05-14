@@ -38,7 +38,7 @@
 
 <body>
     <header class="container-fluid"></header>
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <nav class="navbar navbar-default navbar-static-top navbar-expand-lg">
         <a class="navbar-brand" href="{% url 'home' %}">Botanica</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
             aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,7 +47,7 @@
         <div class="collapse navbar-collapse custom-nav-li" id="navbarText">
             <ul class="navbar-nav m-auto custom-nav-li">
                 <li class="nav-item active">
-                    <a class="nav-link custom-nav-li" href="#">All Plants<span class="sr-only">(current)</span></a>
+                    <a class="nav-link custom-nav-li" href="{% url 'products' %}">All Plants<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle custom-nav-li" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
