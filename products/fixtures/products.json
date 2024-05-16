@@ -8,7 +8,8 @@
             "height": "12-24 inches",
             "care_level": "Easy",
             "light_level": "Bright, indirect light",
-            "price": "10.00"
+            "price": "10.00",
+            "image": ""
         }
     },
     {
@@ -20,7 +21,8 @@
             "height": "18-30 inches",
             "care_level": "Easy",
             "light_level": "Low to bright, indirect light",
-            "price": "15.00"
+            "price": "15.00",
+            "image": ""
         }
     },
     {
@@ -32,7 +34,8 @@
             "height": "6-10 feet",
             "care_level": "Easy",
             "light_level": "Low to medium light",
-            "price": "12.00"
+            "price": "12.00",
+            "image": ""
         }
     },
     {
@@ -44,7 +47,8 @@
             "height": "16-24 inches",
             "care_level": "Moderate",
             "light_level": "Low to medium light",
-            "price": "20.00"
+            "price": "20.00",
+            "image": ""
         }
     },
     {
@@ -56,7 +60,8 @@
             "height": "up to 10 feet",
             "care_level": "Challenging",
             "light_level": "Bright, indirect light",
-            "price": "30.00"
+            "price": "30.00",
+            "image": ""
         }
     },
     {
@@ -68,7 +73,8 @@
             "height": "6-10 feet",
             "care_level": "Moderate",
             "light_level": "Bright, indirect light",
-            "price": "25.00"
+            "price": "25.00",
+            "image": ""
         }
     },
     {
@@ -80,7 +86,8 @@
             "height": "12-24 inches",
             "care_level": "Easy",
             "light_level": "Bright, indirect light",
-            "price": "8.00"
+            "price": "8.00",
+            "image": ""
         }
     },
     {
@@ -92,7 +99,8 @@
             "height": "20-40 feet",
             "care_level": "Moderate",
             "light_level": "Moderate to bright, indirect light",
-            "price": "12.00"
+            "price": "12.00",
+            "image": ""
         }
     },
     {
@@ -104,7 +112,8 @@
             "height": "2-3 feet",
             "care_level": "Easy",
             "light_level": "Low to bright, indirect light",
-            "price": "20.00"
+            "price": "20.00",
+            "image": ""
         }
     },
     {
@@ -116,7 +125,8 @@
             "height": "3-10 feet",
             "care_level": "Easy",
             "light_level": "Bright, indirect light",
-            "price": "35.00"
+            "price": "35.00",
+            "image": ""
         }
     },
     {
@@ -128,7 +138,8 @@
             "height": "12-24 inches",
             "care_level": "Challenging",
             "light_level": "Bright, indirect light",
-            "price": "25.00"
+            "price": "25.00",
+            "image": ""
         }
     },
     {
@@ -140,7 +151,8 @@
             "height": "1-3 feet",
             "care_level": "Moderate",
             "light_level": "Bright, indirect light",
-            "price": "18.00"
+            "price": "18.00",
+            "image": ""
         }
     },
     {
@@ -152,7 +164,8 @@
             "height": "1-2 feet",
             "care_level": "Challenging",
             "light_level": "Low to medium light",
-            "price": "20.00"
+            "price": "20.00",
+            "image": ""
         }
     },
     {
@@ -164,7 +177,8 @@
             "height": "2-10 feet",
             "care_level": "Easy",
             "light_level": "Low to bright, indirect light",
-            "price": "15.00"
+            "price": "15.00",
+            "image": ""
         }
     },
     {
@@ -176,7 +190,8 @@
             "height": "1-5 feet",
             "care_level": "Easy",
             "light_level": "Bright light",
-            "price": "10.00"
+            "price": "10.00",
+            "image": ""
         }
     },
     {
@@ -188,7 +203,8 @@
             "height": "2-4 feet",
             "care_level": "Easy",
             "light_level": "Low to bright, indirect light",
-            "price": "20.00"
+            "price": "20.00",
+            "image": ""
         }
     },
     {
@@ -200,7 +216,8 @@
             "height": "3-4 feet",
             "care_level": "Easy",
             "light_level": "Bright light",
-            "price": "25.00"
+            "price": "25.00",
+            "image": ""
         }
     },
     {
@@ -212,7 +229,8 @@
             "height": "3-6 feet",
             "care_level": "Easy",
             "light_level": "Moderate to bright, indirect light",
-            "price": "30.00"
+            "price": "30.00",
+            "image": ""
         }
     },
     {
@@ -224,7 +242,8 @@
             "height": "4-12 feet",
             "care_level": "Easy",
             "light_level": "Bright, indirect light",
-            "price": "35.00"
+            "price": "35.00",
+            "image": ""
         }
     },
     {
@@ -236,7 +255,8 @@
             "height": "Variable",
             "care_level": "Easy",
             "light_level": "Full sun",
-            "price": "5.00"
+            "price": "5.00",
+            "image": ""
         }
     }
 ]

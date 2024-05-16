@@ -5,9 +5,19 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = (
         'easy_name',
         'scientific_name',
-        'height',
         'price',
+        'image',
     )
+
+    fields = [
+        'easy_name',
+        'scientific_name',
+        'height',
+        'care_level',
+        'light_level',
+        'price',
+        'image'
+        ]
 
     ordering = (
         'easy_name', 
