@@ -10,36 +10,18 @@
 }
 
 .content-spacing {
-    padding-top: 100px;
+    padding-top: 62px;
 }
 
 /* ----------------------------------------Nav bar  */
 
-.dropdown-toggle::after {
-    display: none;
-}
-
-li {
-    list-style: none;
-}
-
 nav {
-    Font-family: 'Fredoka', cursive;
-    background-color: #EBEBEB;
+    font-family: 'Fredoka', cursive;
     font-size: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
+    background-color: #AEBDA1;
 }
 
-/* Custom CSS for Navbar Toggler */
-.navbar-toggler {
-    border: none;
-}
-
+/* Override the Bootstrap navbar-toggler background images */
 .navbar-toggler.collapsed .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
@@ -48,35 +30,14 @@ nav {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.75)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M7 7l16 16M23 7L7 23'/%3E%3C/svg%3E");
 }
 
-.navbar-brand {
-    font-size: 42px;
-    font-weight: 500;
+.navbar-brand, .nav-link {
     color: #6a6a6a;
-}
-
-.nav-item>a {
-    font-size: 22px;
-    color: #6a6a6a;
-}
-
-.custom-nav-li {
-    color: #6a6a6a;
-    background-color: #EBEBEB;
-    border: 2px solid #ebebeb;
-    border-radius: 4px;
-    padding-left: 2em;
-    padding-right: 2em;
-}
-
-.navbar-brand:hover,
-.custom-nav-li:hover {
-    color: #AEBDA1;
 }
 
 /* ----------------------------Header Containter */
 
 .header-container {
-    background-color: #AEBDA1;
+    background-color: #0b7414;
 }
 
 /* -----------------------------------Buttons  */
@@ -103,7 +64,7 @@ nav {
 
 .hero {
     background-size: cover;
-    background-color: #AEBDA1;
+    background-color: #0b7414;
     display: flex;
     padding-left: 0;
     padding-right: 0;
@@ -116,7 +77,7 @@ nav {
 
 .hero-body {
     text-align: center;
-    background-color: #AEBDA1;
+    background-color: #0b7414;
     min-height: 400px;
 }
 
@@ -193,29 +154,46 @@ button {
     margin-top: 500px;
 }
 
+/* ----------------------------------product_detail */
+
+.carousel-item img {
+    max-height: 400px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.carousel-inner {
+    height: 400px;
+}
 
 /* ----------------------------------Footer */
 
 .footer {
-    padding-top: 10px;
-    padding-bottom: 0px;
-    width:100%;
-    background-color: #a4a4a4;
-    color: #000000;
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
 }
-
-.footer-socials a,
-.footer-links a {
-    color: #333; 
-    margin-right: 15px; 
-    font-size: 20px;
+.footer a {
+    color: #6a6a6a;
+    margin: 0 10px;
 }
-
-.footer-socials a:hover,
-.footer-links a:hover {
-    color: #555; 
+.footer a:hover {
+    color: #AEBDA1;
 }
-
+.footer-socials a {
+    margin: 0 10px;
+    color: #6a6a6a;
+}
+.footer-socials a:hover {
+    color: #AEBDA1;
+}
+.footer-legal {
+    margin-top: 10px;
+}
 
 /* -----------------------------Responsive styles */
 
@@ -240,7 +218,7 @@ button {
     }
 
     .content-spacing {
-        padding-top: 200px;
+        padding-top: 62px;
     }
 
     .carousel, .card {

@@ -37,65 +37,47 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-default navbar-static-top navbar-expand-lg">
-        <a class="navbar-brand" href="{% url 'home' %}">Botanica</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse custom-nav-li" id="navbarText">
-            <ul class="navbar-nav m-auto custom-nav-li">
-                <li class="nav-item active">
-                    <a class="nav-link custom-nav-li" href="{% url 'products' %}">All Plants<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle custom-nav-li" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Categories
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Light</a>
-                        <a class="dropdown-item" href="#">Ease of care</a>
-                        <a class="dropdown-item" href="#">Height</a>
-                        <a class="dropdown-item" href="#">Price</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link custom-nav-li" href="#">Plant Care</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link custom-nav-li" href="#">Contact Us</a>
-                </li>
-            </ul>
-            <span class="navbar-text">
-                <ul class="list-inline list-unstyled text-center text-lg-right my-0">
-                    <li class="list-inline-item dropdown">
-                        <a class="text-black nav-link" href="{% url 'account_login' %}">
-                            <button class="btn custom-btn btn-link">
-                                <div class="text-center">Sign In</div>
-                            </button>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand " href="{% url 'home' %}">Botanica</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ml-auto ">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'products' %}">All Plants</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Categories
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right border-0" aria-labelledby="user-options">
-                            {% if request.user.is_authenticated %}
-                            <a href="" class="dropdown-item">My Profile</a>
-                            <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-                            {% else %}
-                            <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                            <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
-                            {% endif %}
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Light</a>
+                            <a class="dropdown-item" href="#">Ease of care</a>
+                            <a class="dropdown-item" href="#">Height</a>
+                            <a class="dropdown-item" href="#">Price</a>
                         </div>
                     </li>
-                    <li class="list-inline-item">
-                        <a class="nav-link custom-nav-li" href="#">
-                            <div class="text-center">
-                                <div><i class="fas fa-shopping-bag fa-lg"></i></div>
-                            </div>
-                        </a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Plant Care</a>
                     </li>
                 </ul>
-            </span>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-search"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-shopping-bag"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_login' %}">Sign In</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
-
+    
     <script>
         $(document).ready(function () {
             $('.navbar-toggler').click(function () {
@@ -117,7 +99,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="footer mt-auto">
+    <!-- <footer class="footer mt-auto">
         <div class="container text-center">
             <div class="footer-links">
                 <a href="/about">About Us</a>
@@ -135,7 +117,7 @@
                 <p>&copy; 2024 Botanica Houseplants. All rights reserved.</p>
             </div>
         </div>
-    </footer>
+    </footer> -->
 
     {% block postloadjs %}
     {% endblock %}
