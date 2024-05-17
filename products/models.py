@@ -8,6 +8,7 @@ class Product(models.Model):
     light_level = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=5, decimal_places=2)
     image = models.ImageField(upload_to='plant-images/', default='default_images/no-image-available.png')
+    description = models.TextField(default='')
 
     def __str__(self):
         return self.easy_name

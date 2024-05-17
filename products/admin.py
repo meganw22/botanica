@@ -16,7 +16,8 @@ class ProductAdmin(admin.ModelAdmin):
         'care_level',
         'light_level',
         'price',
-        'image'
+        'image',
+        'description'
         ]
 
     ordering = (

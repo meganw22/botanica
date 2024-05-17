@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404
+from django.db.models import Q
 from .models import Product
 
-# Create your views here.
+# All Products Views
 def all_products(request):
-    """ All product views to display all plants and products """
 
     products = Product.objects.all()
 
@@ -13,9 +13,8 @@ def all_products(request):
     
     return render(request, 'products/products.html', context)
 
-
+# Product detail View
 def product_detail(request, product_id):
-    """ View for individual plant details """
 
     product = get_object_or_404(Product, pk=product_id)
 

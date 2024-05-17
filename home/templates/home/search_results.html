@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Search Results</h1>
+        {% if query %}
+            <p>Results for "{{ query }}":</p>
+            <ul class="list-group">
+                {% for product in results %}
+                    <li class="list-group-item">
+                        <h5>{{ product.easy_name }}</h5>
+                        <p>{{ product.description }}</p>
+                        <p><strong>Price:</strong> ${{ product.price }}</p>
+                    </li>
+                {% empty %}
+                    <li class="list-group-item">No results found.</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No search query provided.</p>
+        {% endif %}
+    </div>
+{% endblock %}

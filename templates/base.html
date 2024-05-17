@@ -39,12 +39,12 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand " href="{% url 'home' %}">Botanica</a>
+            <a class="navbar-brand title-name" href="{% url 'home' %}">Botanica</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav ml-auto ">
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'products' %}">All Plants</a>
                     </li>
@@ -65,7 +65,10 @@
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-search"></i></a>
+                        <form class="form-inline" action="{% url 'search' %}" method="get">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
+                            <button class="btn btn-link nav-link" type="submit"><i class="fas fa-search"></i></button>
+                        </form>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fas fa-shopping-bag"></i></a>
@@ -99,25 +102,29 @@
     </div>
 
     <!-- Footer -->
-    <!-- <footer class="footer mt-auto">
-        <div class="container text-center">
-            <div class="footer-links">
-                <a href="/about">About Us</a>
-                <a href="/contact">Contact</a>
-                <a href="/privacy">Privacy Policy</a>
-                <a href="/faq">FAQ</a>
+    <footer class="footer">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <span class="footer-links">
+                        <a href="/about">About Us</a>
+                        <a href="/contact">Contact</a>
+                        <a href="/privacy">Privacy Policy</a>
+                        <a href="/faq">FAQ</a>
+                    </span>
+                    <span class="footer-socials">
+                        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </span>
+                </div>
             </div>
-            <div class="footer-socials">
-                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        </div>
-            <div class="footer-legal">
-                <p>&copy; 2024 Botanica Houseplants. All rights reserved.</p>
+            <div class="footer-legal text-center">
+                <p style="padding: 0;">&copy; 2024 Botanica Houseplants. All rights reserved.</p>
             </div>
         </div>
-    </footer> -->
+    </footer>
 
     {% block postloadjs %}
     {% endblock %}

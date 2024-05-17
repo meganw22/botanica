@@ -3,7 +3,7 @@
 
 <h1>plant of somekind</h1>
 {% block page_header %}
-<div class="container header-container">
+<div class="container content-spacing header-container">
     <div class="row">
         <div class="col"></div>
     </div>
@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mt-5">
+<div class="container content-spacing pb-3">
     <div class="row">
         <!-- Carousel Section -->
         <div class="col-md-6">
@@ -49,11 +49,11 @@
         <!-- Product Details Section -->
         <div class="col-md-6">
             <h2>{{ product.easy_name }}</h2>
-            <p><strong>Scientific Name:</strong> {{ product.scientific_name }}</p>
+            <p> {{ product.scientific_name }}</p>
             <p><strong>Price:</strong> £{{ product.price }}</p>
             <p><strong>Height:</strong> {{ product.height }}</p>
             <p>{{ product.description }}</p>
-            <button class="btn btn-primary btn-lg">Add to Cart</button>
+            <button class="btn btn-success btn-lg">Add to Cart</button>
         </div>
     </div>
 </div>
