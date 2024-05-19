@@ -63,18 +63,18 @@
                         <a class="nav-link" href="#">Plant Care</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto d-flex align-items-center">
                     <li class="nav-item">
                         <form class="form-inline" action="{% url 'search' %}" method="get">
                             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
                             <button class="btn btn-link nav-link" type="submit"><i class="fas fa-search"></i></button>
                         </form>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item d-flex align-items-center">
                         <a class="nav-link" href="#"><i class="fas fa-shopping-bag"></i></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_login' %}">Sign In</a>
+                    <li class="nav-item d-flex align-items-center pl-2">
+                        <a class="nav-link" href="{% url 'account_login' %}"><i class="fas fa-user"></i></a>
                     </li>
                 </ul>
             </div>

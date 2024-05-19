@@ -14,13 +14,37 @@ body {
 }
 
 .content-spacing {
-    padding-top: 86px;
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.dropdown-menu {
+    background-color: #AEBDA1;
+    border: none;
+}
+
+.header-spacing {
+    padding-top: 100px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filter-sort-spacing {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 /* ----------------------------------------Nav bar  */
 
 .title-name {
-    font-size: 40px;
+    font-size: 45px;
 }
 
 nav {
@@ -46,56 +70,16 @@ nav {
     color: #6a6a6a;
 }
 
-/* ----------------------------Header Containter */
-
-.header-container {
-    background-color: #0b7414;
-}
-
 /* -----------------------------------Buttons  */
 
-.custom-btn {
-    background-color: rgba(0, 0, 0, 0);
-    color: #6a6a6a;
-    border: 2px solid #6a6a6a;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 500;
-    display: inline-block;
-    font-size: 20px;
-
+.btn-custom-success {
+    background-color: #fef7c3;
+    border-color: #fef7c3;
+    color: #000000;
 }
-
-.custom-btn:hover {
-    color: #AEBDA1;
-    border: 2px solid #AEBDA1;
-    text-decoration: none;
-}
-
-/* ---------------------------------index.html css */
-
-.hero {
-    background-size: cover;
-    background-color: #0b7414;
-    display: flex;
-    padding-left: 0;
-    padding-right: 0;
-    
-}
-
-.hero>img {
-    max-width: 100%;
-}
-
-.hero-body {
-    text-align: center;
-    background-color: #0b7414;
-    min-height: 400px;
-}
-
-h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
+.btn-custom-success:hover, .btn-custom-success:focus, .btn-custom-success:active {
+    background-color: #e0d6a1;
+    border-color: #e0d6a1;
 }
 
 button {
@@ -118,6 +102,32 @@ button {
 
 .hero-btn:hover {
     color: #ffffff;
+}
+
+/* ---------------------------------index.html css */
+
+.hero {
+    background-size: cover;
+    background-color: #DCE0CD;
+    display: flex;
+    padding-left: 0;
+    padding-right: 0;
+    
+}
+
+.hero>img {
+    max-width: 100%;
+}
+
+.hero-body {
+    text-align: center;
+    background-color: #DCE0CD;
+    min-height: 400px;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
 }
 
 .sub-header {
@@ -176,6 +186,11 @@ button {
 
 .carousel-inner {
     height: 400px;
+}
+
+.lg-spacing {
+    padding-top: 90px;
+    padding-bottom: 90px;
 }
 
 /* ----------------------------------Footer */
@@ -242,4 +257,13 @@ button {
         margin-bottom: 0;
     }
 
+    .lg-spacing {
+        padding-top: 6em;
+        padding-bottom: 4em;
+    }
+
+    /* .lg-margin {
+        margin-left: 3rem;
+        margin-right: 3rem;
+    } */
 }
