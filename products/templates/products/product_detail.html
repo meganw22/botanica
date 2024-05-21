@@ -4,46 +4,80 @@
 {% block content %}
 <div class="container lg-spacing lg-margin">
     <div class="row">
-        <!-- Carousel Section -->
+        <!-- Product Image Section -->
         <div class="col-md-6">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                </ol>
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner">
-            
-                    <div class="carousel-item active">
-                        <img class="d-block w-100 img-fluid" src="/media/plant-images/aloe-vera-small.jpg" alt="Second slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100 img-fluid" src="/media/plant-images/aloe-vera-large.png" alt="Third slide">
-                    </div>
-                </div>
-                <!-- Left and right controls -->
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
+            <img class="img-fluid" src="{% if product.image %}{{ product.image.url }}{% else %}/default_images/no-image-available.png{% endif %}" alt="{{ product.easy_name }}">
         </div>
 
         <!-- Product Details Section -->
         <div class="col-md-6">
-            <h2>{{ product.easy_name }}</h2>
-            <p>{{ product.scientific_name }}</p>
-            <p><strong>Price:</strong> £{{ product.price }}</p>
-            <p><strong>Light:</strong> {{ product.get_light_display }}</p>
-            <p><strong>Ease of Care:</strong> {{ product.get_ease_of_care_display }}</p>
+            <h2 class="mt-3">{{ product.easy_name }}</h2>
+            <p><em>{{ product.scientific_name }}</em></p>
+            <div class="d-flex justify-content-between mb-4">
+                <span>
+                    <i class="fa fa-sun"></i>
+                    <strong>Light:</strong> {{ product.get_light_display }}
+                </span>
+                <span>
+                    <i class="fa fa-hand-holding-water"></i>
+                    <strong>Ease of Care:</strong> {{ product.get_ease_of_care_display }}
+                </span>
+                <span>
+                    <i class="fa fa-paw"></i>
+                    <strong>Pet Friendly:</strong> {{ product.pet_friendly|yesno:"Yes,No" }}
+                </span>
+            </div>
+
+            <p class="h4 my-5 ml-2"> £{{ product.price }}</p>
+
+            <!-- Height Options -->
+            <p class="mb-2 ml-2">Plant height selection:</p>
+            <div class="mb-3">
+                <div class="btn-group d-block mb-2" role="group" aria-label="Plant heights">
+                    <button type="button" class="btn btn-outline-secondary square-btn">Small (&lt20cm)</button>
+                    <button type="button" class="btn btn-outline-secondary square-btn">Medium (20-40cm)</button>
+                    <button type="button" class="btn btn-outline-secondary square-btn">Large (&gt40cm)</button>
+                </div>
+
+                <!-- Quantity Selector -->
+                <div class="d-flex align-items-center mb-3">Quantity: 
+                    <button type="button" class="btn btn-outline-secondary quantity-btn" onclick="decreaseQuantity()">-</button>
+                    <input type="number" id="quantity" name="quantity" value="1" min="1" class="form-control quantity-input mx-2">
+                    <button type="button" class="btn btn-outline-secondary quantity-btn" onclick="increaseQuantity()">+</button>
+                </div>
+
+                <!-- Add to Bag -->
+                <button class=" my-4 btn-custom-success btn-lg btn-block">
+                    <i class="fa fa-shopping-cart"></i> Add to Bag
+                </button>
+            </div>
+            <h4 class="mt-5">Need plant tips and tricks?</h4>
+            <p>Head to Botantica's <a href="{% url 'post_list' %}">The Plant Blog</a> for all your planting needs</p>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12">
+            <h3 class="mt-3">Description</h3>
             <p>{{ product.description }}</p>
-            <button class="btn btn-success btn-lg">Add to Cart</button>
         </div>
     </div>
 </div>
+
+<script>
+    function decreaseQuantity() {
+        var quantityInput = document.getElementById('quantity');
+        var currentValue = parseInt(quantityInput.value);
+        if (currentValue > 1) {
+            quantityInput.value = currentValue - 1;
+        }
+    }
+    
+    function increaseQuantity() {
+        var quantityInput = document.getElementById('quantity');
+        var currentValue = parseInt(quantityInput.value);
+        quantityInput.value = currentValue + 1;
+    }
+    </script>
 {% endblock %}
+

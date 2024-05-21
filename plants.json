@@ -6,7 +6,9 @@
             "easy_name": "Spider Plant",
             "scientific_name": "Chlorophytum comosum",
             "light": "medium",
-            "height": "12 cm",
+            "height-sm": "12 cm",
+            "height-med": "12 cm",
+            "height-lg": "12 cm",
             "ease_of_care": "moderate",
             "image": "plant-images/spiderplant-small.jpg",
             "description": "The spider plant, or Chlorophytum comosum, is a popular and resilient houseplant known for its long, arching leaves that are green with white or yellow stripes. It produces small white flowers and baby plantlets, often referred to as 'spiderettes,' which dangle from the mother plant on long stems, resembling spiders. Spider plants thrive in various light conditions, from low to bright indirect light, and are easy to care for, making them ideal for beginners. They are also known for their air-purifying qualities, helping to remove pollutants from indoor environments."

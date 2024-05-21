@@ -107,9 +107,11 @@
             {% for product in products %}
             <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
                 <div class="card h-100">
-                    <img class="card-img-top img-fluid"
-                        src="{% if product.image %}{{ product.image.url }}{% else %}/product-images/no-image-available.png{% endif %}"
-                        alt="{{ product.easy_name }}">
+                    <a href="{% url 'product_detail' product.id %}">
+                        <img class="card-img-top img-fluid"
+                            src="{% if product.image %}{{ product.image.url }}{% else %}/product-images/no-image-available.png{% endif %}"
+                            alt="{{ product.easy_name }}">
+                    </a>
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">{{ product.easy_name }}</h5>
                         <p class="card-text">{{ product.scientific_name }}</p>

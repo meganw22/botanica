@@ -73,13 +73,13 @@ nav {
 /* -----------------------------------Buttons  */
 
 .btn-custom-success {
-    background-color: #fef7c3;
-    border-color: #fef7c3;
+    background-color: peachpuff;
+    border-color: peachpuff;
     color: #000000;
 }
 .btn-custom-success:hover, .btn-custom-success:focus, .btn-custom-success:active {
-    background-color: #e0d6a1;
-    border-color: #e0d6a1;
+    background-color: #bd9c80;
+    border-color: #bd9c80
 }
 
 button {
@@ -102,6 +102,31 @@ button {
 
 .hero-btn:hover {
     color: #ffffff;
+}
+
+.square-btn {
+    border-color: peachpuff;
+    color: #000;
+    width: 7em;
+    height: 7em;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 2px !important; 
+}
+
+.square-btn:hover {
+    border-color: #bd9c80;
+    background-color: #bd9c80;
+}
+
+.quantity-btn {
+    width: 40px;
+    height: 40px;
+}
+
+.quantity-input {
+    width: 60px;
+    text-align: center;
 }
 
 /* ---------------------------------index.html css */
@@ -177,16 +202,6 @@ h1 {
 }
 
 /* ----------------------------------product_detail */
-
-.carousel-item img {
-    max-height: 400px;
-    object-fit: cover;
-    width: 100%;
-}
-
-.carousel-inner {
-    height: 400px;
-}
 
 .lg-spacing {
     padding-top: 90px;
