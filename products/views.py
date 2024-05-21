@@ -31,6 +31,8 @@ def filter_products(request):
     ease_of_care = request.GET.get('ease_of_care')
     price = request.GET.get('price')
 
+    print(f"Filter criteria - light: {light}, height: {height}, ease_of_care: {ease_of_care}, price: {price}")
+
     products = Product.objects.all()
 
     if light:
@@ -42,11 +44,13 @@ def filter_products(request):
     if price:
         products = products.filter(price__lte=price)
 
+    print(f"Filtered products count: {products.count()}")
+
     context = {
         'products': products,
     }
-    return render(request, 'products/filter_results.html', context)
+    return render(request, 'products/filter_products.html', context)
 
-def product_detail(request, id):
-    product = get_object_or_404(Product, id=id)
+def product_detail(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
     return render(request, 'products/product_detail.html', {'product': product})

@@ -1,0 +1,288 @@
+[
+    {
+        "model": "products.Product",
+        "pk": 1,
+        "fields": {
+            "easy_name": "Spider Plant",
+            "scientific_name": "Chlorophytum comosum",
+            "light": "medium",
+            "height": "12 cm",
+            "ease_of_care": "moderate",
+            "image": "plant-images/spiderplant-small.jpg",
+            "description": "The spider plant, or Chlorophytum comosum, is a popular and resilient houseplant known for its long, arching leaves that are green with white or yellow stripes. It produces small white flowers and baby plantlets, often referred to as 'spiderettes,' which dangle from the mother plant on long stems, resembling spiders. Spider plants thrive in various light conditions, from low to bright indirect light, and are easy to care for, making them ideal for beginners. They are also known for their air-purifying qualities, helping to remove pollutants from indoor environments."
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 2,
+        "fields": {
+            "easy_name": "Snake Plant",
+            "scientific_name": "Sansevieria trifasciata",
+            "light": "medium",
+            "height": "30-40 cm",
+            "ease_of_care": "moderate",
+            "image": "plant-images/snake-large.jpg",
+            "description": "The snake plant, or Sansevieria trifasciata, is a popular and hardy houseplant known for its upright, sword-like leaves with variegated patterns of green and yellow. Also known as mother-in-law's tongue, this plant is native to West Africa and can thrive in a variety of light conditions, from low to bright indirect light. It is highly drought-tolerant, requiring minimal watering, making it an excellent choice for beginners. The snake plant is also valued for its air-purifying properties, as it can remove toxins from indoor air and improve air quality."
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 3,
+        "fields": {
+            "easy_name": "Pothos",
+            "scientific_name": "Epipremnum aureum",
+            "light": "medium",
+            "height": "6-10 feet",
+            "ease_of_care": "moderate",
+            "image": "plant-images/pothos-small-potted.jpg",
+            "description": ""
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 4,
+        "fields": {
+            "easy_name": "Peace Lily",
+            "scientific_name": "Spathiphyllum",
+            "light": "medium",
+            "height": "16-24 inches",
+            "ease_of_care": "moderate",
+            "image": "plant-images/peacelily.jpg",
+            "description": ""
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 5,
+        "fields": {
+            "easy_name": "Fiddle Leaf Fig",
+            "scientific_name": "Ficus lyrata",
+            "light": "medium",
+            "height": "up to 10 feet",
+            "ease_of_care": "moderate",
+            "image": "plant-images/figficus-small.jpg",
+            "description": ""
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 6,
+        "fields": {
+            "easy_name": "Rubber Plant",
+            "scientific_name": "Ficus elastica belize",
+            "light": "medium",
+            "height": "30cm",
+            "ease_of_care": "moderate",
+            "image": "plant-images/ficus-elastica-belize.jpg",
+            "description": ""
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 7,
+        "fields": {
+            "easy_name": "Aloe Vera",
+            "scientific_name": "Aloe barbadensis",
+            "light": "medium",
+            "height": "short",
+            "ease_of_care": "moderate",
+            "image": "plant-images/aloe-vera-small.jpg",
+            "description": "Aloe vera is a succulent plant known for its thick, fleshy leaves that contain a clear gel. This gel is widely used for its soothing and healing properties, particularly for skin conditions such as burns, cuts, and irritation. Aloe vera is also valued for its potential health benefits, including its use in digestive health and immune support. It is easy to grow and maintain, making it a popular houseplant."
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 8,
+        "fields": {
+            "easy_name": "English Ivy",
+            "scientific_name": "Hedera helix",
+            "light": "medium",
+            "height": "20-40cm",
+            "ease_of_care": "moderate",
+            "image": "plant-images/english-ivy-small.jpg",
+            "description": ""
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 9,
+        "fields": {
+            "easy_name": "ZZ Plant",
+            "scientific_name": "Zamioculcas zamiifolia",
+            "light": "medium",
+            "height": "30-40cm",
+            "ease_of_care": "moderate",
+            "image": "plant-images/zz-plant.jpg",
+            "description": ""
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 10,
+        "fields": {
+            "easy_name": "Monstera Deliciosa",
+            "scientific_name": "Monstera deliciosa",
+            "light": "medium",
+            "height": "3-10 feet",
+            "ease_of_care": "moderate",
+            "image": "plant-images/monstera-deliciosa.png",
+            "description": ""
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 11,
+        "fields": {
+            "easy_name": "Orchid",
+            "scientific_name": "Phalaenopsis sp.",
+            "light": "medium",
+            "height": "12-24cm",
+            "ease_of_care": "moderate",
+            "image": "plant-images/orchid.jpg",
+            "description": ""
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 12,
+        "fields": {
+            "easy_name": "Boston Fern",
+            "scientific_name": "Nephrolepis exaltata",
+            "light": "medium",
+            "height": "30 - 90cm",
+            "ease_of_care": "moderate",
+            "image": "plant-images/boston-fern.jpg",
+            "description": "The Boston Fern, or Nephrolepis exaltata, is a popular houseplant known for its lush, feathery fronds that arch gracefully. This evergreen fern is native to tropical regions and thrives in humid environments with indirect light. Its fronds can grow up to 2-3 feet long, forming a dense, attractive foliage that is ideal for hanging baskets or pots. The Boston Fern is also appreciated for its air-purifying properties, helping to remove toxins from indoor air. It requires regular watering and misting to maintain its vibrant, green appearance."
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 13,
+        "fields": {
+            "easy_name": "Calathea",
+            "scientific_name": "Calathea spp.",
+            "light": "medium",
+            "height": "1-2 feet",
+            "ease_of_care": "moderate",
+            "image": "plant-images/calathea-spp.jpg",
+            "description": ""
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 14,
+        "fields": {
+            "easy_name": "Dracaena",
+            "scientific_name": "Dracaena spp.",
+            "light": "medium",
+            "height": "40-80cm",
+            "ease_of_care": "moderate",
+            "image": "plant-images/dracaena.jpg",
+            "description": ""
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 15,
+        "fields": {
+            "easy_name": "Jade Plant",
+            "scientific_name": "Crassula ovata",
+            "light": "medium",
+            "height": "15-30cm",
+            "ease_of_care": "moderate",
+            "image": "plant-images/jade-plant-large.jpg",
+            "description": ""
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 16,
+        "fields": {
+            "easy_name": "Philodendron",
+            "scientific_name": "Philodendron spp.",
+            "light": "medium",
+            "height": "18cm",
+            "ease_of_care": "moderate",
+            "image": "plant-images/philodendron-spp.jpg",
+            "description": ""
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 17,
+        "fields": {
+            "easy_name": "Yucca",
+            "scientific_name": "Yucca elephantipes",
+            "light": "medium",
+            "height": "70-80cm",
+            "ease_of_care": "moderate",
+            "image": "plant-images/yucca-large.png",
+            "description": ""
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 18,
+        "fields": {
+            "easy_name": "Umbrella Tree",
+            "scientific_name": "Schefflera arboricola",
+            "light": "medium",
+            "height": "60-80cm",
+            "ease_of_care": "moderate",
+            "image": "plant-images/umbrella-tree.png",
+            "description": ""
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 19,
+        "fields": {
+            "easy_name": "Bamboo Palm",
+            "scientific_name": "Chamaedorea seifrizii",
+            "light": "medium",
+            "height": "80cm",
+            "ease_of_care": "moderate",
+            "image": "plant-images/bamboo-palm.jpg",
+            "description": "The Bamboo Palm is a small, tropical palm plant characterized by its slender, bamboo-like stems and feathery, green fronds. It is native to Central America and often used as an indoor ornamental plant due to its attractive appearance and ability to thrive in low light conditions. This palm can grow up to 185- 305cm tall and is also appreciated for its air-purifying qualities."
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 20,
+        "fields": {
+            "easy_name": "Cactus",
+            "scientific_name": "Cactaceae family",
+            "light": "high",
+            "height": "short",
+            "ease_of_care": "easy",
+            "image": "plant-images/cactus.jpg",
+            "description": "wertyu"
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 21,
+        "fields": {
+            "easy_name": "Monkey Mask",
+            "scientific_name": "Monstera adansonii",
+            "light": "medium",
+            "height": "20cm",
+            "ease_of_care": "moderate",
+            "image": "plant-images/monstera-monkey-small.jpg",
+            "description": ""
+        }
+    },
+    {
+        "model": "products.Product",
+        "pk": 22,
+        "fields": {
+            "easy_name": "Bunny Ears Cactus",
+            "scientific_name": "Opuntia Microdasys",
+            "light": "high",
+            "height": "short",
+            "ease_of_care": "easy",
+            "image": "plant-images/bunny-ears-cactus.jpg",
+            "description": "Opuntia microdasys, commonly known as the bunny ear cactus or angel's wings, is a type of prickly pear cactus native to Mexico. It is recognisable by its distinctive, flat, oval-shaped pads that grow in pairs, resembling rabbit ears. Opuntia microdasys typically grows to a height of 40-60 cm  and spreads outwards. This cactus produces yellow flowers in the spring and summer, followed by small, red, edible fruits. It is popular as an ornamental plant due to its unique appearance and low maintenance requirements."
+        }
+    }
+]

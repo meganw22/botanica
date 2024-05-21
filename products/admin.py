@@ -13,8 +13,8 @@ class ProductAdmin(admin.ModelAdmin):
         'easy_name',
         'scientific_name',
         'height',
-        'care_level',
-        'light_level',
+        'ease_of_care',
+        'light',
         'price',
         'image',
         'description'

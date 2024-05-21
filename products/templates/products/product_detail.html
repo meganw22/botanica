@@ -37,9 +37,10 @@
         <!-- Product Details Section -->
         <div class="col-md-6">
             <h2>{{ product.easy_name }}</h2>
-            <p> {{ product.scientific_name }}</p>
+            <p>{{ product.scientific_name }}</p>
             <p><strong>Price:</strong> £{{ product.price }}</p>
-            <p><strong>Height:</strong> {{ product.height }}</p>
+            <p><strong>Light:</strong> {{ product.get_light_display }}</p>
+            <p><strong>Ease of Care:</strong> {{ product.get_ease_of_care_display }}</p>
             <p>{{ product.description }}</p>
             <button class="btn btn-success btn-lg">Add to Cart</button>
         </div>
