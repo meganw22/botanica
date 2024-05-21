@@ -34,10 +34,11 @@
             <p class="mb-2 ml-2">Plant height selection:</p>
             <div class="mb-3">
                 <div class="btn-group d-block mb-2" role="group" aria-label="Plant heights">
-                    <button type="button" class="btn btn-outline-secondary square-btn">Small (&lt20cm)</button>
-                    <button type="button" class="btn btn-outline-secondary square-btn">Medium (20-40cm)</button>
-                    <button type="button" class="btn btn-outline-secondary square-btn">Large (&gt40cm)</button>
+                    <button type="button" class="btn btn-outline-secondary square-btn" onclick="selectHeight('sm')">Small ({{ heights.sm }})</button>
+                    <button type="button" class="btn btn-outline-secondary square-btn" onclick="selectHeight('med')">Medium ({{ heights.med }})</button>
+                    <button type="button" class="btn btn-outline-secondary square-btn" onclick="selectHeight('lg')">Large ({{ heights.lg }})</button>
                 </div>
+                <p id="selected-height" class="ml-2">Selected height: </p>
 
                 <!-- Quantity Selector -->
                 <div class="d-flex align-items-center mb-3">Quantity: 
@@ -64,7 +65,13 @@
     </div>
 </div>
 
-<script>
+    <script>
+    const heights = JSON.parse(document.getElementById('heights-data').textContent);
+
+    function selectHeight(size) {
+        document.getElementById('selected-height').innerText = `Selected height: ${heights[size]}`;
+    }
+
     function decreaseQuantity() {
         var quantityInput = document.getElementById('quantity');
         var currentValue = parseInt(quantityInput.value);
@@ -72,12 +79,11 @@
             quantityInput.value = currentValue - 1;
         }
     }
-    
+
     function increaseQuantity() {
         var quantityInput = document.getElementById('quantity');
         var currentValue = parseInt(quantityInput.value);
         quantityInput.value = currentValue + 1;
     }
-    </script>
+</script>
 {% endblock %}
-

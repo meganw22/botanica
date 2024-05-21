@@ -17,9 +17,11 @@ def all_products(request):
 def product_detail(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
-
+    sizes = product.sizes.all()
+    heights = {size.size: size.height for size in sizes}
     context = {
-        'product': product
+        'product': product,
+        'heights': heights,
     }
     
     return render(request, 'products/product_detail.html', context)

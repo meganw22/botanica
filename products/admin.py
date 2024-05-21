@@ -1,5 +1,9 @@
 from django.contrib import admin
-from .models import Product
+from .models import Product, PlantSize
+
+class PlantSizeInline(admin.TabularInline):
+    model = PlantSize
+    extra = 1
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
@@ -12,16 +16,17 @@ class ProductAdmin(admin.ModelAdmin):
     fields = [
         'easy_name',
         'scientific_name',
-        'height',
         'ease_of_care',
         'light',
         'price',
         'image',
         'description'
-        ]
+    ]
 
     ordering = (
         'easy_name', 
     )
+
+    inlines = [PlantSizeInline]
 
 admin.site.register(Product, ProductAdmin)
