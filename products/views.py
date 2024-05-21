@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
 from .models import Product
 
@@ -26,12 +26,14 @@ def product_detail(request, product_id):
 
 # Filter Products
 def filter_products(request):
-    light = request.GET.get('light')
-    height = request.GET.get('height')
-    ease_of_care = request.GET.get('ease_of_care')
-    price = request.GET.get('price')
+    light = request.GET.get('light', '')
+    height = request.GET.get('height', '')
+    ease_of_care = request.GET.get('ease_of_care', '')
+    price = request.GET.get('price', '')
 
-    print(f"Filter criteria - light: {light}, height: {height}, ease_of_care: {ease_of_care}, price: {price}")
+    # Check if all filters are empty or "All"
+    if not light and not height and not ease_of_care and not price:
+        return redirect('products')
 
     products = Product.objects.all()
 
@@ -43,8 +45,6 @@ def filter_products(request):
         products = products.filter(ease_of_care=ease_of_care)
     if price:
         products = products.filter(price__lte=price)
-
-    print(f"Filtered products count: {products.count()}")
 
     context = {
         'products': products,

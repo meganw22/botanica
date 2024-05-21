@@ -10,6 +10,7 @@
 </div>
 {% endblock %}
 
+<!-- Filter options header -->
 {% block content %}
 <div class="container filter-sort-spacing">
     <div class="row">
@@ -18,39 +19,65 @@
                 <div class="form-group mr-2">
                     <label for="light" class="mr-2">Light</label>
                     <select name="light" id="light" class="form-control">
-                        <option value="">All</option>
-                        <option value="low">Low</option>
-                        <option value="medium">Medium</option>
-                        <option value="high">Bright</option>
+                        <option value="" {% if request.GET.light == "" %}selected{% endif %}>All</option>
+                        <option value="low" {% if request.GET.light == "low" %}selected{% endif %}>Low</option>
+                        <option value="medium" {% if request.GET.light == "medium" %}selected{% endif %}>Medium</option>
+                        <option value="high" {% if request.GET.light == "high" %}selected{% endif %}>Bright</option>
                     </select>
                 </div>
                 <div class="form-group mr-2">
                     <label for="height" class="mr-2">Height</label>
                     <select name="height" id="height" class="form-control">
-                        <option value="">All</option>
-                        <option value="short">Short</option>
-                        <option value="medium">Medium</option>
-                        <option value="tall">Tall</option>
+                        <option value="" {% if request.GET.height == "" %}selected{% endif %}>All</option>
+                        <option value="short" {% if request.GET.height == "short" %}selected{% endif %}>Short</option>
+                        <option value="medium" {% if request.GET.height == "medium" %}selected{% endif %}>Medium</option>
+                        <option value="tall" {% if request.GET.height == "tall" %}selected{% endif %}>Tall</option>
                     </select>
                 </div>
                 <div class="form-group mr-2">
                     <label for="ease_of_care" class="mr-2">Ease of Care</label>
                     <select name="ease_of_care" id="ease_of_care" class="form-control">
-                        <option value="">All</option>
-                        <option value="easy">Easy</option>
-                        <option value="moderate">Moderate</option>
-                        <option value="difficult">Difficult</option>
+                        <option value="" {% if request.GET.ease_of_care == "" %}selected{% endif %}>All</option>
+                        <option value="easy" {% if request.GET.ease_of_care == "easy" %}selected{% endif %}>Easy</option>
+                        <option value="moderate" {% if request.GET.ease_of_care == "moderate" %}selected{% endif %}>Moderate</option>
+                        <option value="difficult" {% if request.GET.ease_of_care == "difficult" %}selected{% endif %}>Difficult</option>
                     </select>
                 </div>
                 <div class="form-group mr-2">
                     <label for="price" class="mr-2">Max Price</label>
-                    <input type="number" name="price" id="price" class="form-control" placeholder="Max Price">
+                    <input type="number" name="price" id="price" class="form-control" placeholder="Max Price" value="{% if request.GET.price %}{{ request.GET.price }}{% endif %}">
                 </div>
-                <button class="btn btn-primary" type="submit">Filter</button>
+                <button class="btn btn-custom-success" type="submit">Filter</button>
+                <a href="{% url 'products' %}" class="btn btn-secondary">Clear Filters</a>
             </form>
         </div>
     </div>
 
+    <!-- Display current filter criteria -->
+    <div class="row mt-3">
+        <div class="col-12">
+            <p>
+                <strong>Showing filter results for: </strong>
+                {% if request.GET.light %}
+                    <strong>Light level: </strong>{{ request.GET.light|title }}{% if request.GET.height or request.GET.ease_of_care or request.GET.price %}, {% endif %}
+                {% endif %}
+                {% if request.GET.height %}
+                    <strong>Height: </strong>{{ request.GET.height|title }}{% if request.GET.ease_of_care or request.GET.price %}, {% endif %}
+                {% endif %}
+                {% if request.GET.ease_of_care %}
+                    <strong>Ease of care: </strong>{{ request.GET.ease_of_care|title }}{% if request.GET.price %}, {% endif %}
+                {% endif %}
+                {% if request.GET.price %}
+                    <strong>Max price: </strong>£{{ request.GET.price }}
+                {% endif %}
+                {% if not request.GET.light and not request.GET.height and not request.GET.ease_of_care and not request.GET.price %}
+                    Showing all products
+                {% endif %}
+            </p>
+        </div>
+    </div>
+
+    <!-- Display available products or error message -->
     <div class="row mt-4">
         {% if products %}
             {% for product in products %}
@@ -61,7 +88,7 @@
                         <h5 class="card-title">{{ product.easy_name }}</h5>
                         <p class="card-text">{{ product.scientific_name }}</p>
                         <div class="mt-auto d-flex justify-content-between align-items-center">
-                            <p class="mb-0">from: £{{ product.price }}</p>
+                            <p class="mb-0">from: <strong>£{{ product.price }}</strong></p>
                             <a href="{% url 'product_detail' product.id %}" class="btn btn-custom-success">More details</a>
                         </div>
                     </div>
@@ -71,7 +98,7 @@
         {% else %}
             <div class="col-12 text-center">
                 <p>No products found matching the selected criteria.</p>
-                <a href="{% url 'products' %}" class="btn btn-primary">Back to Products</a>
+                <a href="{% url 'products' %}" class="btn btn-custom-success">Back to Products</a>
             </div>
         {% endif %}
     </div>
