@@ -1,3 +1,4 @@
+import os
 import json
 from django.core.management.base import BaseCommand
 from products.models import Product, PlantSize
@@ -10,6 +11,13 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         file_path = kwargs['file_path']
+        if not os.path.isabs(file_path):
+            file_path = os.path.join(os.getcwd(), file_path)
+
+        if not os.path.exists(file_path):
+            self.stderr.write(f"File {file_path} does not exist.")
+            return
+
         with open(file_path, 'r') as file:
             data = json.load(file)
             for item in data:

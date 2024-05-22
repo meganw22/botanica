@@ -57,7 +57,6 @@ nav {
     padding-bottom: 0;
 }
 
-/* Override the Bootstrap navbar-toggler background images */
 .navbar-toggler.collapsed .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
@@ -77,6 +76,7 @@ nav {
     border-color: peachpuff;
     color: #000000;
 }
+
 .btn-custom-success:hover, .btn-custom-success:focus, .btn-custom-success:active {
     background-color: #bd9c80;
     border-color: #bd9c80
@@ -206,6 +206,34 @@ h1 {
 .lg-spacing {
     padding-top: 90px;
     padding-bottom: 90px;
+}
+
+.no-arrows::-webkit-inner-spin-button,
+.no-arrows::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.no-arrows {
+    -moz-appearance: textfield;
+}
+
+/* ---------------------------------Shopping bag */
+
+.shopping-cart .cart-item {
+    background-color: #ffffff;
+}
+
+.order-summary {
+    background-color: #fafafa;
+}
+
+.order-summary h2 {
+    margin-top: 0;
+}
+
+.order-summary p {
+    margin-bottom: 0.5rem;
 }
 
 /* ----------------------------------Footer */

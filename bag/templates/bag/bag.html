@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bag_extras %}
+
+<!-- Page Header -->
+{% block page_header %}
+<div class="container header-spacing text-center">
+    <div class="row">
+        <div class="col">
+            <h1>Your Bag</h1>
+            <p class="text-success"><i class="fas fa-truck"></i> Free delivery on orders over £50</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<!-- Bag content -->
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="shopping-cart mb-4">
+                {% if bag %}
+                    {% for item in bag %}
+                    <div class="cart-item d-flex align-items-center mb-3 p-3 border">
+                        <img src="{{ item.image.url }}" alt="{{ item.name }}" class="img-fluid" style="width: 100px;">
+                        <div class="item-details flex-grow-1 ml-3">
+                            <h5>{{ item.name }}</h5>
+                            <p>{{ item.description }}</p>
+                        </div>
+                        <div class="quantity d-flex align-items-center">
+                            <button class="btn btn-outline-secondary btn-sm">−</button>
+                            <input type="text" class="form-control text-center mx-2" value="{{ item.quantity }}" style="width: 50px;">
+                            <button class="btn btn-outline-secondary btn-sm">+</button>
+                        </div>
+                        <div class="price ml-3">£{{ item.price }}</div>
+                        <button class="btn btn-outline-danger btn-sm ml-3"><i class="fas fa-trash"></i></button>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No items in bag</p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <aside class="order-summary p-3 border">
+                <h2>Order Summary</h2>
+                <div class="d-flex justify-content-between">
+                    <p>Subtotal:</p>
+                    <p>£{{ bag|total_price }}</p>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <p>Delivery:</p>
+                    <p>Choose a shipping method.</p>
+                </div>
+                <div class="promo-code mb-3">
+                    <label for="promoCode">GOT A PROMO CODE OR GIFT CARD?</label>
+                    <input type="text" class="form-control" id="promoCode" placeholder="Enter code">
+                </div>
+                <div class="d-flex justify-content-between">
+                    <p>Total:</p>
+                    <p>£{{ bag|total_price }}</p>
+                </div>
+                <button class="btn btn-warning btn-block mb-2">Proceed to Checkout</button>
+                <button class="btn btn-outline-secondary btn-block">Continue Shopping</button>
+            </aside>
+        </div>
+    </div>
+</div>
+{% endblock %}
