@@ -49,9 +49,14 @@
                 </div>
 
                 <!-- Add to Bag -->
-                <button class=" my-4 btn-custom-success btn-lg btn-block">
-                    <i class="fa fa-shopping-cart"></i> Add to Bag
-                </button>
+                <form id="add-to-bag-form" method="POST" action="{% url 'add_to_bag' product.id %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="quantity" id="quantity-input" value="1">
+                    <input type="hidden" name="selected_height" id="selected-height-input">
+                    <button type="submit" class="my-4 btn-custom-success btn-lg btn-block" onclick="validateForm(event)">
+                        <i class="fa fa-shopping-cart"></i> Add to Bag
+                    </button>
+                </form>
             </div>
             <h4 class="mt-5">Need plant tips and tricks?</h4>
             <p>Head to Botantica's <a href="{% url 'post_list' %}">The Plant Blog</a> for all your planting needs</p>
