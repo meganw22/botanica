@@ -76,6 +76,12 @@ def add_to_bag(request, product_id):
         messages.error(request, 'Please select a height before adding to the bag.')
         return redirect('product_detail', product_id=product_id)
 
+    try:
+        price = PlantPrice.objects.get(product=product, size=selected_height).price
+    except PlantPrice.DoesNotExist:
+        messages.error(request, 'Invalid height selected.')
+        return redirect('product_detail', product_id=product_id)
+
     bag = request.session.get('bag', [])
     print(f"Initial bag: {bag}")
 
@@ -88,10 +94,10 @@ def add_to_bag(request, product_id):
         bag.append({
             'id': product.id,
             'name': product.easy_name,
-            'price': float(product.price),
             'quantity': quantity,
             'height': selected_height,
             'image_url': product.image.url if product.image else '/default_images/no-image-available.png',
+            'price': float(price)
         })
 
     request.session['bag'] = bag

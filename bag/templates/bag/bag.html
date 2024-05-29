@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% load bag_extras %}
+{% load custom_filters %}
 
 <!-- Page Header -->
 {% block page_header %}
@@ -26,7 +26,6 @@
                         <img src="{{ item.image_url }}" alt="{{ item.name }}" class="img-fluid" style="width: 100px;">
                         <div class="item-details flex-grow-1 ml-3">
                             <h5>{{ item.name }}</h5>
-                            <p>{{ item.description }}</p>
                             <p>Height: {{ item.height }}</p>
                         </div>
                         <div class="quantity d-flex align-items-center">
@@ -34,7 +33,7 @@
                             <input type="text" class="form-control text-center mx-2" value="{{ item.quantity }}" style="width: 50px;">
                             <button class="btn btn-outline-secondary btn-sm">+</button>
                         </div>
-                        <div class="price ml-3">£{{ item.price }}</div>
+                        <div class="price ml-3">£{{ item.price|floatformat:2 }}</div>
                         <form method="POST" action="{% url 'remove_from_bag' item.id item.height %}">
                             {% csrf_token %}
                             <button class="btn btn-outline-danger btn-sm ml-3"><i class="fas fa-trash"></i></button>
@@ -51,15 +50,15 @@
                 <h2>Order Summary</h2>
                 <div class="d-flex justify-content-between">
                     <p>Subtotal:</p>
-                    <p>£{{ bag|total_price }}</p>
+                    <p>£{{ total_price|floatformat:2 }}</p>
                 </div>
                 <div class="d-flex justify-content-between">
                     <p>Delivery:</p>
-                    <p>£1.99</p>
+                    <p>£{{ delivery_cost|floatformat:2 }}</p>
                 </div>
                 <div class="d-flex justify-content-between">
                     <p>Total:</p>
-                    <p>£{{ bag|total_price }}</p>
+                    <p>£{{ grand_total|floatformat:2 }}</p>
                 </div>
                 <button class="btn btn-custom-success btn-block mb-2">Proceed to Checkout</button>
                 <button class="btn btn-outline-secondary btn-block">Continue Shopping</button>
