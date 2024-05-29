@@ -29,7 +29,7 @@
             </div>
 
             <!-- Price Display -->
-            <p class="h4 my-5 ml-2">from: £<span id="priceDisplay" style="font-weight: bold;">{{ smallest_price }}</span></p>
+            <p class="h4 my-5 ml-2">£<span id="priceDisplay" style="font-weight: bold;">{{ smallest_price }}</span></p>
 
             <!-- Height Options -->
             <p class="mb-2 ml-2">Select the height of your new plant:</p>
@@ -44,7 +44,7 @@
                     {% if heights.lg != '' %}
                         <button type="button" class="btn btn-outline-secondary square-btn" onclick="selectHeight('lg')">Large ({{ heights.lg }})</button>
                     {% endif %}
-                </div>           
+                </div>
 
                 <!-- Quantity Selector -->
                 <div class="d-flex align-items-center mb-3">
@@ -76,5 +76,14 @@
         </div>
     </div>
 </div>
+
+<script id="prices-data" type="application/json">
+    {
+        "sm": "{{ prices.sm|default:0 }}",
+        "med": "{{ prices.med|default:0 }}",
+        "lg": "{{ prices.lg|default:0 }}",
+        "smallest": "{{ smallest_price|default:0 }}"
+    }
+</script>
 
 {% endblock %}
