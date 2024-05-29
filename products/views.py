@@ -1,8 +1,7 @@
-import json
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.db.models import Q
-from .models import Product, PlantSize
+from .models import Product, PlantSize, PlantPrice
 
 # All Products Views
 def all_products(request):
@@ -16,17 +15,27 @@ def all_products(request):
 # Product detail View
 def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
+    
+    # Fetch heights
     heights = {}
     for size in ['sm', 'med', 'lg']:
         plant_size = PlantSize.objects.filter(plant=product, size=size).first()
         heights[size] = plant_size.height if plant_size else 'N/A'
+    
+    # Fetch prices
+    plant_prices = PlantPrice.objects.filter(product=product)
+    prices = {price.size: price.price for price in plant_prices}
+    
+    # Find the smallest price
+    smallest_price = min(prices.values()) if prices else None
 
     context = {
         'product': product,
         'heights': heights,
+        'prices': prices,
+        'smallest_price': smallest_price,
     }
     return render(request, 'products/product_detail.html', context)
-
 
 # Filter Products views
 def filter_products(request):

@@ -28,7 +28,8 @@
                 </span>
             </div>
 
-            <p class="h4 my-5 ml-2"> £{{ product.price }}</p>
+            <!-- Price Display -->
+            <p class="h4 my-5 ml-2">from: £<span id="priceDisplay" style="font-weight: bold;">{{ smallest_price }}</span></p>
 
             <!-- Height Options -->
             <p class="mb-2 ml-2">Plant height selection:</p>
@@ -76,7 +77,8 @@
     </div>
 </div>
 
-    <script>
+<script>
+
     function selectHeight(size) {
         console.log("Selected height: " + size);
         // Add your logic here to handle the height selection
@@ -94,6 +96,14 @@
         var quantityInput = document.getElementById('quantity');
         var currentValue = parseInt(quantityInput.value);
         quantityInput.value = currentValue + 1;
+    }
+
+    function validateForm(event) {
+        var selectedHeight = document.querySelector('input[name="selected_height"]:checked');
+        if (!selectedHeight) {
+            event.preventDefault();
+            alert("Please select a height.");
+        }
     }
 </script>
 {% endblock %}

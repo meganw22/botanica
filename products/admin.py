@@ -1,16 +1,20 @@
 from django.contrib import admin
-from .models import Product, PlantSize
+from .models import Product, PlantSize, PlantPrice
 
 class PlantSizeInline(admin.TabularInline):
     model = PlantSize
-    extra = 1
+    extra = 0
+
+class PlantPriceInline(admin.TabularInline):
+    model = PlantPrice
+    extra = 0
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
         'easy_name',
         'scientific_name',
-        'price',
         'image',
+        'pet_ok',
     )
 
     fields = [
@@ -19,7 +23,6 @@ class ProductAdmin(admin.ModelAdmin):
         'ease_of_care',
         'pet_ok',
         'light',
-        'price',
         'image',
         'description'
     ]
@@ -28,6 +31,6 @@ class ProductAdmin(admin.ModelAdmin):
         'easy_name', 
     )
 
-    inlines = [PlantSizeInline]
+    inlines = [PlantSizeInline, PlantPriceInline]
 
 admin.site.register(Product, ProductAdmin)

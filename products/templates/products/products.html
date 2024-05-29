@@ -115,7 +115,7 @@
                         <h5 class="card-title">{{ product.easy_name }}</h5>
                         <p class="card-text">{{ product.scientific_name }}</p>
                         <div class="mt-auto d-flex justify-content-between align-items-center">
-                            <p class="mb-0">from: <strong>£{{ product.price }}</strong></p>
+                            <p class="mb-0">from: <strong>£{{ product.smallest_price }}</strong></p>
                             <a href="{% url 'product_detail' product.id %}" class="btn btn-custom-success">More details</a>
                         </div>
                     </div>
