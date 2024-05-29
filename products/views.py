@@ -1,7 +1,8 @@
+import json
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.db.models import Q
-from .models import Product
+from .models import Product, PlantSize
 
 # All Products Views
 def all_products(request):
@@ -15,8 +16,11 @@ def all_products(request):
 # Product detail View
 def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
-    sizes = product.sizes.all()
-    heights = {size.size: size.height for size in sizes}
+    heights = {}
+    for size in ['sm', 'med', 'lg']:
+        plant_size = PlantSize.objects.filter(plant=product, size=size).first()
+        heights[size] = plant_size.height if plant_size else 'N/A'
+
     context = {
         'product': product,
         'heights': heights,
@@ -39,7 +43,9 @@ def filter_products(request):
     if light:
         products = products.filter(light=light)
     if height:
-        products = products.filter(height=height)
+        plant_sizes = PlantSize.objects.filter(height=height)
+        product_ids = plant_sizes.values_list('plant_id', flat=True)
+        products = products.filter(id__in=product_ids)
     if ease_of_care:
         products = products.filter(ease_of_care=ease_of_care)
     if price:

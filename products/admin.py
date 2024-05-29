@@ -17,6 +17,7 @@ class ProductAdmin(admin.ModelAdmin):
         'easy_name',
         'scientific_name',
         'ease_of_care',
+        'pet_ok',
         'light',
         'price',
         'image',

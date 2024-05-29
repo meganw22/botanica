@@ -12,26 +12,29 @@ class Product(models.Model):
         ('moderate', 'Moderate'),
         ('difficult', 'Difficult'),
     ]
+
     easy_name = models.CharField(max_length=200)
     scientific_name = models.CharField(max_length=200, null=True, blank=True)
     light = models.CharField(max_length=6, choices=LIGHT_CHOICES, default='medium')
     ease_of_care = models.CharField(max_length=9, choices=EASE_OF_CARE_CHOICES, default='moderate')
     price = models.DecimalField(max_digits=5, decimal_places=2)
+    pet_ok = models.BooleanField(default=False)
     image = models.ImageField(upload_to='plant-images/', default='default_images/no-image-available.png')
     description = models.TextField(default='No description available')
 
     def __str__(self):
         return self.easy_name
 
-    def delete(self, *args, **kwargs):
-        if self.image:
-            self.image.delete(save=False) 
-        super().delete(*args, **kwargs)
-
 class PlantSize(models.Model):
+    SIZE_CHOICES = [
+        ('sm', 'Small'),
+        ('med', 'Medium'),
+        ('lg', 'Large'),
+    ]
+
     plant = models.ForeignKey(Product, related_name='sizes', on_delete=models.CASCADE)
-    size = models.CharField(max_length=10, choices=[('sm', 'Small'), ('med', 'Medium'), ('lg', 'Large')])
-    height = models.CharField(max_length=20)
+    size = models.CharField(max_length=10, choices=SIZE_CHOICES)
+    height = models.CharField(max_length=20, blank=True)
 
     def __str__(self):
         return f"{self.plant.easy_name} - {self.get_size_display()}"

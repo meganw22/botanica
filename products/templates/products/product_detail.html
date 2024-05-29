@@ -24,7 +24,7 @@
                 </span>
                 <span>
                     <i class="fa fa-paw"></i>
-                    <strong>Pet Friendly:</strong> {{ product.pet_friendly|yesno:"Yes,No" }}
+                    <strong>Pet Friendly:</strong> {{ product.pet_ok|yesno:"Yes,No" }}
                 </span>
             </div>
 
@@ -34,11 +34,16 @@
             <p class="mb-2 ml-2">Plant height selection:</p>
             <div class="mb-3">
                 <div class="btn-group d-block mb-2" role="group" aria-label="Plant heights">
-                    <button type="button" class="btn btn-outline-secondary square-btn" onclick="selectHeight('sm')">Small ({{ heights.sm }})</button>
-                    <button type="button" class="btn btn-outline-secondary square-btn" onclick="selectHeight('med')">Medium ({{ heights.med }})</button>
-                    <button type="button" class="btn btn-outline-secondary square-btn" onclick="selectHeight('lg')">Large ({{ heights.lg }})</button>
-                </div>
-                <p id="selected-height" class="ml-2">Selected height: </p>
+                    {% if heights.sm != '' %}
+                        <button type="button" class="btn btn-outline-secondary square-btn" onclick="selectHeight('sm')">Small ({{ heights.sm }})</button>
+                    {% endif %}
+                    {% if heights.med != '' %}
+                        <button type="button" class="btn btn-outline-secondary square-btn" onclick="selectHeight('med')">Medium ({{ heights.med }})</button>
+                    {% endif %}
+                    {% if heights.lg != '' %}
+                        <button type="button" class="btn btn-outline-secondary square-btn" onclick="selectHeight('lg')">Large ({{ heights.lg }})</button>
+                    {% endif %}
+                </div>           
 
                 <!-- Quantity Selector -->
                 <div class="d-flex align-items-center mb-3">
@@ -72,10 +77,9 @@
 </div>
 
     <script>
-    const heights = JSON.parse(document.getElementById('heights-data').textContent);
-
     function selectHeight(size) {
-        document.getElementById('selected-height').innerText = `Selected height: ${heights[size]}`;
+        console.log("Selected height: " + size);
+        // Add your logic here to handle the height selection
     }
 
     function decreaseQuantity() {
