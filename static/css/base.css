@@ -69,6 +69,15 @@ nav {
     color: #6a6a6a;
 }
 
+.custom-badge {
+    background-color: peachpuff;
+    color: black; 
+    border-radius: 50%;
+    padding: 0.2em 0.4em;
+    font-size: 0.7em; 
+    position: absolute;
+}
+
 /* -----------------------------------Buttons  */
 
 .btn-custom-success {

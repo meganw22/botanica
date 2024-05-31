@@ -22,21 +22,21 @@
             <div class="shopping-cart mb-4">
                 {% if bag %}
                     {% for item in bag %}
-                    <div class="cart-item d-flex align-items-center mb-3 p-3 border">
-                        <img src="{{ item.image_url }}" alt="{{ item.name }}" class="img-fluid" style="width: 100px;">
-                        <div class="item-details flex-grow-1 ml-3">
+                    <div class="cart-item d-flex flex-column flex-md-row align-items-center mb-3 p-3 border">
+                        <img src="{{ item.image_url }}" alt="{{ item.name }}" class="img-fluid mb-2 mb-md-0" style="width: 200px;">
+                        <div class="item-details flex-grow-1 ml-md-3 text-center text-md-left">
                             <h5>{{ item.name }}</h5>
-                            <p>Height: {{ item.height }}</p>
+                            <p>Size: {{ item.height }}</p>
                         </div>
-                        <div class="quantity d-flex align-items-center">
+                        <div class="quantity d-flex align-items-center mb-2 mb-md-0">
                             <button class="btn btn-outline-secondary btn-sm">−</button>
                             <input type="text" class="form-control text-center mx-2" value="{{ item.quantity }}" style="width: 50px;">
                             <button class="btn btn-outline-secondary btn-sm">+</button>
                         </div>
-                        <div class="price ml-3">£{{ item.price|floatformat:2 }}</div>
+                        <div class="price ml-md-3 text-center text-md-left">£{{ item.price|floatformat:2 }}</div>
                         <form method="POST" action="{% url 'remove_from_bag' item.id item.height %}">
                             {% csrf_token %}
-                            <button class="btn btn-outline-danger btn-sm ml-3"><i class="fas fa-trash"></i></button>
+                            <button class="btn btn-outline-danger btn-sm ml-md-3"><i class="fas fa-trash"></i></button>
                         </form>
                     </div>
                     {% endfor %}
