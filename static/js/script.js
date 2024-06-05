@@ -2,8 +2,8 @@
 
 // Quantity Control
 
-function decreaseQuantity() {
-    var quantityInput = document.getElementById('quantity');
+function decreaseQuantity(button) {
+    var quantityInput = button.nextElementSibling;
     var currentValue = parseInt(quantityInput.value);
     if (currentValue > 1) {
         quantityInput.value = currentValue - 1;
@@ -11,8 +11,8 @@ function decreaseQuantity() {
     updateFormInputs();
 }
 
-function increaseQuantity() {
-    var quantityInput = document.getElementById('quantity');
+function increaseQuantity(button) {
+    var quantityInput = button.previousElementSibling;
     var currentValue = parseInt(quantityInput.value);
     quantityInput.value = currentValue + 1;
     updateFormInputs();

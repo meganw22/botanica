@@ -128,12 +128,6 @@ button {
     background-color: #bd9c80;
 }
 
-.quantity-btn {
-    width: 40px;
-    height: 40px;
-    border: none;
-}
-
 .quantity-input {
     width: 60px;
     text-align: center;
@@ -228,6 +222,23 @@ form a {
 
 form a:hover {
     text-decoration: underline;
+}
+
+/* ------------------------------- bootstrap toasts */
+
+.message-container {
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 99999999999;
+}
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 2px;
 }
 
 /* ---------------------------------index.html css */

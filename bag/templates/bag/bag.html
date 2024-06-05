@@ -29,9 +29,9 @@
                             <p>Size: {{ item.height }}</p>
                         </div>
                         <div class="quantity d-flex align-items-center mb-2 mb-md-0">
-                            <button class="btn btn-outline-secondary btn-sm">−</button>
-                            <input type="text" class="form-control text-center mx-2" value="{{ item.quantity }}" style="width: 50px;">
-                            <button class="btn btn-outline-secondary btn-sm">+</button>
+                            <button class="btn btn-outline-secondary btn-sm" onclick="decreaseQuantity(this)">−</button>
+                            <input type="text" class="form-control text-center mx-2 quantity-input" value="{{ item.quantity }}" style="width: 50px;">
+                            <button class="btn btn-outline-secondary btn-sm" onclick="increaseQuantity(this)">+</button>
                         </div>
                         <div class="price ml-md-3 text-center text-md-left">£{{ item.price|floatformat:2 }}</div>
                         <form method="POST" action="{% url 'remove_from_bag' item.id item.height %}">

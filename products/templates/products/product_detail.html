@@ -49,9 +49,9 @@
                 <!-- Quantity Selector -->
                 <div class="d-flex align-items-center mb-3">
                     Quantity:
-                    <button type="button" class="btn btn-outline-secondary quantity-btn" onclick="decreaseQuantity()">-</button>
-                    <input type="number" id="quantity" name="quantity" value="1" min="1" class="form-control quantity-input mx-2 no-arrows">
-                    <button type="button" class="btn btn-outline-secondary quantity-btn" onclick="increaseQuantity()">+</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="decreaseQuantity(this)">-</button>
+                    <input type="number" name="quantity" value="1" min="1" class="form-control quantity-input mx-2 no-arrows">
+                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="increaseQuantity(this)">+</button>
                 </div>
 
                 <!-- Add to Bag -->
