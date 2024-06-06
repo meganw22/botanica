@@ -8,7 +8,8 @@
     <div class="row">
         <div class="col">
             <h1>Your Bag</h1>
-            <p class="text-success"><i class="fas fa-truck"></i> Free delivery on orders over £{{ free_delivery_threshold }}</p>
+            <p class="text-success"><i class="fas fa-truck"></i> Free delivery on orders over £{{
+                free_delivery_threshold }}</p>
         </div>
     </div>
 </div>
@@ -21,29 +22,71 @@
         <div class="col-lg-8">
             <div class="shopping-cart mb-4">
                 {% if bag %}
-                    {% for item in bag %}
-                    <div class="cart-item d-flex flex-column flex-md-row align-items-center mb-3 p-3 border">
-                        <img src="{{ item.image_url }}" alt="{{ item.name }}" class="img-fluid mb-2 mb-md-0" style="width: 100px;">
-                        <div class="item-details flex-grow-1 ml-md-3 text-center text-md-left">
-                            <h5>{{ item.name }}</h5>
-                            <p>Size: {{ item.height }}</p>
-                        </div>
-                        <div class="quantity d-flex align-items-center mb-2 mb-md-0">
-                            <button class="btn btn-outline-secondary btn-sm" onclick="decreaseQuantity(this)">−</button>
-                            <input type="text" class="form-control text-center mx-2 quantity-input" value="{{ item.quantity }}" style="width: 50px;">
-                            <button class="btn btn-outline-secondary btn-sm" onclick="increaseQuantity(this)">+</button>
-                        </div>
-                        <div class="price ml-md-3 text-center text-md-left">£{{ item.price|floatformat:2 }}</div>
-                        <form method="POST" action="{% url 'remove_from_bag' item.id item.height %}">
-                            {% csrf_token %}
-                            <button class="btn btn-outline-danger btn-sm ml-md-3"><i class="fas fa-trash"></i></button>
-                        </form>
-                    </div>
-                    {% endfor %}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Image</th>
+                            <th scope="col">Plant name</th>
+                            <th scope="col">Plant size</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in bag %}
+                        <tr>
+                            <td>
+                                <img src="{{ item.image_url }}" alt="{{ item.name }}" class="img-fluid" style="width: 100px;">
+                            </td>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.height }}</td>
+                            <td>
+                                <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.id %}">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button class="decrement-qty btn btn-sm btn-black rounded-0" 
+                                                    data-item_id="{{ item.id }}" id="decrement-qty_{{ item.id }}">
+                                                    <span>
+                                                        <i class="fas fa-minus fa-sm"></i>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                            <input class="form-control form-control-sm qty_input" type="number"
+                                                name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                                                data-item_id="{{ item.id }}"
+                                                id="id_qty_{{ item.id }}">
+                                            <div class="input-group-append">
+                                                <button class="increment-qty btn btn-sm btn-black rounded-0"
+                                                    data-item_id="{{ item.id }}" id="increment-qty_{{ item.id }}">
+                                                    <span>
+                                                        <i class="fas fa-plus fa-sm"></i>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                            <input type="hidden" name="selected_height" value="{{ item.height }}">
+                                        </div>
+                                    </div>
+                                </form>
+                            </td>
+                            <td>£{{ item.price | floatformat:2 }}</td>
+                            <td>
+                                <form method="POST" action="{% url 'remove_from_bag' item.id item.height %}">
+                                    {% csrf_token %}
+                                    <button class="btn btn-outline-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
                 {% else %}
-                    <p>No items in bag</p>
+                <p>No items in bag</p>
                 {% endif %}
             </div>
+            
         </div>
         <div class="col-lg-4">
             <aside class="order-summary p-3 border">

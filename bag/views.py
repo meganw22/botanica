@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from products.models import Product, PlantPrice
+from django.urls import reverse
 
 # Add to bag view
 def add_to_bag(request, product_id):
+    """Add a plant to the shopping bag with height and quantity"""
     
     product = get_object_or_404(Product, pk=product_id)
     quantity = int(request.POST.get('quantity', 1))
@@ -40,8 +42,34 @@ def add_to_bag(request, product_id):
 
     return redirect(request.META.get('HTTP_REFERER'))
 
+# Adjust bag
+def adjust_bag(request, product_id):
+    """Adjust the quantity of a specific item in the bag"""
+    
+    product = get_object_or_404(Product, pk=product_id)
+    quantity = int(request.POST.get('quantity', 1))
+    selected_height = request.POST.get('selected_height', None)
+
+    bag = request.session.get('bag', [])
+    for item in bag:
+        if item['id'] == product_id and item.get('height') == selected_height:
+            if quantity > 0:
+                item['quantity'] = quantity
+                messages.success(request, f'Updated quantity for {product.easy_name} ({selected_height}).')
+            else:
+                bag.remove(item)
+                messages.success(request, f'Removed {product.easy_name} ({selected_height}) from the bag.')
+            break
+    else:
+        messages.error(request, f'Could not find {product.easy_name} ({selected_height}) in your bag.')
+
+    request.session['bag'] = bag
+
+    return redirect(reverse('shopping_bag'))
+
 # Shopping bag view
 def shopping_bag(request):
+    """Get the shopping bag view"""
     context = {
         'bag': request.session.get('bag', [])
     }
@@ -49,6 +77,8 @@ def shopping_bag(request):
 
 # Remove from bag view
 def remove_from_bag(request, product_id, height):
+    """Remove an item in the shopping bag"""
+
     bag = request.session.get('bag', [])
     updated_bag = [item for item in bag if not (item['id'] == product_id and item['height'] == height)]
     request.session['bag'] = updated_bag
