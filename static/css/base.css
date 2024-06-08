@@ -131,6 +131,10 @@ button {
 .quantity-input {
     width: 60px;
     text-align: center;
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
 }
 
 /* ----------------------------- Login/Signup pages */
