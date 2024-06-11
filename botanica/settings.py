@@ -35,6 +35,9 @@ INSTALLED_APPS = [
     'blog',
     'bag',
     'checkout',
+    
+    # Other
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -48,6 +51,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'botanica.urls'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 TEMPLATES = [
     {
@@ -65,6 +71,10 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'bag.contexts.bag_contents',
             ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
 ]
@@ -146,6 +156,8 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

@@ -1,29 +1,35 @@
 from django import forms
 from .models import Order, Address
 
+class AddressForm(forms.ModelForm):
+    class Meta:
+        model = Address
+        fields = [
+            'street_address1',
+            'street_address2',
+            'town_city',
+            'county',
+            'postcode',
+            'country',
+        ]
+
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ('customer_name', 'email_address', 'contact_number', 
-                    'street_address1', 'street_address2', 'town_city',
-                    'county', 'country', 'postcode')
+        fields = [
+            'customer_name',
+            'email_address',
+            'contact_number',
+        ]
+
+    shipping_address = AddressForm()
 
     def __init__(self, *args, **kwargs):
-        """
-        Add placeholders and classes, remove auto-generated
-        labels and set autofocus on first field
-        """
         super().__init__(*args, **kwargs)
         placeholders = {
             'customer_name': 'Full Name',
             'email_address': 'Email Address',
             'contact_number': 'Phone Number',
-            'country': 'Country',
-            'postcode': 'Postal Code',
-            'town_city': 'Town or City',
-            'street_address1': 'Street Address 1',
-            'street_address2': 'Street Address 2',
-            'county': 'County',
         }
 
         self.fields['customer_name'].widget.attrs['autofocus'] = True

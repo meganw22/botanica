@@ -115,10 +115,11 @@
                     <p>Total:</p>
                     <p>£{{ grand_total|floatformat:2 }}</p>
                 </div>
-                <button class="btn btn-custom-success btn-block mb-2">Proceed to Checkout</button>
-                <button class="btn btn-outline-secondary btn-block">Continue Shopping</button>
+                <a href="{% url 'checkout' %}" class="btn btn-custom-success btn-block mb-2">Go to Checkout</a>
+                <a href="{% url 'products' %}" class="btn btn-outline-secondary btn-block">Continue Shopping</a>
             </aside>
         </div>
     </div>
 </div>
+
 {% endblock %}
