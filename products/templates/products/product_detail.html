@@ -50,7 +50,7 @@
                 <div class="d-flex align-items-center mb-3">
                     Quantity:
                     <button type="button" class="btn btn-outline-secondary btn-sm" onclick="decreaseQuantity(this)">-</button>
-                    <input type="number" name="quantity" value="1" min="1" class="form-control quantity-input mx-2 no-arrows">
+                    <input type="number" name="quantity" value="1" min="1" class="form-control quantity-input mx-2 no-arrows" onchange="updateQuantity(this)">
                     <button type="button" class="btn btn-outline-secondary btn-sm" onclick="increaseQuantity(this)">+</button>
                 </div>
 
@@ -83,6 +83,47 @@
         "med": "{{ prices.med|default:0 }}",
         "lg": "{{ prices.lg|default:0 }}",
         "smallest": "{{ smallest_price|default:0 }}"
+    }
+</script>
+
+<script>
+    function selectHeight(height) {
+        document.getElementById('selected-height-input').value = height;
+        updatePriceDisplay(height);
+    }
+
+    function updatePriceDisplay(height) {
+        const prices = JSON.parse(document.getElementById('prices-data').textContent);
+        const price = prices[height] || prices['smallest'];
+        document.getElementById('priceDisplay').textContent = price;
+    }
+
+    function decreaseQuantity(button) {
+        var quantityInput = button.nextElementSibling;
+        var currentValue = parseInt(quantityInput.value);
+        if (currentValue > 1) {
+            quantityInput.value = currentValue - 1;
+        }
+        document.getElementById('quantity-input').value = quantityInput.value;
+    }
+
+    function increaseQuantity(button) {
+        var quantityInput = button.previousElementSibling;
+        var currentValue = parseInt(quantityInput.value);
+        quantityInput.value = currentValue + 1;
+        document.getElementById('quantity-input').value = quantityInput.value;
+    }
+
+    function updateQuantity(input) {
+        document.getElementById('quantity-input').value = input.value;
+    }
+
+    function validateForm(event) {
+        const selectedHeight = document.getElementById('selected-height-input').value;
+        if (!selectedHeight) {
+            event.preventDefault();
+            alert('Please select a height before adding to the bag.');
+        }
     }
 </script>
 

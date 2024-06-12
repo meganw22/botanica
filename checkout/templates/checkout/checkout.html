@@ -61,32 +61,28 @@
         
                 <fieldset class="px-3">
                     <button type="submit" class="btn btn-custom-success btn-block mb-2">Continue to Payment</button>
-                    
+                    <a href="{% url 'shopping_bag' %}" class="btn btn-outline-secondary btn-block">Head back to bag</a>
                 </fieldset>
             </form>
             </div>
                 <div class="col-lg-4">
-                    <aside class="order-summary p-3 border">
+                    <aside class="order-summary p-3 my-3 border">
                         <h2>Order Summary</h2>
-                        {% if bag_items %}
-                            <ul class="list-group mb-3">
-                                {% for item in bag_items %}
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <div class="d-flex align-items-center">
-                                            <img src="{% static item.product.image_url %}" alt="{{ item.product.easy_name }}" class="img-thumbnail" style="width: 50px; height: 50px;">
-                                            <div class="ml-3">
-                                                <p class="mb-0">{{ item.product.easy_name }}</p>
-                                                <small>Quantity: {{ item.quantity }}</small>
-                                                <small>Price: £{{ item.product.price|floatformat:2 }}</small>
-                                            </div>
-                                        </div>
-                                        <span class="text-muted">£{{ item.quantity|floatformat:2 }}</span>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        {% else %}
-                            <p>No items in bag</p>
-                        {% endif %}
+                        <div class="items-summary">
+                            {% for item in bag %}
+                            <div class="item-summary mb-3 d-flex justify-content-between align-items-center">
+                                <span>
+                                    <img src="{{ item.image_url }}" alt="{{ item.name }}" class="img-fluid pr-2" style="max-height: 50px;">
+                                </span>
+                                <span>
+                                    <strong>{{ item.name }} </strong> x {{ item.quantity }}
+                                </span>
+                                <span class="ml-auto">
+                                    £{{ item.price | floatformat:2 }}
+                                </span>
+                            </div>
+                            {% endfor %}
+                        </div>
                         <div class="d-flex justify-content-between">
                             <p>Subtotal:</p>
                             <p>£{{ total_price|floatformat:2 }}</p>
@@ -99,7 +95,6 @@
                             <p>Total:</p>
                             <p>£{{ grand_total|floatformat:2 }}</p>
                         </div>
-                        <a href="{% url 'products' %}" class="btn btn-outline-secondary btn-block">Continue Shopping</a>
                     </aside>
                 </div>
     </div>

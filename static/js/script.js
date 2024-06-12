@@ -1,41 +1,5 @@
 // -----------------------------------product_detail.html
 
-// Quantity Control
-
-function decreaseQuantity(button) {
-    var quantityInput = button.nextElementSibling;
-    var currentValue = parseInt(quantityInput.value);
-    if (currentValue > 1) {
-        quantityInput.value = currentValue - 1;
-    }
-    updateFormInputs(quantityInput);
-}
-
-function increaseQuantity(button) {
-    var quantityInput = button.previousElementSibling;
-    var currentValue = parseInt(quantityInput.value);
-    quantityInput.value = currentValue + 1;
-    updateFormInputs(quantityInput);
-}
-
-function updateFormInputs(quantityInput) {
-    var hiddenInput = quantityInput.closest('form') ? quantityInput.closest('form').querySelector('.quantity-input-hidden') : null;
-    if (hiddenInput) {
-        hiddenInput.value = quantityInput.value;
-    }
-}
-
-function updateQuantity(button) {
-    var quantityInput = button.previousElementSibling.querySelector('.quantity-input');
-    var newValue = quantityInput.value;
-    var message = document.getElementById('update-message');
-    message.style.display = 'block';
-    setTimeout(() => {
-        message.style.display = 'none';
-    }, 2000);
-}
-
-
 // Select height and show height price
 
 function selectHeight(height) {

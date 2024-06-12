@@ -8,6 +8,19 @@
         </button>
     </div>
     <div class="toast-body bg-white">
-        {{ message }}        
+        <span id="toast-message">{{ message }}</span>
+        <div class="mt-2">
+            <button type="button" class="btn btn-custom-success btn-sm" onclick="window.location.href=shoppingBagUrl;">Go to Bag</button>
+        </div>
     </div>
 </div>
+
+<script>
+    const shoppingBagUrl = "{% url 'shopping_bag' %}";
+
+    function showToastNotification(quantity, height) {
+        const message = `Added ${quantity} item(s) to the bag. Size: ${height}.`;
+        document.getElementById('toast-message').textContent = message;
+        $('.toast').toast('show');
+    }
+</script>
