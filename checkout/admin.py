@@ -1,10 +1,7 @@
 from django.contrib import admin
-from .models import Address, Order, OrderItem
+from .models import Order, OrderItem
 
-# @admin.register(Address)
-class AddressAdmin(admin.ModelAdmin):
-    list_display = ('street_address1', 'town_city', 'county', 'country')
-    search_fields = ('street_address1', 'town_city', 'county', 'country')
+# Remove the AddressAdmin class and its registration
 
 class OrderItemInline(admin.TabularInline):
     model = OrderItem
@@ -28,7 +25,7 @@ class OrderAdmin(admin.ModelAdmin):
             obj.order_id = obj._generate_order_id()
         super().save_model(request, obj, form, change)
 
-# @admin.register(OrderItem)
+@admin.register(OrderItem)
 class OrderItemAdmin(admin.ModelAdmin):
     list_display = ('order', 'product', 'product_size', 'quantity_ordered', 'item_total')
     search_fields = ('order__order_id', 'product__name', 'product_size')

@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 
-
 <!-- Page Header -->
 {% block page_header %}
 <div class="container header-spacing text-center">
@@ -30,14 +29,14 @@
                 </fieldset>
         
                 <fieldset class="rounded px-3 mb-5">
-                    <legend class="fieldset-label small text-black px-2 w-auto">Delivery</legend>
+                    <legend class="fieldset-label text-black small px-2 w-auto">Delivery</legend>
                     {{ order_form.contact_number|as_crispy_field }}
-                    {{ order_form.shipping_address.street_address1|as_crispy_field }}
-                    {{ order_form.shipping_address.street_address2|as_crispy_field }}
-                    {{ order_form.shipping_address.town_city|as_crispy_field }}
-                    {{ order_form.shipping_address.county|as_crispy_field }}
-                    {{ order_form.shipping_address.postcode|as_crispy_field }}
-                    {{ order_form.shipping_address.country|as_crispy_field }}
+                    {{ order_form.street_address1|as_crispy_field }}
+                    {{ order_form.street_address2|as_crispy_field }}
+                    {{ order_form.town_city|as_crispy_field }}
+                    {{ order_form.county|as_crispy_field }}
+                    {{ order_form.postcode|as_crispy_field }}
+                    {{ order_form.country|as_crispy_field }}
         
                     <div class="form-check form-check-inline float-right mr-0">
                         {% if user.is_authenticated %}

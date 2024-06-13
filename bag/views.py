@@ -25,18 +25,19 @@ def add_to_bag(request, product_id):
     for item in bag:
         if item['id'] == product_id and item.get('height') == selected_height:
             item['quantity'] += quantity
-            messages.success(request, f'Updated quantity for {product.easy_name} ({selected_height}).')
+            messages.success(request, f'Updated quantity: {item["quantity"]}x {product.easy_name} ({selected_height}).')
             break
     else:
-        bag.append({
+        new_item = {
             'id': product.id,
             'name': product.easy_name,
             'quantity': quantity,
             'height': selected_height,
             'image_url': product.image.url if product.image else '/default_images/no-image-available.png',
             'price': float(price)
-        })
-        messages.success(request, f'Added {product.easy_name} ({selected_height}) to the bag.')
+        }
+        bag.append(new_item)
+        messages.success(request, f'Added {new_item["quantity"]}x {product.easy_name} ({selected_height}) to the bag.')
 
     request.session['bag'] = bag
 
@@ -55,7 +56,7 @@ def adjust_bag(request, product_id):
         if item['id'] == product_id and item.get('height') == selected_height:
             if quantity > 0:
                 item['quantity'] = quantity
-                messages.success(request, f'Updated quantity for {product.easy_name} ({selected_height}).')
+                messages.success(request, f'Updated quantity: {item["quantity"]}x {product.easy_name} ({selected_height}).')
             else:
                 bag.remove(item)
                 messages.success(request, f'Removed {product.easy_name} ({selected_height}) from the bag.')

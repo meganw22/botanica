@@ -4,28 +4,18 @@ from django.db.models import Sum
 from django.conf import settings
 from products.models import Product
 
-class Address(models.Model):
+class Order(models.Model):
+    order_id = models.CharField(max_length=36, null=False, editable=False, unique=True)
+    customer_name = models.CharField(max_length=50, null=False, blank=False)
+    email_address = models.EmailField(max_length=254, null=False, blank=False)
+    contact_number = models.CharField(max_length=20, null=False, blank=False)
+    date_created = models.DateTimeField(auto_now_add=True)
     street_address1 = models.CharField(max_length=80, null=False, blank=False)
     street_address2 = models.CharField(max_length=255, null=True, blank=True)
     town_city = models.CharField(max_length=40, null=False, blank=False)
     county = models.CharField(max_length=80, null=True, blank=True)
     postcode = models.CharField(max_length=20, null=True, blank=True)
     country = models.CharField(max_length=40, null=False, blank=False)
-
-    class Meta:
-        verbose_name = "Address"
-        verbose_name_plural = "Addresses"
-
-    def __str__(self):
-        return f'{self.street_address1}, {self.town_city}, {self.county}, {self.country}'
-
-class Order(models.Model):
-    order_id = models.CharField(max_length=36, null=False, editable=False, unique=True)
-    customer_name = models.CharField(max_length=50, null=False, blank=False)
-    email_address = models.EmailField(max_length=254, null=False, blank=False)
-    contact_number = models.CharField(max_length=20, null=False, blank=False)
-    shipping_address = models.ForeignKey(Address, related_name='shipping_orders', on_delete=models.SET_NULL, null=True, blank=True)
-    date_created = models.DateTimeField(auto_now_add=True)
     delivery_fee = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     total_cost = models.DecimalField(max_digits=15, decimal_places=2, null=False, default=0)
     final_amount = models.DecimalField(max_digits=15, decimal_places=2, null=False, default=0)
