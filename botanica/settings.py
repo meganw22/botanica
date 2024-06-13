@@ -10,14 +10,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-5!i*kt9!pvun3o@=81ymspylnr31uzoafvo57ops*!=vx0xqsa'
+SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = [
     '8000-meganw22-botanica-9qn6y1vvq4a.ws-eu114.gitpod.io', 
-    'botanica-plants-a070bddadf29.herokuapp.com'
+    'botanica-plants-a070bddadf29.herokuapp.com',
+    'https://git.heroku.com/botanica-plants.git'
 ]
 
 
