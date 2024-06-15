@@ -48,7 +48,6 @@ body {
 }
 
 nav {
-    font-size: 20px;
     background-color: #AEBDA1;
 }
 
@@ -347,6 +346,10 @@ h1 {
 .order-summary p {
     margin-bottom: 0.5rem;
 }
+
+/* ------------------------------- Checkout.html */
+
+
 
 /* ----------------------------------Footer */
 
