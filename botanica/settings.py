@@ -15,10 +15,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-4p$8@d%=+e07y^m6(*n)5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = [
-    '8000-meganw22-botanica-9qn6y1vvq4a.ws-eu114.gitpod.io', 
+ALLOWED_HOSTS = [ 
     'botanica-plants-a070bddadf29.herokuapp.com',
-    'https://git.heroku.com/botanica-plants.git'
+    'https://git.heroku.com/botanica-plants.git',
+    '8000-meganw22-botanica-oz2d3hx11fs.ws-eu114.gitpod.io'
 ]
 
 
@@ -177,7 +177,7 @@ if 'USE_AWS' in os.environ:
     STATICFILES_STORAGE = 'custom_storages.StaticStorage'
     STATICFILES_LOCATION = 'static'
     DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
-    MEDIAFILES_LOCATION = 'media/plant-images'
+    MEDIAFILES_LOCATION = 'media'
 
     # Override static and media URLs in production
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'

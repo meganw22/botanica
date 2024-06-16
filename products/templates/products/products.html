@@ -108,7 +108,7 @@
                 <div class="card h-100">
                     <a href="{% url 'product_detail' product.id %}">
                         <img class="card-img-top img-fluid"
-                            src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'product-images/no-image-available.png' %}{% endif %}"
+                            src="{% if product.image %}{{ product.image.url }}{% else %}../../media/product-images/no-image-available.png{% endif %}"
                             alt="{{ product.easy_name }}">
                     </a>
                     <div class="card-body d-flex flex-column">
