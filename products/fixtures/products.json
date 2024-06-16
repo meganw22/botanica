@@ -869,5 +869,590 @@
             "size": "lg",
             "height": "20-30cm"
         }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 1,
+        "fields": {
+            "product": 1,
+            "size": "sm",
+            "price": "10.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 2,
+        "fields": {
+            "product": 1,
+            "size": "med",
+            "price": "15.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 3,
+        "fields": {
+            "product": 1,
+            "size": "lg",
+            "price": "20.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 4,
+        "fields": {
+            "product": 2,
+            "size": "sm",
+            "price": "12.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 5,
+        "fields": {
+            "product": 2,
+            "size": "med",
+            "price": "18.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 6,
+        "fields": {
+            "product": 2,
+            "size": "lg",
+            "price": "25.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 7,
+        "fields": {
+            "product": 3,
+            "size": "sm",
+            "price": "8.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 8,
+        "fields": {
+            "product": 3,
+            "size": "med",
+            "price": "12.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 9,
+        "fields": {
+            "product": 3,
+            "size": "lg",
+            "price": "16.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 10,
+        "fields": {
+            "product": 4,
+            "size": "sm",
+            "price": "14.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 11,
+        "fields": {
+            "product": 4,
+            "size": "med",
+            "price": "20.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 12,
+        "fields": {
+            "product": 4,
+            "size": "lg",
+            "price": "28.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 13,
+        "fields": {
+            "product": 5,
+            "size": "sm",
+            "price": "25.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 14,
+        "fields": {
+            "product": 5,
+            "size": "med",
+            "price": "35.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 15,
+        "fields": {
+            "product": 5,
+            "size": "lg",
+            "price": "45.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 16,
+        "fields": {
+            "product": 6,
+            "size": "sm",
+            "price": "15.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 17,
+        "fields": {
+            "product": 6,
+            "size": "med",
+            "price": "22.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 18,
+        "fields": {
+            "product": 6,
+            "size": "lg",
+            "price": "30.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 19,
+        "fields": {
+            "product": 7,
+            "size": "sm",
+            "price": "10.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 20,
+        "fields": {
+            "product": 7,
+            "size": "med",
+            "price": "15.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 21,
+        "fields": {
+            "product": 7,
+            "size": "lg",
+            "price": "20.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 22,
+        "fields": {
+            "product": 8,
+            "size": "sm",
+            "price": "12.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 23,
+        "fields": {
+            "product": 8,
+            "size": "med",
+            "price": "18.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 24,
+        "fields": {
+            "product": 8,
+            "size": "lg",
+            "price": "24.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 25,
+        "fields": {
+            "product": 9,
+            "size": "sm",
+            "price": "9.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 26,
+        "fields": {
+            "product": 9,
+            "size": "med",
+            "price": "14.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 27,
+        "fields": {
+            "product": 9,
+            "size": "lg",
+            "price": "19.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 28,
+        "fields": {
+            "product": 10,
+            "size": "sm",
+            "price": "28.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 29,
+        "fields": {
+            "product": 10,
+            "size": "med",
+            "price": "40.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 30,
+        "fields": {
+            "product": 10,
+            "size": "lg",
+            "price": "55.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 31,
+        "fields": {
+            "product": 11,
+            "size": "sm",
+            "price": "22.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 32,
+        "fields": {
+            "product": 11,
+            "size": "med",
+            "price": "30.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 33,
+        "fields": {
+            "product": 11,
+            "size": "lg",
+            "price": "40.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 34,
+        "fields": {
+            "product": 12,
+            "size": "sm",
+            "price": "15.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 35,
+        "fields": {
+            "product": 12,
+            "size": "med",
+            "price": "22.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 36,
+        "fields": {
+            "product": 12,
+            "size": "lg",
+            "price": "30.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 37,
+        "fields": {
+            "product": 13,
+            "size": "sm",
+            "price": "18.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 38,
+        "fields": {
+            "product": 13,
+            "size": "med",
+            "price": "26.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 39,
+        "fields": {
+            "product": 13,
+            "size": "lg",
+            "price": "35.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 40,
+        "fields": {
+            "product": 14,
+            "size": "sm",
+            "price": "20.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 41,
+        "fields": {
+            "product": 14,
+            "size": "med",
+            "price": "28.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 42,
+        "fields": {
+            "product": 14,
+            "size": "lg",
+            "price": "38.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 43,
+        "fields": {
+            "product": 15,
+            "size": "sm",
+            "price": "30.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 44,
+        "fields": {
+            "product": 15,
+            "size": "med",
+            "price": "45.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 45,
+        "fields": {
+            "product": 15,
+            "size": "lg",
+            "price": "60.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 46,
+        "fields": {
+            "product": 16,
+            "size": "sm",
+            "price": "7.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 47,
+        "fields": {
+            "product": 16,
+            "size": "med",
+            "price": "12.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 48,
+        "fields": {
+            "product": 16,
+            "size": "lg",
+            "price": "18.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 49,
+        "fields": {
+            "product": 17,
+            "size": "sm",
+            "price": "15.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 50,
+        "fields": {
+            "product": 17,
+            "size": "med",
+            "price": "22.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 51,
+        "fields": {
+            "product": 17,
+            "size": "lg",
+            "price": "30.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 52,
+        "fields": {
+            "product": 18,
+            "size": "sm",
+            "price": "20.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 53,
+        "fields": {
+            "product": 18,
+            "size": "med",
+            "price": "28.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 54,
+        "fields": {
+            "product": 18,
+            "size": "lg",
+            "price": "38.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 55,
+        "fields": {
+            "product": 19,
+            "size": "sm",
+            "price": "12.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 56,
+        "fields": {
+            "product": 19,
+            "size": "med",
+            "price": "18.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 57,
+        "fields": {
+            "product": 19,
+            "size": "lg",
+            "price": "24.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 58,
+        "fields": {
+            "product": 20,
+            "size": "sm",
+            "price": "10.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 59,
+        "fields": {
+            "product": 20,
+            "size": "med",
+            "price": "15.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 60,
+        "fields": {
+            "product": 20,
+            "size": "lg",
+            "price": "20.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 61,
+        "fields": {
+            "product": 21,
+            "size": "sm",
+            "price": "12.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 62,
+        "fields": {
+            "product": 21,
+            "size": "med",
+            "price": "18.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 63,
+        "fields": {
+            "product": 21,
+            "size": "lg",
+            "price": "24.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 64,
+        "fields": {
+            "product": 22,
+            "size": "med",
+            "price": "10.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 65,
+        "fields": {
+            "product": 22,
+            "size": "lg",
+            "price": "15.00"
+        }
     }
 ]
