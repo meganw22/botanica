@@ -8,7 +8,7 @@
             "light": "medium",
             "ease_of_care": "moderate",
             "pet_ok": true,
-            "image": "spiderplant-small.jpg",
+            "image": "media/spiderplant-small.jpg",
             "description": "The spider plant, or Chlorophytum comosum, is a popular and resilient houseplant known for its long, arching leaves that are green with white or yellow stripes. It produces small white flowers and baby plantlets, often referred to as 'spiderettes,' which dangle from the mother plant on long stems, resembling spiders. Spider plants thrive in various light conditions, from low to bright indirect light, and are easy to care for, making them ideal for beginners. They are also known for their air-purifying qualities, helping to remove pollutants from indoor environments."
         }
     },
@@ -21,7 +21,7 @@
             "light": "medium",
             "ease_of_care": "moderate",
             "pet_ok": true,
-            "image": "snake-large.jpg",
+            "image": "media/snake-large.jpg",
             "description": "The snake plant, or Sansevieria trifasciata, is a popular and hardy houseplant known for its upright, sword-like leaves with variegated patterns of green and yellow. Also known as mother-in-law's tongue, this plant is native to West Africa and can thrive in a variety of light conditions, from low to bright indirect light. It is Highly drought-tolerant, requiring minimal watering, making it an excellent choice for beginners. The snake plant is also valued for its air-purifying properties, as it can remove toxins from indoor air and improve air quality."
         }
     },
@@ -34,7 +34,7 @@
             "light": "medium",
             "ease_of_care": "moderate",
             "pet_ok": false,
-            "image": "pothos-small-potted.jpg",
+            "image": "media/pothos-small-potted.jpg",
             "description": "Pothos, or Epipremnum aureum, is a popular and easy-to-care-for houseplant known for its attractive, heart-shaped leaves that are often variegated with shades of green, yellow, or white. Native to the Solomon Islands, this trailing vine can grow several feet long, making it ideal for hanging baskets, shelves, or as a climbing plant on trellises. Pothos thrives in a variety of light conditions, from low to bright indirect light, and prefers well-draining soil. It is Highly tolerant of occasional neglect, requiring only infrequent watering when the soil feels dry. Pothos is also known for its air-purifying properties, helping to remove common indoor toxins."
         }
     },
@@ -47,7 +47,7 @@
             "light": "medium",
             "ease_of_care": "moderate",
             "pet_ok": true,
-            "image": "peacelily.jpg",
+            "image": "media/peacelily.jpg",
             "description": "The peace lily, or Spathiphyllum, is a popular houseplant known for its elegant, glossy, dark green leaves and distinctive white spathes that resemble flowers. Native to tropical regions of the Americas and Southeast Asia, peace lilies thrive in low to bright indirect light, making them suitable for various indoor environments. They prefer consistently moist, well-draining soil and benefit from regular watering. Peace lilies are also valued for their air-purifying qualities, helping to remove toxins from indoor air. Their graceful appearance and low maintenance requirements make them a favorite choice for adding a touch of tranquility and beauty to homes and offices."
         }
     },
@@ -60,7 +60,7 @@
             "light": "medium",
             "ease_of_care": "moderate",
             "pet_ok": true,
-            "image": "figficus-small.jpg",
+            "image": "media/figficus-small.jpg",
             "description": "The fiddle leaf fig, or Ficus lyrata, is a popular houseplant known for its large, violin-shaped leaves that are glossy and dark green. Native to the tropical regions of West Africa, this plant can grow up to 180-300 cm tall indoors, making it a striking focal point in any room. The fiddle leaf fig thrives in bright, indirect light and prefers well-draining soil. It requires regular watering, allowing the soil to dry out between waterings. With its dramatic foliage and sculptural form, the fiddle leaf fig is a favorite among indoor plant enthusiasts for adding a touch of elegance and greenery to interior spaces."
         }
     },
@@ -73,7 +73,7 @@
             "light": "medium",
             "ease_of_care": "moderate",
             "pet_ok": true,
-            "image": "ficus-elastica-belize.jpg",
+            "image": "media/ficus-elastica-belize.jpg",
             "description": "Ficus elastica 'Belize', commonly known as the rubber plant, is a popular houseplant known for its large, glossy leaves that feature striking variegation in shades of green, pink, and cream. Native to Southeast Asia, this hardy plant can grow up to 180-300 cm tall indoors under the right conditions. The rubber plant thrives in bright, indirect light but can tolerate lower light levels. It prefers well-draining soil and Moderate watering, allowing the soil to dry out between waterings. The Ficus elastica 'Belize' is admired for its bold, colorful foliage and easy-care nature, making it a favorite choice for adding a touch of tropical elegance to indoor spaces."
         }
     },
@@ -86,7 +86,7 @@
             "light": "medium",
             "ease_of_care": "moderate",
             "pet_ok": true,
-            "image": "aloe-vera-small.jpg",
+            "image": "media/aloe-vera-small.jpg",
             "description": "Aloe vera is a succulent plant known for its thick, fleshy leaves that contain a clear gel. This gel is widely used for its soothing and healing properties, particularly for skin conditions such as burns, cuts, and irritation. Aloe vera is also valued for its potential health benefits, including its use in digestive health and immune support. It is easy to grow and maintain, making it a popular houseplant."
         }
     },
@@ -99,7 +99,7 @@
             "light": "medium",
             "ease_of_care": "moderate",
             "pet_ok": true,
-            "image": "english-ivy-small.jpg",
+            "image": "media/english-ivy-small.jpg",
             "description": "English ivy, or Hedera helix, is a popular and versatile evergreen vine known for its attractive, lobed leaves, which can be dark green, variegated, or even tinged with yellow or white. Native to Europe and Western Asia, this hardy plant can be grown both indoors and outdoors. It is commonly used as ground cover or for climbing walls, trellises, and other structures. English ivy thrives in a range of light conditions, from low to bright indirect light, and prefers well-draining soil. It is valued for its ability to improve air quality by removing toxins and its low-maintenance care requirements."
         }
     },
@@ -112,7 +112,7 @@
             "light": "medium",
             "ease_of_care": "moderate",
             "pet_ok": true,
-            "image": "zz-plant.jpg",
+            "image": "media/zz-plant.jpg",
             "description": "The ZZ plant, or Zamioculcas zamiifolia, is a popular houseplant known for its striking, glossy, dark green leaves and robust nature. Native to Eastern Africa, this hardy plant can tolerate low light, infrequent watering, and a variety of indoor conditions, making it an excellent choice for beginners. The ZZ plant's leaves grow in an attractive, upright fashion, adding a touch of elegance to any indoor space. It is also known for its air-purifying qualities, helping to remove toxins from the air."
         }
     },
@@ -125,7 +125,7 @@
             "light": "medium",
             "ease_of_care": "moderate",
             "pet_ok": true,
-            "image": "monstera-deliciosa.png",
+            "image": "media/monstera-deliciosa.png",
             "description": "Monstera deliciosa, also known as the Swiss cheese plant, is a popular tropical houseplant known for its large, glossy, and perforated leaves. Native to Central and South America, this climbing plant can grow quite large indoors, with leaves that can reach up to 90 cm in length. Monstera deliciosa thrives in bright, indirect light and prefers well-draining soil. It is relatively low-maintenance and can tolerate a range of indoor conditions. The plant is also known for its ability to improve indoor air quality, making it a favorite for both its aesthetic appeal and its health benefits."
         }
     },
@@ -138,7 +138,7 @@
             "light": "medium",
             "ease_of_care": "moderate",
             "pet_ok": true,
-            "image": "orchid.jpg",
+            "image": "media/orchid.jpg",
             "description": "Orchids are a diverse family of flowering plants known for their intricate and exotic blooms. Found in nearly every habitat except glaciers, they are especially abundant in tropical regions. Orchid flowers are unique for their bilateral symmetry and specialized structures. They come in various shapes, sizes, and colors. As houseplants, orchids thrive in bright, indirect light, High humidity, and well-draining orchid-specific potting mix. They are prized for their long-lasting, fragrant blooms and are popular in horticulture and home décor."
         }
     },
@@ -151,7 +151,7 @@
             "light": "medium",
             "ease_of_care": "moderate",
             "pet_ok": true,
-            "image": "boston-fern.jpg",
+            "image": "media/boston-fern.jpg",
             "description": "The Boston Fern, or Nephrolepis exaltata, is a popular houseplant known for its lush, feathery fronds that arch gracefully. This evergreen fern is native to tropical regions and thrives in humid environments with indirect light. Its fronds can grow up to 2-3 feet long, forming a dense, attractive foliage that is ideal for hanging baskets or pots. The Boston Fern is also appreciated for its air-purifying properties, helping to remove toxins from indoor air. It requires regular watering and misting to maintain its vibrant, green appearance."
         }
     },
@@ -164,7 +164,7 @@
             "light": "medium",
             "ease_of_care": "moderate",
             "pet_ok": true,
-            "image": "calathea-spp.jpg",
+            "image": "media/calathea-spp.jpg",
             "description": "Calathea is a genus of tropical plants known for their vibrant, decorative foliage. Native to the understories of tropical Americas, Calatheas feature large, oval leaves with intricate patterns in various shades of green, purple, pink, and white. Some common patterns include stripes, veins, and spots. The leaves have a unique ability to move in response to light, often folding up at night and opening during the day, a phenomenon known as nyctinasty. Calatheas thrive in bright, indirect light and High humidity, preferring well-draining, moist soil. They are popular as houseplants due to their striking appearance and ability to enhance indoor décor, though they require more attentive care compared to some other houseplants."
         }
     },
@@ -177,7 +177,7 @@
             "light": "medium",
             "ease_of_care": "moderate",
             "pet_ok": true,
-            "image": "dracaena.jpg",
+            "image": "media/dracaena.jpg",
             "description": "Dracaena is a genus of popular houseplants known for their striking, sword-like leaves and architectural form. Native to Africa, Asia, and Central America, Dracaenas come in various species, each with distinct foliage patterns, including stripes and variegation in shades of green, yellow, and red. These plants can grow up to several feet tall, with some varieties reaching 180-300 cm indoors. Dracaenas thrive in bright, indirect light but can also tolerate lower light conditions. They prefer well-draining soil and Moderate watering, allowing the soil to dry out between waterings. Known for their air-purifying qualities and low maintenance, Dracaenas are a popular choice for adding greenery to indoor spaces."
         }
     },
@@ -190,7 +190,7 @@
             "light": "medium",
             "ease_of_care": "moderate",
             "pet_ok": true,
-            "image": "jade-plant-large.jpg",
+            "image": "media/jade-plant-large.jpg",
             "description": "he jade plant, or Crassula ovata, is a popular succulent known for its thick, fleshy, oval-shaped leaves and tree-like appearance. Native to South Africa and Mozambique, this hardy plant can grow up to 90-180 cm tall indoors. The jade plant has glossy, dark green leaves that sometimes develop a red tinge around the edges when exposed to direct sunlight. It produces small, star-shaped white or pink flowers in clusters under the right conditions. Jade plants thrive in bright light and well-draining soil, requiring minimal watering. They are often associated with good luck and prosperity, making them a favorite in homes and offices."
         }
     },
@@ -203,7 +203,7 @@
             "light": "medium",
             "ease_of_care": "moderate",
             "pet_ok": true,
-            "image": "philodendron-spp.jpg",
+            "image": "media/philodendron-spp.jpg",
             "description": "Philodendrons are a diverse group of tropical plants known for their attractive, lush foliage and easy care. They are part of the Araceae family and are native to Central and South America. Philodendrons can be found in various forms, including climbing vines and self-heading types with large, lobed leaves. The leaves are typically green but can also feature variegation in shades of white, yellow, or red. These plants thrive in bright, indirect light and well-draining soil. They are popular as houseplants due to their air-purifying qualities and their ability to adapt to a wide range of indoor conditions."
         }
     },
@@ -216,7 +216,7 @@
             "light": "medium",
             "ease_of_care": "moderate",
             "pet_ok": true,
-            "image": "yucca-large.png",
+            "image": "media/yucca-large.png",
             "description": "The yucca plant, or Yucca spp., is a hardy, evergreen plant known for its sword-like leaves and striking appearance. Native to arid regions of the Americas and the Caribbean, yuccas are adaptable to various environments. They typically have thick, woody stems and produce clusters of white, bell-shaped flowers on tall spikes. Yucca plants thrive in bright light and well-draining soil, making them suitable for both indoor and outdoor settings. They are drought-tolerant and require minimal maintenance, making them a popular choice for those seeking a resilient and visually appealing plant."
         }
     },
@@ -229,7 +229,7 @@
             "light": "medium",
             "ease_of_care": "moderate",
             "pet_ok": true,
-            "image": "umbrella-tree.png",
+            "image": "media/umbrella-tree.png",
             "description": "The umbrella tree, or Schefflera arboricola, is a popular houseplant known for its glossy, palmate leaves that radiate like the spokes of an umbrella. This evergreen plant is native to Taiwan and Hainan, and it can grow up to 90-180 cm indoors. The umbrella tree thrives in bright, indirect light but can tolerate lower light conditions. It prefers well-draining soil and Moderate watering, allowing the soil to dry out between waterings. With its attractive foliage and easy-care nature, the umbrella tree is a favorite for adding a touch of greenery to indoor spaces."
         }
     },
@@ -242,7 +242,7 @@
             "light": "medium",
             "ease_of_care": "moderate",
             "pet_ok": true,
-            "image": "bamboo-palm.jpg",
+            "image": "media/bamboo-palm.jpg",
             "description": "The Bamboo Palm is a small, tropical palm plant characterized by its slender, bamboo-like stems and feathery, green fronds. It is native to Central America and often used as an indoor ornamental plant due to its attractive appearance and ability to thrive in low light conditions. This palm can grow up to 185- 305cm tall and is also appreciated for its air-purifying qualities."
         }
     },
@@ -255,7 +255,7 @@
             "light": "high",
             "ease_of_care": "easy",
             "pet_ok": true,
-            "image": "cactus.jpg",
+            "image": "media/cactus.jpg",
             "description": "Cacti are a group of succulent plants belonging to the family Cactaceae, known for their thick, fleshy stems that store water. These plants are adapted to arid environments and are native primarily to the Americas. Cacti are characterized by their spines, which are modified leaves, and often have vibrant flowers that bloom in various colors. They come in a wide range of shapes and sizes, from small, globular types to tall, columnar species. Due to their low maintenance and drought tolerance, cacti are popular as ornamental plants in homes and gardens."
         }
     },
@@ -268,7 +268,7 @@
             "light": "medium",
             "ease_of_care": "moderate",
             "pet_ok": true,
-            "image": "monstera-monkey-small.jpg",
+            "image": "media/monstera-monkey-small.jpg",
             "description": "The Monkey Mask plant, or Monstera adansonii, is a popular tropical houseplant known for its unique, perforated leaves. These oval, green leaves are characterized by their distinctive holes, which give the plant a striking and unusual appearance. Native to Central and South America, the Monkey Mask plant thrives in bright, indirect light and High humidity. It can be grown as a climbing or trailing plant, making it versatile for various indoor settings. This easy-to-care-for plant adds a touch of the jungle to any home decor."
         }
     },
@@ -281,7 +281,7 @@
             "light": "high",
             "ease_of_care": "easy",
             "pet_ok": true,
-            "image": "bunny-ears-cactus.jpg",
+            "image": "media/bunny-ears-cactus.jpg",
             "description": "Opuntia microdasys, commonly known as the bunny ear cactus or angel's wings, is a type of prickly pear cactus native to Mexico. It is recognisable by its distinctive, flat, oval-shaped pads that grow in pairs, resembling rabbit ears. Opuntia microdasys typically grows to a height of 40-60 cm  and spreads outwards. This cactus produces yellow flowers in the spring and summer, followed by small, red, edible fruits. It is popular as an ornamental plant due to its unique appearance and low maintenance requirements."
         }
     },
