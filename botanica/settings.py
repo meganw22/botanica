@@ -16,9 +16,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-4p$8@d%=+e07y^m6(*n)5
 DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = [ 
-    'botanica-plants-a070bddadf29.herokuapp.com',
-    'https://git.heroku.com/botanica-plants.git',
-    '8000-meganw22-botanica-oz2d3hx11fs.ws-eu114.gitpod.io'
+    'botanica-fa2bcebcf990.herokuapp.com/',
+    'localhost'
 ]
 
 
@@ -110,17 +109,15 @@ WSGI_APPLICATION = 'botanica.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 if 'DATABASE_URL' in os.environ:
-    DATABASES = {
+    DATABASE = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
