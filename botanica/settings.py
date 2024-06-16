@@ -13,11 +13,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-4p$8@d%=+e07y^m6(*n)5yyqz!^f*w$0d7@eu3#rpfj4z32cdl')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEVELOPMENT' in os.environ
+DEBUG = True
 
 ALLOWED_HOSTS = [ 
     'botanica-fa2bcebcf990.herokuapp.com',
-    'localhost'
+    '8000-meganw22-botanica-oz2d3hx11fs.ws-eu114.gitpod.io'
 ]
 
 
