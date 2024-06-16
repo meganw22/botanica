@@ -16,7 +16,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-4p$8@d%=+e07y^m6(*n)5
 DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = [ 
-    'botanica-fa2bcebcf990.herokuapp.com/',
+    'botanica-fa2bcebcf990.herokuapp.com',
     'localhost'
 ]
 
