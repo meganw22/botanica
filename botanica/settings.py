@@ -7,7 +7,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-4p$8@d%=+e07y^m6(*n)5yyqz!^f*w$0d7@eu3#rpfj4z32cdl')
-DEBUG = 'DEVELOPMENT' in os.environ
+# DEBUG = 'DEVELOPMENT' in os.environ
+DEBUG = True
 ALLOWED_HOSTS = [ 
     'botanica-fa2bcebcf990.herokuapp.com',
     '8000-meganw22-botanica-oz2d3hx11fs.ws-eu114.gitpod.io'
@@ -29,6 +30,7 @@ INSTALLED_APPS = [
     'blog',
     'bag',
     'checkout',
+    'user_profile',
     'crispy_forms',
     'storages',
 ]
@@ -155,9 +157,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 FREE_DELIVERY_THRESHOLD = 40
 STANDARD_DELIVERY_COST = 1.99
-
-# Add the following to serve media files locally in development
-if DEBUG:
-    from django.conf.urls.static import static
-    from django.conf import settings
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

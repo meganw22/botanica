@@ -11,4 +11,8 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('bag/', include('bag.urls')),
     path('checkout/', include('checkout.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('user-profile/', include('user_profile.urls')),
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

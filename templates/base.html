@@ -87,7 +87,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                             {% if user.is_authenticated %}
-                            <a class="dropdown-item" href="#">View Profile</a>
+                            <a class="dropdown-item" href="{% url 'profile' %}">View Profile</a>
                             <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
                             {% else %}
                             <span class="dropdown-item-text">No user logged in</span>
