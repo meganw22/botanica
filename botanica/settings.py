@@ -155,3 +155,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 FREE_DELIVERY_THRESHOLD = 40
 STANDARD_DELIVERY_COST = 1.99
+
+# Add the following to serve media files locally in development
+if DEBUG:
+    from django.conf.urls.static import static
+    from django.conf import settings
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
