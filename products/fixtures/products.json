@@ -286,6 +286,19 @@
         }
     },
     {
+        "model": "products.Product",
+        "pk": 23,
+        "fields": {
+            "easy_name": "Chinese Money Plant",
+            "scientific_name": "Pilea peperomioides",
+            "light": "medium",
+            "ease_of_care": "medium",
+            "pet_ok": true,
+            "image": "money-plant-med.jpg",
+            "description": "One of the more iconic looking houseplants synonymous with the recent resurgence in houseplant popularity is the Chinese Money Plant (Pilea peperomioides). It is much loved for its almost perfectly round leaves, its speed of growth and its ability to prolifically reproduce, being a great plant to share with friends. As its name suggest the Chinese Money Plant is naturally found in Southern China at the foot of the Himalayas where there is a mild climate. Chinese Money Plants are one of the simplest plants to propagate as they grow their own babies at the base of the mother plant. These babies can be easily removed and potted straight into their own pot. "
+        }
+    },
+    {
         "model": "products.PlantSize",
         "pk": 1,
         "fields": {
@@ -871,6 +884,33 @@
         }
     },
     {
+        "model": "products.PlantSize",
+        "pk": 66,
+        "fields": {
+            "plant": 23,
+            "size": "sm",
+            "height": "5-10cm"
+        }
+    },
+    {
+        "model": "products.PlantSize",
+        "pk": 67,
+        "fields": {
+            "plant": 23,
+            "size": "med",
+            "height": "10-25cm"
+        }
+    },
+    {
+        "model": "products.PlantSize",
+        "pk": 68,
+        "fields": {
+            "plant": 23,
+            "size": "lg",
+            "height": "25-40cm"
+        }
+    },
+    {
         "model": "products.PlantPrice",
         "pk": 1,
         "fields": {
@@ -1453,6 +1493,33 @@
             "product": 22,
             "size": "lg",
             "price": "15.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 66,
+        "fields": {
+            "product": 23,
+            "size": "sm",
+            "price": "8.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 67,
+        "fields": {
+            "product": 23,
+            "size": "med",
+            "price": "15.00"
+        }
+    },
+    {
+        "model": "products.PlantPrice",
+        "pk": 68,
+        "fields": {
+            "product": 23,
+            "size": "lg",
+            "price": "25.00"
         }
     }
 ]

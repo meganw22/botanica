@@ -1,4 +1,4 @@
-import uuid
+import shortuuid
 from django.db import models
 from django.db.models import Sum
 from django.conf import settings
@@ -22,9 +22,9 @@ class Order(models.Model):
 
     def _generate_order_id(self):
         """
-        Generate a unique order ID using UUID.
+        Generate a unique order ID using ShortUUID.
         """
-        return uuid.uuid4().hex.upper()
+        return shortuuid.uuid()[:8].upper()
 
     def update_totals(self):
         self.total_cost = self.items.aggregate(Sum('item_total'))['item_total__sum'] or 0
