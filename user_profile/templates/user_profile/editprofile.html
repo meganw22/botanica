@@ -12,11 +12,8 @@
                 <span class="text-black-50">{{ user.email }}</span>
             </div>
         </div>
-        <div class="col-md-5 border-right">
+        <div class="col-md-9 border-right">
             <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Edit Profile</h4>
-                </div>
                 <form method="post">
                     {% csrf_token %}
                     <div class="row mt-2">
@@ -29,16 +26,40 @@
                             <input type="text" class="form-control" name="last_name" value="{{ user.last_name }}">
                         </div>
                     </div>
-                    <div class="row mt-3">
+                    <div class="row mt-2">
                         <div class="col-md-12">
                             <label class="labels">Email</label>
                             <input type="email" class="form-control" name="email" value="{{ user.email }}">
                         </div>
                     </div>
-                    <h4 class="mt-4">Address Details</h4>
-                    {{ address_form.as_p }}
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label class="labels">Address Line 1</label>
+                            <input type="text" class="form-control" name="address_line1" value="{{ latest_order.address_line1 }}">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">Address Line 2</label>
+                            <input type="text" class="form-control" name="address_line2" value="{{ latest_order.address_line2 }}">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">City</label>
+                            <input type="text" class="form-control" name="city" value="{{ latest_order.city }}">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">County</label>
+                            <input type="text" class="form-control" name="county" value="{{ latest_order.county }}">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">Postcode</label>
+                            <input type="text" class="form-control" name="postcode" value="{{ latest_order.postcode }}">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">Country</label>
+                            <input type="text" class="form-control" name="country" value="{{ latest_order.country }}">
+                        </div>
+                    </div>
                     <div class="mt-5 text-center">
-                        <button class="btn btn-custom-success profile-button" type="submit">Save Profile</button>
+                        <button class="btn btn-primary profile-button" type="submit">Save Profile</button>
                     </div>
                 </form>
             </div>
