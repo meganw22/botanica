@@ -1,5 +1,4 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib import messages
 from django.db.models import Q
 from .models import Product, PlantSize, PlantPrice
 
@@ -45,7 +44,7 @@ def filter_products(request):
     price = request.GET.get('price', '')
 
     if not light and not height and not ease_of_care and not price:
-        return redirect('products')
+        return redirect('all_products')
 
     products = Product.objects.all()
 
@@ -58,17 +57,49 @@ def filter_products(request):
     if ease_of_care:
         products = products.filter(ease_of_care=ease_of_care)
     if price:
-        products = products.filter(price__lte=price)
+        plant_prices = PlantPrice.objects.filter(price__lte=price)
+        product_ids = plant_prices.values_list('product_id', flat=True)
+        products = products.filter(id__in=product_ids)
 
     context = {
         'products': products,
     }
     return render(request, 'products/filter_products.html', context)
 
+# filter by specific category only
+def filter_category_products(request, light=None, ease_of_care=None, size=None, order=None):
+    products = Product.objects.all()
+    category = "Filtered"
 
-    bag = request.session.get('bag', [])
-    print(f"Initial bag: {bag}")
-    updated_bag = [item for item in bag if not (item['id'] == product_id and item['height'] == height)]
-    request.session['bag'] = updated_bag
-    print(f"Updated bag: {updated_bag}")
-    return redirect('shopping_bag')
+    if light:
+        products = products.filter(light=light)
+        if light == 'bright':
+            category = "Bright Light"
+        elif light == 'low':
+            category = "Low Light"
+    if ease_of_care:
+        products = products.filter(ease_of_care=ease_of_care)
+        if ease_of_care == 'easy':
+            category = "Easy Maintenance"
+        elif ease_of_care == 'difficult':
+            category = "For the Expert Plant Carers"
+    if size:
+        plant_sizes = PlantSize.objects.filter(size=size)
+        product_ids = plant_sizes.values_list('plant_id', flat=True)
+        products = products.filter(id__in=product_ids)
+        if size == 'sm':
+            category = "Baby Plants"
+        elif size == 'lg':
+            category = "Big Plants"
+    if order == 'price_asc':
+        products = products.order_by('prices__price')
+        category = "Lowest to Highest Price"
+    elif order == 'price_desc':
+        products = products.order_by('-prices__price')
+        category = "Highest to Lowest Prices"
+
+    context = {
+        'products': products,
+        'category': category,
+    }
+    return render(request, 'products/filter_categories.html', context)
