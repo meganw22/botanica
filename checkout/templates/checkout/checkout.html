@@ -61,10 +61,7 @@
                 </fieldset>
         
                 <fieldset class="px-3">
-                    <form action="/create-checkout-session" method="POST">
-                        <button type="submit" class="btn btn-custom-success btn-block mb-2">Continue to Payment</button>
-                    </form>
-                    <!-- <button type="submit" class="btn btn-custom-success btn-block mb-2"></button> -->
+                    <button type="submit" id="submit-button" class="btn btn-custom-success btn-block mb-2">Continue to Payment</button>
                     <a href="{% url 'shopping_bag' %}" class="btn btn-outline-secondary btn-block">Head back to bag</a>
                 </fieldset>
             </form>
