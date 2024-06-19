@@ -66,7 +66,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 } else {
                     if (result.paymentIntent.status === 'succeeded') {
                         // Payment succeeded, submit the form
-                        console.log('Payment succeeded, submitting form.');
+                        var hiddenInput = document.getElementById('id_client_secret_input');
+                        hiddenInput.value = clientSecret;
                         form.submit();
                     } else {
                         console.log('PaymentIntent status:', result.paymentIntent.status);
