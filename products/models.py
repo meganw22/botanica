@@ -18,7 +18,7 @@ class Product(models.Model):
     light = models.CharField(max_length=6, choices=LIGHT_CHOICES, default='medium')
     ease_of_care = models.CharField(max_length=9, choices=EASE_OF_CARE_CHOICES, default='moderate')
     pet_ok = models.BooleanField(default=False)
-    image = models.ImageField(upload_to='media/', default='media/no-image-available.png')
+    image = models.ImageField(upload_to='', default='no-image-available.png')
     description = models.TextField(default='No description available')
 
     def __str__(self):
