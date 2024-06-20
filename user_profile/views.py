@@ -7,7 +7,7 @@ from checkout.models import Order
 @login_required
 def profile(request):
     user = request.user
-    orders = Order.objects.filter(email_address=user.email)
+    orders = Order.objects.filter(email_address=user.email).prefetch_related('items__product')
     latest_order = orders.order_by('-date_created').first() if orders.exists() else None
 
     context = {
