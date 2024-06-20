@@ -1,4 +1,3 @@
-# yourapp/management/commands/upload_media_to_s3.py
 from django.core.management.base import BaseCommand
 import os
 from django.conf import settings
