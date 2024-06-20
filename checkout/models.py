@@ -44,6 +44,16 @@ class Order(models.Model):
         if not self.order_id:
             self.order_id = self._generate_order_id()
         super().save(*args, **kwargs)
+        if self.customer_name and self.email_address:
+            user_profile, created = UserProfile.objects.get_or_create(user=self.user)
+            user_profile.default_phone_number = self.contact_number
+            user_profile.default_street_address1 = self.street_address1
+            user_profile.default_street_address2 = self.street_address2
+            user_profile.default_town_or_city = self.town_city
+            user_profile.default_county = self.county
+            user_profile.default_postcode = self.postcode
+            user_profile.default_country = self.country
+            user_profile.save()
 
     def __str__(self):
         return f'Order {self.order_id}'

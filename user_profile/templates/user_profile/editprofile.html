@@ -35,15 +35,15 @@
                     <div class="row mt-3">
                         <div class="col-md-12">
                             <label class="labels">Address Line 1</label>
-                            <input type="text" class="form-control" name="address_line1" value="{{ latest_order.address_line1 }}">
+                            <input type="text" class="form-control" name="address_line1" value="{{ latest_order.street_address1 }}">
                         </div>
                         <div class="col-md-12">
                             <label class="labels">Address Line 2</label>
-                            <input type="text" class="form-control" name="address_line2" value="{{ latest_order.address_line2 }}">
+                            <input type="text" class="form-control" name="address_line2" value="{{ latest_order.street_address2 }}">
                         </div>
                         <div class="col-md-12">
                             <label class="labels">City</label>
-                            <input type="text" class="form-control" name="city" value="{{ latest_order.city }}">
+                            <input type="text" class="form-control" name="city" value="{{ latest_order.town_city }}">
                         </div>
                         <div class="col-md-12">
                             <label class="labels">County</label>
@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     <div class="mt-5 text-center">
-                        <button class="btn btn-primary profile-button" type="submit">Save Profile</button>
+                        <button class="btn btn-custom-success profile-button" type="submit">Save Profile</button>
                     </div>
                 </form>
             </div>

@@ -22,32 +22,13 @@
                 {% if latest_order %}
                 <div class="row mt-2">
                     <div class="col-md-12">
-                        <label class="labels">Street Address 1</label>
-                        <p class="form-control">{{ latest_order.street_address1 }}</p>
-                    </div>
-                    {% if latest_order.street_address2 %}
-                    <div class="col-md-12">
-                        <label class="labels">Street Address 2</label>
-                        <p class="form-control">{{ latest_order.street_address2 }}</p>
-                    </div>
-                    {% endif %}
-                    <div class="col-md-12">
-                        <label class="labels">Town/City</label>
-                        <p class="form-control">{{ latest_order.town_city }}</p>
-                    </div>
-                    {% if latest_order.county %}
-                    <div class="col-md-12">
-                        <label class="labels">County</label>
-                        <p class="form-control">{{ latest_order.county }}</p>
-                    </div>
-                    {% endif %}
-                    <div class="col-md-12">
-                        <label class="labels">Postcode</label>
-                        <p class="form-control">{{ latest_order.postcode }}</p>
-                    </div>
-                    <div class="col-md-12">
-                        <label class="labels">Country</label>
-                        <p class="form-control">{{ latest_order.country }}</p>
+                        <p>Your Last Used Address</p>
+                        <p>{{ latest_order.street_address1 }}</p>
+                        <p>{{ latest_order.street_address2 }}</p>
+                        <p>{{ latest_order.town_city }}</p>
+                        <p>{{ latest_order.county }}</p>
+                        <p>{{ latest_order.postcode }}</p>
+                        <p>{{ latest_order.country }}</p>
                     </div>
                 </div>
                 {% else %}
