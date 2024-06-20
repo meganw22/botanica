@@ -1,8 +1,10 @@
-import shortuuid
+# checkout/models.py
 from django.db import models
-from django.db.models import Sum
+from products.models import Product, PlantPrice
+from decimal import Decimal
+import shortuuid
 from django.conf import settings
-from products.models import Product
+from django.db.models import Sum
 
 class Order(models.Model):
     order_id = models.CharField(max_length=15, null=False, editable=False, unique=True)
@@ -19,7 +21,7 @@ class Order(models.Model):
     delivery_fee = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     total_cost = models.DecimalField(max_digits=15, decimal_places=2, null=False, default=0)
     final_amount = models.DecimalField(max_digits=15, decimal_places=2, null=False, default=0)
-    stripe_pid = models.CharField(max_length=254, null=False, blank=False)
+    stripe_pid = models.CharField(max_length=254, null=False, blank=False, unique=True)
 
     def _generate_order_id(self):
         """
@@ -28,11 +30,13 @@ class Order(models.Model):
         return shortuuid.uuid()[:8].upper()
 
     def update_totals(self):
-        self.total_cost = self.items.aggregate(Sum('item_total'))['item_total__sum'] or 0
-        if self.total_cost < settings.FREE_DELIVERY_THRESHOLD:
-            self.delivery_fee = self.total_cost * settings.STANDARD_DELIVERY_PERCENTAGE / 100
+        self.total_cost = self.items.aggregate(Sum('item_total'))['item_total__sum'] or Decimal('0.00')
+        free_delivery_threshold = Decimal(settings.FREE_DELIVERY_THRESHOLD)
+        standard_delivery_cost = Decimal(settings.STANDARD_DELIVERY_COST)
+        if self.total_cost < free_delivery_threshold:
+            self.delivery_fee = standard_delivery_cost
         else:
-            self.delivery_fee = 0
+            self.delivery_fee = Decimal('0.00')
         self.final_amount = self.total_cost + self.delivery_fee
         self.save()
 
@@ -53,7 +57,11 @@ class OrderItem(models.Model):
 
     def save(self, *args, **kwargs):
         if self.product:
-            self.item_total = self.product.price * self.quantity_ordered
+            try:
+                price = PlantPrice.objects.get(product=self.product, size=self.product_size).price
+                self.item_total = Decimal(price) * self.quantity_ordered
+            except PlantPrice.DoesNotExist:
+                self.item_total = Decimal('0.00')
         super().save(*args, **kwargs)
         self.order.update_totals()
 

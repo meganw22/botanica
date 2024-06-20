@@ -11,8 +11,8 @@ urlpatterns = [
     path('filter/low-light/', filter_category_products, {'light': 'low'}, name='filter_low_light'),
     path('filter/easy-maintenance/', filter_category_products, {'ease_of_care': 'easy'}, name='filter_easy_maintenance'),
     path('filter/expert/', filter_category_products, {'ease_of_care': 'difficult'}, name='filter_expert'),
-    path('filter/baby-plants/', filter_category_products, {'size': 'sm'}, name='filter_baby_plants'),
-    path('filter/big-plants/', filter_category_products, {'size': 'lg'}, name='filter_big_plants'),
+    # path('filter/baby-plants/', filter_category_products, {'size': 'sm'}, name='filter_baby_plants'),
+    # path('filter/big-plants/', filter_category_products, {'size': 'lg'}, name='filter_big_plants'),
     path('filter/lowest-to-highest-price/', filter_category_products, {'order': 'price_asc'}, name='filter_price_asc'),
     path('filter/highest-to-lowest-price/', filter_category_products, {'order': 'price_desc'}, name='filter_price_desc'),
 ]

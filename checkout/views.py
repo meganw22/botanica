@@ -1,26 +1,29 @@
+from decimal import Decimal
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from .forms import OrderForm
-from .models import Order
-from user_profile.models import UserProfile  # Import the UserProfile model
+from .models import Order, OrderItem
+from products.models import Product, PlantPrice
+from user_profile.models import UserProfile
 from bag.contexts import bag_contents
 import stripe
+from django.db import IntegrityError
 
 @login_required
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
-    bag = request.session.get('bag', {})
+    bag = request.session.get('bag', [])
     if not bag:
         messages.error(request, "There's nothing in your bag at the moment")
         return redirect(reverse('products'))
 
     current_bag = bag_contents(request)
     total = current_bag['grand_total']
-    stripe_total = round(total * 100)
+    stripe_total = int(total * 100)
     stripe.api_key = stripe_secret_key
     intent = stripe.PaymentIntent.create(
         amount=stripe_total,
@@ -35,13 +38,26 @@ def checkout(request):
             client_secret = request.POST.get('client_secret')
             if client_secret:
                 order.stripe_pid = client_secret.split('_secret')[0]
+            try:
+                order.save()
 
-            order.original_bag = bag
+                # Save the order items
+                for item in bag:
+                    product = Product.objects.get(id=item['id'])
+                    price = PlantPrice.objects.get(product=product, size=item['height']).price
+                    OrderItem.objects.create(
+                        order=order,
+                        product=product,
+                        product_size=item['height'],
+                        quantity_ordered=item['quantity'],
+                        item_total=Decimal(price) * item['quantity'],
+                    )
 
-            # Save the order and redirect to the success page
-            order.save()
-            messages.success(request, "Order placed successfully!")
-            return redirect(reverse('checkout_success', kwargs={'client_secret': client_secret}))
+                messages.success(request, f"Order {order.order_id} placed successfully!")
+                return redirect(reverse('checkout_success', kwargs={'client_secret': client_secret}))
+            except IntegrityError:
+                messages.error(request, "An order with this Stripe payment already exists.")
+                return redirect(reverse('checkout'))
         else:
             messages.error(request, "There was an error with your form. Please check your information.")
     else:
@@ -68,10 +84,8 @@ def checkout_success(request, client_secret):
     try:
         order = Order.objects.get(stripe_pid=stripe_pid)
 
-        # Ensure the user's profile exists
         profile, created = UserProfile.objects.get_or_create(user=request.user)
 
-        # Update the user's profile with the order's address information
         profile.default_phone_number = order.contact_number
         profile.default_street_address1 = order.street_address1
         profile.default_street_address2 = order.street_address2
@@ -81,7 +95,10 @@ def checkout_success(request, client_secret):
         profile.default_country = order.country
         profile.save()
 
-        return render(request, 'checkout/checkout_success.html')
+        context = {
+            'order': order,
+        }
+        return render(request, 'checkout/checkout_success.html', context)
     except Order.DoesNotExist:
         messages.error(request, "Order not found.")
         return redirect(reverse('checkout'))

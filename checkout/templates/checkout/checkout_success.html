@@ -11,3 +11,24 @@
     </div>
 </div>
 {% endblock %}
+
+{% block content %}
+<div class="container alight-text-center my-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <h4>Order ID: {{ order.order_id }}</h4>
+            <br>
+            <p>Thank you for your order <strong>{{ order.customer_name }}</strong></p>
+            
+            <h3>Items:</h3>
+            {% for item in order.items.all %}
+                <li>{{ item.product.easy_name }} - x{{ item.quantity_ordered }} ({{ item.product_size }}) - £{{ item.item_total }}</li>
+            {% endfor %}
+            <p>Order total: £{{ order.final_amount }}</p>
+            <br>
+            <p>Click below to return shopping for more houseplants!</p>
+            <a href="{% url 'products' %}" class="btn btn-custom-success btn-block">Back to Plants!</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -7,7 +7,8 @@
     <div class="row">
         <div class="col-md-3 border-right">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                <img class="rounded-circle mt-5" width="150px" src="https://images.rawpixel.com/image_social_square/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjkzNy1hZXctMTM5LWtsaGRkM2FuLmpwZw.jpg">
+                <img class="rounded-circle mt-5" width="150px"
+                    src="https://images.rawpixel.com/image_social_square/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjkzNy1hZXctMTM5LWtsaGRkM2FuLmpwZw.jpg">
                 <span class="font-weight-bold">{{ user.get_full_name }}</span>
                 <span class="text-black-50">{{ user.email }}</span>
                 <a href="{% url 'edit_profile' %}" class="btn btn-custom-success mt-3">Edit Details</a>
@@ -19,42 +20,42 @@
                     <h4 class="text-right">Your Address</h4>
                 </div>
                 {% if latest_order %}
-                    <div class="row mt-2">
-                        <div class="col-md-12">
-                            <label class="labels">Street Address 1</label>
-                            <p class="form-control">{{ latest_order.street_address1 }}</p>
-                        </div>
-                        {% if latest_order.street_address2 %}
-                        <div class="col-md-12">
-                            <label class="labels">Street Address 2</label>
-                            <p class="form-control">{{ latest_order.street_address2 }}</p>
-                        </div>
-                        {% endif %}
-                        <div class="col-md-12">
-                            <label class="labels">Town/City</label>
-                            <p class="form-control">{{ latest_order.town_city }}</p>
-                        </div>
-                        {% if latest_order.county %}
-                        <div class="col-md-12">
-                            <label class="labels">County</label>
-                            <p class="form-control">{{ latest_order.county }}</p>
-                        </div>
-                        {% endif %}
-                        <div class="col-md-12">
-                            <label class="labels">Postcode</label>
-                            <p class="form-control">{{ latest_order.postcode }}</p>
-                        </div>
-                        <div class="col-md-12">
-                            <label class="labels">Country</label>
-                            <p class="form-control">{{ latest_order.country }}</p>
-                        </div>
+                <div class="row mt-2">
+                    <div class="col-md-12">
+                        <label class="labels">Street Address 1</label>
+                        <p class="form-control">{{ latest_order.street_address1 }}</p>
                     </div>
+                    {% if latest_order.street_address2 %}
+                    <div class="col-md-12">
+                        <label class="labels">Street Address 2</label>
+                        <p class="form-control">{{ latest_order.street_address2 }}</p>
+                    </div>
+                    {% endif %}
+                    <div class="col-md-12">
+                        <label class="labels">Town/City</label>
+                        <p class="form-control">{{ latest_order.town_city }}</p>
+                    </div>
+                    {% if latest_order.county %}
+                    <div class="col-md-12">
+                        <label class="labels">County</label>
+                        <p class="form-control">{{ latest_order.county }}</p>
+                    </div>
+                    {% endif %}
+                    <div class="col-md-12">
+                        <label class="labels">Postcode</label>
+                        <p class="form-control">{{ latest_order.postcode }}</p>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="labels">Country</label>
+                        <p class="form-control">{{ latest_order.country }}</p>
+                    </div>
+                </div>
                 {% else %}
-                    <div class="row mt-2">
-                        <div class="col-md-12">
-                            <p>Address details will be shown here once an order is placed!</p>
-                        </div>
+                <div class="row mt-2">
+                    <div class="col-md-12">
+                        <p>Address details will be shown here once an order is placed!</p>
                     </div>
+                </div>
                 {% endif %}
             </div>
         </div>
@@ -64,24 +65,25 @@
                     <h4 class="text-right">Order History</h4>
                 </div>
                 {% if orders %}
-                    <ul class="list-group">
-                        {% for order in orders %}
-                            <li class="list-group-item">
-                                <h5>Order ID: {{ order.order_id }}</h5>
-                                <p>Date: {{ order.date_created }}</p>
-                                <p>Total Cost: {{ order.total_cost }}</p>
-                                <p>Final Amount: {{ order.final_amount }}</p>
-                                <h6>Items:</h6>
-                                <ul>
-                                    {% for item in order.items.all %}
-                                        <li>{{ item.product.name }} - {{ item.quantity }} pcs - ${{ item.total_price }}</li>
-                                    {% endfor %}
-                                </ul>
-                            </li>
-                        {% endfor %}
-                    </ul>
+                <ul class="list-group">
+                    {% for order in orders %}
+                    <li class="list-group-item">
+                        <h5>Order ID: {{ order.order_id }}</h5>
+                        <p>Date: {{ order.date_created }}</p>
+                        <p>Total Cost: {{ order.total_cost }}</p>
+                        <p>Final Amount: {{ order.final_amount }}</p>
+                        <h6>Items:</h6>
+                        <ul>
+                            {% for item in order.items.all %}
+                            <li>{{ item.product.easy_name }} - x{{ item.quantity_ordered }} ({{ item.product_size }}) -
+                                £{{ item.item_total }}</li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {% endfor %}
+                </ul>
                 {% else %}
-                    <p>No orders found.</p>
+                <p>No orders found.</p>
                 {% endif %}
             </div>
         </div>
