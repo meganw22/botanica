@@ -7,7 +7,7 @@ from checkout.models import Order
 @login_required
 def profile(request):
     user = request.user
-    orders = Order.objects.filter(email_address=user.email).prefetch_related('items__product')
+    orders = Order.objects.filter(user=user, total_cost__gt=0).prefetch_related('items__product')
     latest_order = orders.order_by('-date_created').first() if orders.exists() else None
 
     context = {
@@ -25,20 +25,17 @@ def edit_profile(request):
     user_profile = UserProfile.objects.get(user=user)
 
     if request.method == 'POST':
-        # Update user details
         user.first_name = request.POST.get('first_name', '')
         user.last_name = request.POST.get('last_name', '')
         user.email = request.POST.get('email', '')
         user.save()
 
-        # Ensure the address exists
         address = user_profile.default_address
         if not address:
             address = Address.objects.create()
             user_profile.default_address = address
             user_profile.save()
 
-        # Update address details
         address.phone_number = request.POST.get('phone_number', '') or None
         address.street_address1 = request.POST.get('street_address1', '') or None
         address.street_address2 = request.POST.get('street_address2', '') or None

@@ -64,13 +64,13 @@
                     <li class="list-group-item">
                         <h5>Order ID: {{ order.order_id }}</h5>
                         <p>Date: {{ order.date_created }}</p>
-                        <p>Total Cost: £{{ order.total_cost }}</p>
-                        <p>Final Amount: £{{ order.final_amount }}</p>
+                        <p>Total Cost: £{{ order.total_cost|floatformat:2 }}</p>
+                        <p>Final Amount: £{{ order.final_amount|floatformat:2 }}</p>
                         <h6>Items:</h6>
                         <ul>
                             {% for item in order.items.all %}
                             <li>{{ item.product.easy_name }} - x{{ item.quantity_ordered }} ({{ item.product_size }}) -
-                                £{{ item.item_total }}</li>
+                                £{{ item.item_total|floatformat:2 }}</li>
                             {% endfor %}
                         </ul>
                     </li>
