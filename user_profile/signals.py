@@ -11,8 +11,8 @@ def create_user_profile(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
-    if hasattr(instance, 'userprofile'):
-        instance.userprofile.save()
-    else:
+    if not hasattr(instance, 'userprofile'):
         address = Address.objects.create()
         UserProfile.objects.create(user=instance, default_address=address)
+    else:
+        instance.userprofile.save()
