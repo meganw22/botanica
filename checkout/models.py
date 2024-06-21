@@ -7,15 +7,17 @@ from django.conf import settings
 from django.db.models import Sum
 
 class Order(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     order_id = models.CharField(max_length=15, null=False, editable=False, unique=True)
     customer_name = models.CharField(max_length=50, null=False, blank=False)
     email_address = models.EmailField(max_length=254, null=False, blank=False)
+    phone_number = models.CharField(max_length=20, null=True, blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
     address = models.OneToOneField(Address, null=True, blank=True, on_delete=models.SET_NULL)
     delivery_fee = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     total_cost = models.DecimalField(max_digits=15, decimal_places=2, null=False, default=0)
     final_amount = models.DecimalField(max_digits=15, decimal_places=2, null=False, default=0)
-    stripe_pid = models.CharField(max_length=254, null=False, blank=False, unique=True)
+    stripe_pid = models.CharField(max_length=254, null=False, blank=False)
 
     def _generate_order_id(self):
         """
@@ -42,7 +44,7 @@ class Order(models.Model):
             user_profile, created = UserProfile.objects.get_or_create(user=self.user)
             if not user_profile.default_address:
                 user_profile.default_address = Address.objects.create(
-                    phone_number=self.address.phone_number,
+                    phone_number=self.phone_number,
                     street_address1=self.address.street_address1,
                     street_address2=self.address.street_address2,
                     town_or_city=self.address.town_or_city,
@@ -51,11 +53,6 @@ class Order(models.Model):
                     country=self.address.country,
                 )
                 user_profile.save()
-
-    def get_phone_number(self):
-        return self.address.phone_number if self.address else 'N/A'
-
-    get_phone_number.short_description = 'Phone Number'
 
     def __str__(self):
         return f'Order {self.order_id}'

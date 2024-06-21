@@ -11,7 +11,7 @@ class OrderAdmin(admin.ModelAdmin):
     inlines = [OrderItemInline]
 
     list_display = ('order_id', 'customer_name', 'email_address', 
-                    'get_phone_number', 'date_created', 'total_cost', 
+                    'phone_number', 'date_created', 'total_cost', 
                     'final_amount')
     search_fields = ('order_id', 'customer_name', 'email_address', 
                     'address__phone_number')

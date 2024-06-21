@@ -19,7 +19,7 @@ def checkout(request):
     bag = request.session.get('bag', [])
     if not bag:
         messages.error(request, "There's nothing in your bag at the moment")
-        return redirect(reverse('products'))
+        return redirect('products')
 
     current_bag = bag_contents(request)
     total = current_bag['grand_total']
@@ -34,10 +34,11 @@ def checkout(request):
         order_form = OrderForm(request.POST)
         address_form = AddressForm(request.POST)
         if order_form.is_valid() and address_form.is_valid():
-            address = address_form.save()
             order = order_form.save(commit=False)
-            order.email_address = request.user.email
+            address = address_form.save()
             order.address = address
+            order.user = request.user
+            order.email_address = request.user.email
             client_secret = request.POST.get('client_secret')
             if client_secret:
                 order.stripe_pid = client_secret.split('_secret')[0]
@@ -57,10 +58,10 @@ def checkout(request):
                     )
 
                 messages.success(request, f"Order {order.order_id} placed successfully!")
-                return redirect(reverse('checkout_success', kwargs={'client_secret': client_secret}))
+                return redirect('checkout_success', client_secret=client_secret)
             except IntegrityError:
-                messages.error(request, "An order with this Stripe payment already exists.")
-                return redirect(reverse('checkout'))
+                messages.error(request, "An error occurred while placing the order.")
+                return redirect('checkout')
         else:
             messages.error(request, "There was an error with your form. Please check your information.")
     else:
@@ -95,4 +96,4 @@ def checkout_success(request, client_secret):
         return render(request, 'checkout/checkout_success.html', context)
     except Order.DoesNotExist:
         messages.error(request, "Order not found.")
-        return redirect(reverse('checkout'))
+        return redirect('checkout')

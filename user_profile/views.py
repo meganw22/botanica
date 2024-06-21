@@ -23,7 +23,6 @@ def profile(request):
 def edit_profile(request):
     user = request.user
     user_profile = UserProfile.objects.get(user=user)
-    address = user_profile.default_address
 
     if request.method == 'POST':
         # Update user details
@@ -32,24 +31,28 @@ def edit_profile(request):
         user.email = request.POST.get('email', '')
         user.save()
 
-        # Update address details
-        address.phone_number = request.POST.get('phone_number', '')
-        address.street_address1 = request.POST.get('street_address1', '')
-        address.street_address2 = request.POST.get('street_address2', '')
-        address.town_or_city = request.POST.get('town_or_city', '')
-        address.county = request.POST.get('county', '')
-        address.postcode = request.POST.get('postcode', '')
-        address.country = request.POST.get('country', '')
-        address.save()
+        # Ensure the address exists
+        address = user_profile.default_address
+        if not address:
+            address = Address.objects.create()
+            user_profile.default_address = address
+            user_profile.save()
 
-        user_profile.default_address = address
-        user_profile.save()
+        # Update address details
+        address.phone_number = request.POST.get('phone_number', '') or None
+        address.street_address1 = request.POST.get('street_address1', '') or None
+        address.street_address2 = request.POST.get('street_address2', '') or None
+        address.town_or_city = request.POST.get('town_or_city', '') or None
+        address.county = request.POST.get('county', '') or None
+        address.postcode = request.POST.get('postcode', '') or None
+        address.country = request.POST.get('country', '') or None
+        address.save()
 
         return redirect('profile')
 
     context = {
         'user_profile': user_profile,
-        'address': address,
+        'address': user_profile.default_address,
     }
     return render(request, 'user_profile/editprofile.html', context)
 
