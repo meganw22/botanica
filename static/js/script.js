@@ -14,9 +14,7 @@ function updateFormInputs() {
 
 function updatePriceDisplay(height) {
     var prices = JSON.parse(document.getElementById('prices-data').textContent);
-    console.log('Prices Data:', prices);  // Debug log
     var price = parseFloat(prices[height]) || parseFloat(prices.smallest);
-    console.log('Selected Height:', height, 'Price:', price);  // Debug log
     document.getElementById('priceDisplay').innerText = price.toFixed(2);
 }
 
@@ -26,14 +24,10 @@ function validateForm(event) {
         event.preventDefault();
         alert('Please select a height for your plant.');
     }
-    console.log('Validate Form:', selectedHeight);  // Debug log
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    // Initialize form inputs and price display
     updateFormInputs();
-    // Pass a default height if available, otherwise use the smallest price
     var initialHeight = document.getElementById('selected-height-input').value || 'sm';
     updatePriceDisplay(initialHeight);
-    console.log('DOMContentLoaded: Initialized');  // Debug log
 });
