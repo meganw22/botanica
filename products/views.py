@@ -44,7 +44,7 @@ def filter_products(request):
     price = request.GET.get('price', '')
 
     if not light and not height and not ease_of_care and not price:
-        return redirect('all_products')
+        return redirect('products')
 
     products = Product.objects.all()
 
@@ -66,7 +66,6 @@ def filter_products(request):
     }
     return render(request, 'products/filter_products.html', context)
 
-# filter by specific category only
 def filter_category_products(request, light=None, ease_of_care=None, size=None, order=None):
     products = Product.objects.all()
     category = "Filtered"

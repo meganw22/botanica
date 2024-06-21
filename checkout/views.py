@@ -57,6 +57,9 @@ def checkout(request):
                         item_total=Decimal(price) * item['quantity'],
                     )
 
+                # Clear the bag items from the session
+                request.session['bag'] = []
+
                 messages.success(request, f"Order {order.order_id} placed successfully!")
                 return redirect('checkout_success', client_secret=client_secret)
             except IntegrityError:
