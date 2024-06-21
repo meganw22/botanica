@@ -56,24 +56,23 @@
     <!-- Display current filter criteria -->
     <div class="row mt-3">
         <div class="col-12">
-            <p>
-                <strong>Showing filter results for: </strong>
+            <ul>
                 {% if request.GET.light %}
-                    <strong>Light level: </strong>{{ request.GET.light|title }}{% if request.GET.height or request.GET.ease_of_care or request.GET.price %}, {% endif %}
+                <li><strong>Light level: </strong>{{ request.GET.light|title }}</li>
                 {% endif %}
                 {% if request.GET.height %}
-                    <strong>Height: </strong>{{ request.GET.height|title }}{% if request.GET.ease_of_care or request.GET.price %}, {% endif %}
+                <li><strong>Height: </strong>{{ request.GET.height|title }}</li>
                 {% endif %}
                 {% if request.GET.ease_of_care %}
-                    <strong>Ease of care: </strong>{{ request.GET.ease_of_care|title }}{% if request.GET.price %}, {% endif %}
+                <li><strong>Ease of care: </strong>{{ request.GET.ease_of_care|title }}</li>
                 {% endif %}
                 {% if request.GET.price %}
-                    <strong>Max price: </strong>£{{ request.GET.price }}
+                <li><strong>Max price: </strong>£{{ request.GET.price }}</li>
                 {% endif %}
                 {% if not request.GET.light and not request.GET.height and not request.GET.ease_of_care and not request.GET.price %}
-                    Showing all products
+                <li>Showing all products</li>
                 {% endif %}
-            </p>
+            </ul>
         </div>
     </div>
 
