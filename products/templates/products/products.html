@@ -110,7 +110,6 @@
                         <img class="card-img-top img-fluid"
                             src="{% if product.image %}{{ product.image.url }}{% else %}{{ MEDIA_URL }}no-image-available.png{% endif %}"
                             alt="{{ product.easy_name }}">
-                        <p>Image URL: {% if product.image %}{{ product.image.url }}{% else %}{{ MEDIA_URL }}no-image-available.png{% endif %}</p>
                     </a>
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">{{ product.easy_name }}</h5>

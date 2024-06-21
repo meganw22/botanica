@@ -1,8 +1,6 @@
 from django.contrib import admin
 from .models import Order, OrderItem
 
-# Remove the AddressAdmin class and its registration
-
 class OrderItemInline(admin.TabularInline):
     model = OrderItem
     readonly_fields = ('item_total',)
@@ -13,12 +11,12 @@ class OrderAdmin(admin.ModelAdmin):
     inlines = [OrderItemInline]
 
     list_display = ('order_id', 'customer_name', 'email_address', 
-                    'contact_number', 'date_created', 'total_cost', 
+                    'get_phone_number', 'date_created', 'total_cost', 
                     'final_amount')
     search_fields = ('order_id', 'customer_name', 'email_address', 
-                    'delivery_fee', 'contact_number')
+                    'address__phone_number')
     readonly_fields = ('order_id', 'date_created', 'total_cost', 
-                        'final_amount')
+                    'final_amount')
 
     def save_model(self, request, obj, form, change):
         if not obj.order_id:

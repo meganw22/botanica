@@ -1,6 +1,6 @@
-# checkout/models.py
 from django.db import models
 from products.models import Product, PlantPrice
+from user_profile.models import Address, UserProfile
 from decimal import Decimal
 import shortuuid
 from django.conf import settings
@@ -10,14 +10,8 @@ class Order(models.Model):
     order_id = models.CharField(max_length=15, null=False, editable=False, unique=True)
     customer_name = models.CharField(max_length=50, null=False, blank=False)
     email_address = models.EmailField(max_length=254, null=False, blank=False)
-    contact_number = models.CharField(max_length=20, null=False, blank=False)
     date_created = models.DateTimeField(auto_now_add=True)
-    street_address1 = models.CharField(max_length=80, null=False, blank=False)
-    street_address2 = models.CharField(max_length=255, null=True, blank=True)
-    town_city = models.CharField(max_length=40, null=False, blank=False)
-    county = models.CharField(max_length=80, null=True, blank=True)
-    postcode = models.CharField(max_length=20, null=True, blank=True)
-    country = models.CharField(max_length=40, null=False, blank=False)
+    address = models.OneToOneField(Address, null=True, blank=True, on_delete=models.SET_NULL)
     delivery_fee = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     total_cost = models.DecimalField(max_digits=15, decimal_places=2, null=False, default=0)
     final_amount = models.DecimalField(max_digits=15, decimal_places=2, null=False, default=0)
@@ -46,14 +40,22 @@ class Order(models.Model):
         super().save(*args, **kwargs)
         if self.customer_name and self.email_address:
             user_profile, created = UserProfile.objects.get_or_create(user=self.user)
-            user_profile.default_phone_number = self.contact_number
-            user_profile.default_street_address1 = self.street_address1
-            user_profile.default_street_address2 = self.street_address2
-            user_profile.default_town_or_city = self.town_city
-            user_profile.default_county = self.county
-            user_profile.default_postcode = self.postcode
-            user_profile.default_country = self.country
-            user_profile.save()
+            if not user_profile.default_address:
+                user_profile.default_address = Address.objects.create(
+                    phone_number=self.address.phone_number,
+                    street_address1=self.address.street_address1,
+                    street_address2=self.address.street_address2,
+                    town_or_city=self.address.town_or_city,
+                    county=self.address.county,
+                    postcode=self.address.postcode,
+                    country=self.address.country,
+                )
+                user_profile.save()
+
+    def get_phone_number(self):
+        return self.address.phone_number if self.address else 'N/A'
+
+    get_phone_number.short_description = 'Phone Number'
 
     def __str__(self):
         return f'Order {self.order_id}'

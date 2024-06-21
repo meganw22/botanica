@@ -7,8 +7,7 @@
     <div class="row">
         <div class="col-md-3 border-right">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                <img class="rounded-circle mt-5" width="150px"
-                    src="https://images.rawpixel.com/image_social_square/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjkzNy1hZXctMTM5LWtsaGRkM2FuLmpwZw.jpg">
+                <img class="rounded-circle mt-5" width="150px" src="https://images.rawpixel.com/image_social_square/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjkzNy1hZXctMTM5LWtsaGRkM2FuLmpwZw.jpg">
                 <span class="font-weight-bold">{{ user.get_full_name }}</span>
                 <span class="text-black-50">{{ user.email }}</span>
                 <a href="{% url 'edit_profile' %}" class="btn btn-custom-success mt-3">Edit Details</a>
@@ -19,22 +18,22 @@
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 class="text-right">Your Address</h4>
                 </div>
-                {% if latest_order %}
+                {% if user.userprofile.default_address %}
                 <div class="row mt-2">
                     <div class="col-md-12">
-                        <p>Your Last Used Address</p>
-                        <p>{{ latest_order.street_address1 }}</p>
-                        <p>{{ latest_order.street_address2 }}</p>
-                        <p>{{ latest_order.town_city }}</p>
-                        <p>{{ latest_order.county }}</p>
-                        <p>{{ latest_order.postcode }}</p>
-                        <p>{{ latest_order.country }}</p>
+                        <p>Your Default Address</p>
+                        <p>{{ user.userprofile.default_address.street_address1 }}</p>
+                        <p>{{ user.userprofile.default_address.street_address2 }}</p>
+                        <p>{{ user.userprofile.default_address.town_or_city }}</p>
+                        <p>{{ user.userprofile.default_address.county }}</p>
+                        <p>{{ user.userprofile.default_address.postcode }}</p>
+                        <p>{{ user.userprofile.default_address.country }}</p>
                     </div>
                 </div>
                 {% else %}
                 <div class="row mt-2">
                     <div class="col-md-12">
-                        <p>Address details will be shown here once an order is placed!</p>
+                        <p>Address details will be shown here once you update your profile!</p>
                     </div>
                 </div>
                 {% endif %}

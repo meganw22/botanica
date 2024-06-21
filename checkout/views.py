@@ -3,10 +3,10 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
-from .forms import OrderForm
+from .forms import OrderForm, AddressForm
 from .models import Order, OrderItem
+from user_profile.models import Address
 from products.models import Product, PlantPrice
-from user_profile.models import UserProfile
 from bag.contexts import bag_contents
 import stripe
 from django.db import IntegrityError
@@ -32,9 +32,12 @@ def checkout(request):
 
     if request.method == 'POST':
         order_form = OrderForm(request.POST)
-        if order_form.is_valid():
+        address_form = AddressForm(request.POST)
+        if order_form.is_valid() and address_form.is_valid():
+            address = address_form.save()
             order = order_form.save(commit=False)
             order.email_address = request.user.email
+            order.address = address
             client_secret = request.POST.get('client_secret')
             if client_secret:
                 order.stripe_pid = client_secret.split('_secret')[0]
@@ -62,6 +65,7 @@ def checkout(request):
             messages.error(request, "There was an error with your form. Please check your information.")
     else:
         order_form = OrderForm()
+        address_form = AddressForm()
 
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. Did you forget to set it in your environment?')
@@ -69,6 +73,7 @@ def checkout(request):
     template = 'checkout/checkout.html'
     context = {
         'order_form': order_form,
+        'address_form': address_form,
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
     }
@@ -83,17 +88,6 @@ def checkout_success(request, client_secret):
 
     try:
         order = Order.objects.get(stripe_pid=stripe_pid)
-
-        profile, created = UserProfile.objects.get_or_create(user=request.user)
-
-        profile.default_phone_number = order.contact_number
-        profile.default_street_address1 = order.street_address1
-        profile.default_street_address2 = order.street_address2
-        profile.default_town_or_city = order.town_city
-        profile.default_county = order.county
-        profile.default_postcode = order.postcode
-        profile.default_country = order.country
-        profile.save()
 
         context = {
             'order': order,

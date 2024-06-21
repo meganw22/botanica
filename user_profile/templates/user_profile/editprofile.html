@@ -34,28 +34,32 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-12">
+                            <label class="labels">Phone Number</label>
+                            <input type="text" class="form-control" name="phone_number" value="{{ address.phone_number }}">
+                        </div>
+                        <div class="col-md-12">
                             <label class="labels">Address Line 1</label>
-                            <input type="text" class="form-control" name="address_line1" value="{{ latest_order.street_address1 }}">
+                            <input type="text" class="form-control" name="street_address1" value="{{ address.street_address1 }}">
                         </div>
                         <div class="col-md-12">
                             <label class="labels">Address Line 2</label>
-                            <input type="text" class="form-control" name="address_line2" value="{{ latest_order.street_address2 }}">
+                            <input type="text" class="form-control" name="street_address2" value="{{ address.street_address2 }}">
                         </div>
                         <div class="col-md-12">
                             <label class="labels">City</label>
-                            <input type="text" class="form-control" name="city" value="{{ latest_order.town_city }}">
+                            <input type="text" class="form-control" name="town_or_city" value="{{ address.town_or_city }}">
                         </div>
                         <div class="col-md-12">
                             <label class="labels">County</label>
-                            <input type="text" class="form-control" name="county" value="{{ latest_order.county }}">
+                            <input type="text" class="form-control" name="county" value="{{ address.county }}">
                         </div>
                         <div class="col-md-12">
                             <label class="labels">Postcode</label>
-                            <input type="text" class="form-control" name="postcode" value="{{ latest_order.postcode }}">
+                            <input type="text" class="form-control" name="postcode" value="{{ address.postcode }}">
                         </div>
                         <div class="col-md-12">
                             <label class="labels">Country</label>
-                            <input type="text" class="form-control" name="country" value="{{ latest_order.country }}">
+                            <input type="text" class="form-control" name="country" value="{{ address.country }}">
                         </div>
                     </div>
                     <div class="mt-5 text-center">
