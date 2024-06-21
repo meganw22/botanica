@@ -41,7 +41,7 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm">
         <div class="container">
             <a class="navbar-brand title-name" href="{% url 'home' %}">Botanica</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!-- Nav items -->
@@ -67,25 +67,26 @@
                         <a class="nav-link" href="{% url 'post_list' %}">The Plant Blog</a>
                     </li>
                 </ul>
-                <!-- Search bar -->
-                <ul class="navbar-nav ml-auto d-flex align-items-center">
-                    <li class="nav-item">
-                        <form class="form-inline" action="{% url 'search' %}" method="get">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
-                            <button class="btn btn-link nav-link" type="submit"><i class="fas fa-search"></i></button>
-                        </form>
-                    </li>
+                <!-- Right aligned items -->
+                <div class="d-flex ml-lg-auto align-items-center">
+                    <!-- Search bar -->
+                    <form class="form-inline d-flex align-items-center mr-2" action="{% url 'search' %}" method="get">
+                        <div class="input-group">
+                            <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="q">
+                            <div class="input-group-append">
+                                <button class="btn btn-link nav-link" type="submit"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
                     <!-- Bag icon -->
-                    <li class="nav-item d-flex align-items-center">
-                        <a class="nav-link" href="{% url 'shopping_bag' %}">
-                            <i class="fas fa-shopping-bag"></i>
-                            {% if total_quantity > 0 %}
-                                <span class="badge custom-badge">{{ total_quantity }}</span>
-                            {% endif %}
-                        </a>
-                    </li>
+                    <a class="nav-link d-flex align-items-center mx-2" href="{% url 'shopping_bag' %}">
+                        <i class="fas fa-shopping-bag"></i>
+                        {% if total_quantity > 0 %}
+                            <span class="badge custom-badge">{{ total_quantity }}</span>
+                        {% endif %}
+                    </a>
                     <!-- User icon -->
-                    <li class="nav-item dropdown d-flex align-items-center pl-2">
+                    <div class="nav-item dropdown d-flex align-items-center">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-user"></i>
                         </a>
@@ -98,16 +99,21 @@
                             <a class="dropdown-item" href="{% url 'account_login' %}">Click here to Login</a>
                             {% endif %}
                         </div>
-                    </li>
-                </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
-    
+
     <script>
         $(document).ready(function () {
             $('.navbar-toggler').click(function () {
                 $(this).toggleClass('collapsed');
+                if ($(this).hasClass('collapsed')) {
+                    $(this).find('.navbar-toggler-icon').css('background-image', 'url("data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'rgba(0, 0, 0, 0.5)\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E")');
+                } else {
+                    $(this).find('.navbar-toggler-icon').css('background-image', 'url("data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'rgba(0, 0, 0, 0.75)\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M7 7l16 16M23 7L7 23\'/%3E%3C/svg%3E")');
+                }
             });
         });
     </script>
