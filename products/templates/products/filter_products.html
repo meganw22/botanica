@@ -15,7 +15,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <form action="{% url 'filter_products' %}" method="get" class="form-inline">
+            <form action="{% url 'filter_products' %}" method="get" class="form-inline mb-3">
                 <div class="form-group mr-2">
                     <label for="light" class="mr-2">Light</label>
                     <select name="light" id="light" class="form-control">
@@ -26,12 +26,11 @@
                     </select>
                 </div>
                 <div class="form-group mr-2">
-                    <label for="height" class="mr-2">Height</label>
-                    <select name="height" id="height" class="form-control">
-                        <option value="" {% if request.GET.height == "" %}selected{% endif %}>All</option>
-                        <option value="short" {% if request.GET.height == "short" %}selected{% endif %}>Short</option>
-                        <option value="medium" {% if request.GET.height == "medium" %}selected{% endif %}>Medium</option>
-                        <option value="tall" {% if request.GET.height == "tall" %}selected{% endif %}>Tall</option>
+                    <label for="pet_ok" class="mr-2">Pet Friendly</label>
+                    <select name="pet_ok" id="pet_ok" class="form-control">
+                        <option value="" {% if request.GET.pet_ok == "" %}selected{% endif %}>All</option>
+                        <option value="true" {% if request.GET.pet_ok == "true" %}selected{% endif %}>Yes</option>
+                        <option value="false" {% if request.GET.pet_ok == "false" %}selected{% endif %}>No</option>
                     </select>
                 </div>
                 <div class="form-group mr-2">
@@ -47,7 +46,7 @@
                     <label for="price" class="mr-2">Max Price</label>
                     <input type="number" name="price" id="price" class="form-control" placeholder="Max Price" value="{% if request.GET.price %}{{ request.GET.price }}{% endif %}">
                 </div>
-                <button class="btn btn-custom-success" type="submit">Filter</button>
+                <button class="btn btn-custom-success mr-2" type="submit">Filter</button>
                 <a href="{% url 'products' %}" class="btn btn-secondary">Clear Filters</a>
             </form>
         </div>
@@ -56,21 +55,21 @@
     <!-- Display current filter criteria -->
     <div class="row mt-3">
         <div class="col-12">
-            <ul>
+            <ul class="list-unstyled">
                 {% if request.GET.light %}
-                <li><strong>Light level: </strong>{{ request.GET.light|title }}</li>
+                    <li><strong>Light level: </strong>{{ request.GET.light|title }}</li>
                 {% endif %}
-                {% if request.GET.height %}
-                <li><strong>Height: </strong>{{ request.GET.height|title }}</li>
+                {% if request.GET.pet_ok %}
+                    <li><strong>Pet Friendly: </strong>{{ request.GET.pet_ok|title }}</li>
                 {% endif %}
                 {% if request.GET.ease_of_care %}
-                <li><strong>Ease of care: </strong>{{ request.GET.ease_of_care|title }}</li>
+                    <li><strong>Ease of care: </strong>{{ request.GET.ease_of_care|title }}</li>
                 {% endif %}
                 {% if request.GET.price %}
-                <li><strong>Max price: </strong>£{{ request.GET.price }}</li>
+                    <li><strong>Max price: </strong>£{{ request.GET.price }}</li>
                 {% endif %}
                 {% if not request.GET.light and not request.GET.height and not request.GET.ease_of_care and not request.GET.price %}
-                <li>Showing all products</li>
+                    <li>Showing all products</li>
                 {% endif %}
             </ul>
         </div>

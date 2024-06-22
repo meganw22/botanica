@@ -39,21 +39,19 @@ def product_detail(request, product_id):
 # Filter Products views
 def filter_products(request):
     light = request.GET.get('light', '')
-    height = request.GET.get('height', '')
+    pet_ok = request.GET.get('pet_ok', '')
     ease_of_care = request.GET.get('ease_of_care', '')
     price = request.GET.get('price', '')
 
-    if not light and not height and not ease_of_care and not price:
+    if not light and not pet_ok and not ease_of_care and not price:
         return redirect('products')
 
     products = Product.objects.all()
 
     if light:
         products = products.filter(light=light)
-    if height:
-        plant_sizes = PlantSize.objects.filter(height=height)
-        product_ids = plant_sizes.values_list('plant_id', flat=True)
-        products = products.filter(id__in=product_ids)
+    if pet_ok:
+        products = products.filter(pet_ok=(pet_ok == 'true'))
     if ease_of_care:
         products = products.filter(ease_of_care=ease_of_care)
     if price:
