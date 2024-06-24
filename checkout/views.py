@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from .forms import OrderForm, AddressForm
 from .models import Order, OrderItem
-from user_profile.models import Address
+from user_profile.models import Address, UserProfile
 from products.models import Product, PlantPrice
 from bag.contexts import bag_contents
 import stripe
@@ -36,6 +36,8 @@ def checkout(request):
         if order_form.is_valid() and address_form.is_valid():
             order = order_form.save(commit=False)
             address = address_form.save()
+            address.user = request.user
+            address.save()
             order.address = address
             order.user = request.user
             order.email_address = request.user.email
@@ -56,6 +58,11 @@ def checkout(request):
                         quantity_ordered=item['quantity'],
                         item_total=Decimal(price) * item['quantity'],
                     )
+
+                # Update user's default address
+                user_profile, created = UserProfile.objects.get_or_create(user=request.user)
+                user_profile.default_address = address
+                user_profile.save()
 
                 # Clear the bag items from the session
                 request.session['bag'] = []

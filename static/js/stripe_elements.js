@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 </span>
                 <span>${event.error.message}</span>
             `;
-            $(errorDiv).html(html);
+            errorDiv.innerHTML = html;
         } else {
             errorDiv.textContent = '';
         }
@@ -46,8 +46,6 @@ document.addEventListener("DOMContentLoaded", function() {
             ev.preventDefault();
             card.update({ 'disabled': true });
             submitButton.setAttribute('disabled', true);
-            document.getElementById('payment-form').style.display = 'none';
-            document.getElementById('loading-overlay').style.display = 'block';
 
             stripe.confirmCardPayment(clientSecret, {
                 payment_method: {
@@ -62,9 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         <i class="fas fa-times"></i>
                         </span>
                         <span>${result.error.message}</span>`;
-                    $(errorDiv).html(html);
-                    document.getElementById('payment-form').style.display = 'block';
-                    document.getElementById('loading-overlay').style.display = 'none';
+                    errorDiv.innerHTML = html;
 
                     card.update({ 'disabled': false });
                     submitButton.removeAttribute('disabled');
