@@ -1,5 +1,6 @@
 from decimal import Decimal
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
@@ -9,7 +10,24 @@ from user_profile.models import Address, UserProfile
 from products.models import Product, PlantPrice
 from bag.contexts import bag_contents
 import stripe
+import json
 from django.db import IntegrityError
+
+@require_POST
+def cache_checkout_data(request):
+    try:
+        pid = request.POST.get('client_secret').split('_secret')[0]
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.PaymentIntent.modify(pid, metadata={
+            'bag': json.dumps(request.session.get('bag')),
+            'username': request.user.username,
+        })
+        return HttpResponse(status=200)
+    except Exception as e:
+        print(e)
+        messages.error(request, 'Sorry, your payment cannot be processed \
+            at this time. Please try again later.')
+        return HttpResponse(content=str(e), status=400)
 
 @login_required
 def checkout(request):
@@ -50,7 +68,8 @@ def checkout(request):
                 # Save the order items
                 for item in bag:
                     product = Product.objects.get(id=item['id'])
-                    price = PlantPrice.objects.get(product=product, size=item['height']).price
+                    price = PlantPrice.objects.get(
+                        product=product, size=item['height']).price
                     OrderItem.objects.create(
                         order=order,
                         product=product,
@@ -60,26 +79,31 @@ def checkout(request):
                     )
 
                 # Update user's default address
-                user_profile, created = UserProfile.objects.get_or_create(user=request.user)
+                user_profile, created = UserProfile.objects.get_or_create(
+                    user=request.user)
                 user_profile.default_address = address
                 user_profile.save()
 
                 # Clear the bag items from the session
                 request.session['bag'] = []
 
-                messages.success(request, f"Order {order.order_id} placed successfully!")
+                messages.success(
+                    request, f"Order {order.order_id} placed successfully!")
                 return redirect('checkout_success', order_id=order.order_id)
             except IntegrityError:
-                messages.error(request, "An error occurred while placing the order.")
+                messages.error(
+                    request, "An error occurred while placing the order.")
                 return redirect('checkout')
         else:
-            messages.error(request, "There was an error with your form. Please check your information.")
+            messages.error(request, "There was an error with your form. \
+                Please check your information.")
     else:
         order_form = OrderForm()
         address_form = AddressForm()
 
     if not stripe_public_key:
-        messages.warning(request, 'Stripe public key is missing. Did you forget to set it in your environment?')
+        messages.warning(request, 'Stripe public key is missing. \
+            Did you forget to set it in your environment?')
 
     template = 'checkout/checkout.html'
     context = {
