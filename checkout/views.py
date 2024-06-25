@@ -68,7 +68,7 @@ def checkout(request):
                 request.session['bag'] = []
 
                 messages.success(request, f"Order {order.order_id} placed successfully!")
-                return redirect('checkout_success', client_secret=client_secret)
+                return redirect('checkout_success', order_id=order.order_id)
             except IntegrityError:
                 messages.error(request, "An error occurred while placing the order.")
                 return redirect('checkout')
@@ -90,15 +90,12 @@ def checkout(request):
     }
 
     context.update(bag_contents(request))
-
     return render(request, template, context)
 
 @login_required
-def checkout_success(request, client_secret):
-    stripe_pid = client_secret.split('_secret')[0]
-
+def checkout_success(request, order_id):
     try:
-        order = Order.objects.get(stripe_pid=stripe_pid)
+        order = Order.objects.get(order_id=order_id)
 
         context = {
             'order': order,
