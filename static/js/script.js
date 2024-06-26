@@ -26,7 +26,7 @@ function validateForm(event) {
     }
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     updateFormInputs();
     var initialHeight = document.getElementById('selected-height-input').value || 'sm';
     updatePriceDisplay(initialHeight);

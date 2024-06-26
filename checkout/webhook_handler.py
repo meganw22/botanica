@@ -15,6 +15,7 @@ class StripeWH_Handler:
         """
         Handle a generic/unknown/unexpected webhook event
         """
+        logger.info(f'Unhandled Webhook received: {event["type"]}')
         return HttpResponse(
             content=f'Unhandled Webhook received: {event["type"]}',
             status=200)
@@ -45,23 +46,12 @@ class StripeWH_Handler:
 
         while attempts < 5:
             try:
-                order = Order.objects.get(
-                    customer_name__iexact=shipping_details['name'],
-                    email_address__iexact=billing_details['email'],
-                    phone_number__iexact=shipping_details['phone'],
-                    country__iexact=shipping_details['address']['country'],
-                    postcode__iexact=shipping_details['address']['postal_code'],
-                    town_or_city__iexact=shipping_details['address']['city'],
-                    street_address1__iexact=shipping_details['address']['line1'],
-                    street_address2__iexact=shipping_details['address']['line2'],
-                    county__iexact=shipping_details['address']['state'],
-                    grand_total=grand_total,
-                    stripe_pid=pid,
-                )
+                order = Order.objects.get(stripe_pid=pid)
                 order_exists = True
                 break
             except Order.DoesNotExist:
                 attempts += 1
+                logger.info(f'Order not found, attempt {attempts}')
                 time.sleep(1)
 
         if order_exists:
@@ -80,18 +70,18 @@ class StripeWH_Handler:
                     town_or_city=shipping_details['address']['city'],
                     street_address1=shipping_details['address']['line1'],
                     street_address2=shipping_details['address']['line2'],
-                    county=shipping_details['address']['state'],
+                    county=shipping_details['address'].get('state', ''),
                     grand_total=grand_total,
                     stripe_pid=pid,
                 )
                 
-                for item_id, item_data in bag.items():
-                    product = Product.objects.get(id=item_id)
-                    price = PlantPrice.objects.get(product=product, size=item_data['size']).price
+                for item_data in bag:
+                    product = Product.objects.get(id=item_data['id'])
+                    price = PlantPrice.objects.get(product=product, size=item_data['height']).price
                     OrderItem.objects.create(
                         order=order,
                         product=product,
-                        product_size=item_data['size'],
+                        product_size=item_data['height'],
                         quantity_ordered=item_data['quantity'],
                         item_total=Decimal(price) * item_data['quantity'],
                     )
