@@ -8,10 +8,6 @@
     <div class="row">
         <div class="col">
             <h1>Your Bag</h1>
-            <p class="text-success">
-                <i class="fas fa-truck"></i>
-                Free delivery on orders over £{{ free_delivery_threshold }}
-            </p>
         </div>
     </div>
 </div>
@@ -90,6 +86,10 @@
         <div class="col-lg-4">
             <aside class="order-summary p-3 border">
                 <h2>Order Summary</h2>
+                <p class="text-success">
+                    <i class="fas fa-truck"></i>
+                    Free delivery on orders over £{{ free_delivery_threshold }}
+                </p>
                 <div class="d-flex justify-content-between">
                     <p>Subtotal:</p>
                     <p>£{{ total_price|floatformat:2 }}</p>
