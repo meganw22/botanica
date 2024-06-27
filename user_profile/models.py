@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django_countries.fields import CountryField
 
 
 class Address(models.Model):
@@ -12,7 +13,7 @@ class Address(models.Model):
     town_or_city = models.CharField(max_length=40, null=True, blank=True)
     county = models.CharField(max_length=80, null=True, blank=True)
     postcode = models.CharField(max_length=20, null=True, blank=True)
-    country = models.CharField(max_length=40, null=True, blank=True)
+    country = CountryField(blank_label='Country *', null=True, blank=True)
 
     def __str__(self):
         return f"{self.street_address1}, {self.town_or_city}, {self.country}"

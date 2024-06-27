@@ -15,7 +15,7 @@ SECRET_KEY = os.environ.get(
 DEBUG = True
 ALLOWED_HOSTS = [ 
     'botanica-fa2bcebcf990.herokuapp.com',
-    '8000-meganw22-botanica-nrxfe8qmmth.ws-eu114.gitpod.io'
+    '8000-meganw22-botanica-vrmnayolm1t.ws.codeinstitute-ide.net'
 ]
 
 INSTALLED_APPS = [
