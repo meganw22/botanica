@@ -13,6 +13,7 @@ import stripe
 import json
 from django.db import IntegrityError
 
+
 @require_POST
 def cache_checkout_data(request):
     try:
@@ -28,6 +29,7 @@ def cache_checkout_data(request):
         messages.error(request, 'Sorry, your payment cannot be processed \
             at this time. Please try again later.')
         return HttpResponse(content=str(e), status=400)
+
 
 @login_required
 def checkout(request):
@@ -115,6 +117,7 @@ def checkout(request):
 
     context.update(bag_contents(request))
     return render(request, template, context)
+
 
 @login_required
 def checkout_success(request, order_id):

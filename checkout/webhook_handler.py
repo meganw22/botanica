@@ -5,6 +5,7 @@ from decimal import Decimal
 import json
 import time
 
+
 class StripeWH_Handler:
     """Handle Stripe webhooks"""
 
@@ -56,7 +57,8 @@ class StripeWH_Handler:
 
         if order_exists:
             return HttpResponse(
-                content=f'Webhook received: {event["type"]} | SUCCESS: Verified order in database',
+                content=f'Webhook received: {event["type"]} | SUCCESS: \
+                Verified order in database',
                 status=200)
 
         if not order_exists:
@@ -74,10 +76,11 @@ class StripeWH_Handler:
                     grand_total=grand_total,
                     stripe_pid=pid,
                 )
-                
+
                 for item_data in bag:
                     product = Product.objects.get(id=item_data['id'])
-                    price = PlantPrice.objects.get(product=product, size=item_data['height']).price
+                    price = PlantPrice.objects.get(
+                        product=product, size=item_data['height']).price
                     OrderItem.objects.create(
                         order=order,
                         product=product,
@@ -87,7 +90,8 @@ class StripeWH_Handler:
                     )
 
                 return HttpResponse(
-                    content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
+                    content=f'Webhook received: {event["type"]} | SUCCESS: \
+                    Created order in webhook',
                     status=200)
 
             except Exception as e:

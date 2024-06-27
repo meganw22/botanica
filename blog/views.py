@@ -3,11 +3,19 @@ from django.contrib.auth.decorators import login_required
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
 
+
 def post_list(request):
+    """
+    View to list all blog posts ordered by published date.
+    """
     posts = Post.objects.all().order_by('-published_date')
     return render(request, 'blog/post_list.html', {'posts': posts})
 
+
 def post_detail(request, pk):
+    """
+    View to display the details of a single blog post and its comments.
+    """
     post = get_object_or_404(Post, pk=pk)
     comments = post.comments.all()
     if request.method == 'POST':
@@ -21,8 +29,11 @@ def post_detail(request, pk):
         comment_form = CommentForm()
     return render(request, 'blog/post_detail.html', {'post': post, 'comments': comments, 'comment_form': comment_form})
 
-# @login_required
+@login_required
 def post_new(request):
+    """
+    View to create a new blog post. Requires the user to be logged in.
+    """
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():

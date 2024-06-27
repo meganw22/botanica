@@ -2,6 +2,7 @@ from django import forms
 from .models import Order
 from user_profile.models import Address
 
+
 class AddressForm(forms.ModelForm):
     class Meta:
         model = Address
@@ -29,7 +30,9 @@ class AddressForm(forms.ModelForm):
 
         self.fields['phone_number'].widget.attrs['autofocus'] = True
         for field in self.fields:
-            self.fields[field].widget.attrs['placeholder'] = placeholders[field]
+            self.fields[field].widget.attrs['placeholder'] = (
+                placeholders[field]
+                )
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
             self.fields[field].label = False
 
@@ -40,6 +43,7 @@ class AddressForm(forms.ModelForm):
         self.fields['county'].required = True
         self.fields['postcode'].required = True
         self.fields['country'].required = True
+
 
 class OrderForm(forms.ModelForm):
     address = AddressForm()

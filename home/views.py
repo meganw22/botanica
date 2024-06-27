@@ -10,7 +10,9 @@ def index(request):
 def search(request):
     query = request.GET.get('q')
     if query:
-        results = Product.objects.filter(Q(easy_name__icontains=query) | Q(scientific_name__icontains=query))
+        results = Product.objects.filter(
+            Q(easy_name__icontains=query) | Q(scientific_name__icontains=query)
+        )
     else:
         results = Product.objects.none()
 

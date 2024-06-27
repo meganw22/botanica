@@ -2,8 +2,11 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
 from .models import Product, PlantSize, PlantPrice
 
-# All Products Views
+
 def all_products(request):
+    """
+    View to display all products.
+    """
     products = Product.objects.all()
     context = {
         'products': products
@@ -11,21 +14,20 @@ def all_products(request):
     return render(request, 'products/products.html', context)
 
 
-# Product detail View
 def product_detail(request, product_id):
+    """
+    View to display the details of a specific product.
+    """
     product = get_object_or_404(Product, pk=product_id)
-    
-    # Fetch heights
+
     heights = {}
     for size in ['sm', 'med', 'lg']:
         plant_size = PlantSize.objects.filter(plant=product, size=size).first()
         heights[size] = plant_size.height if plant_size else 'N/A'
-    
-    # Fetch prices
+
     plant_prices = PlantPrice.objects.filter(product=product)
     prices = {price.size: price.price for price in plant_prices}
-    
-    # Find the smallest price
+
     smallest_price = min(prices.values()) if prices else None
 
     context = {
@@ -36,8 +38,11 @@ def product_detail(request, product_id):
     }
     return render(request, 'products/product_detail.html', context)
 
-# Filter Products views
+
 def filter_products(request):
+    """
+    View to filter products by light, pet safety, ease of care, and price.
+    """
     light = request.GET.get('light', '')
     pet_ok = request.GET.get('pet_ok', '')
     ease_of_care = request.GET.get('ease_of_care', '')
@@ -64,7 +69,12 @@ def filter_products(request):
     }
     return render(request, 'products/filter_products.html', context)
 
-def filter_category_products(request, light=None, ease_of_care=None, size=None, order=None):
+
+def filter_category_products(request, light=None, ease_of_care=None,
+        size=None, order=None):
+    """
+    View to filter products by light, ease of care, size, and order.
+    """
     products = Product.objects.all()
     category = "Filtered"
 

@@ -13,5 +13,9 @@ class Command(BaseCommand):
             for file in files:
                 file_path = os.path.join(root, file)
                 with open(file_path, 'rb') as f:
-                    default_storage.save(file_path.replace(media_root + '/', ''), f)
-        self.stdout.write(self.style.SUCCESS('Successfully uploaded media files to S3'))
+                    default_storage.save(
+                        file_path.replace(media_root + '/', ''), f)
+        self.stdout.write(
+            self.style.SUCCESS(
+                'Successfully uploaded media files to S3')
+            )

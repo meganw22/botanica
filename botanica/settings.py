@@ -7,7 +7,10 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
-SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-4p$8@d%=+e07y^m6(*n)5yyqz!^f*w$0d7@eu3#rpfj4z32cdl')
+SECRET_KEY = os.environ.get(
+    'SECRET_KEY',
+    'django-insecure-4p$8@d%=+e07y^m6(*n)5yyqz!^f*w$0d7@eu3#rpfj4z32cdl'
+    )
 # DEBUG = 'DEVELOPMENT' in os.environ
 DEBUG = True
 ALLOWED_HOSTS = [ 
@@ -168,7 +171,3 @@ STRIPE_CURRENCY = 'gbp'
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
-
-print("STRIPE_PUBLIC_KEY:", STRIPE_PUBLIC_KEY)
-print("STRIPE_SECRET_KEY:", STRIPE_SECRET_KEY)
-print("STRIPE_WH_SECRET:", STRIPE_WH_SECRET)
