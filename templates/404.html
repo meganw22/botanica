@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<div class="container-fluid content-spacing">
+    <div class="row">
+        <div class="hero col-lg-5 col-12 order-2 order-md-1 ">
+            <img class="d-flex align-items-start img-fluid"
+                src="https://botanica-plants.s3.eu-north-1.amazonaws.com/media/swiss-cheese-plant.png"
+                alt="Swiss Cheese Plant">
+        </div>
+        <div class="hero-body col-lg-7 col-12 order-1 order-md-2 d-flex align-items-center justify-content-center">
+            <div class="text-center">
+                <h1>404 Not Found</h1>
+                <div>
+                    <a href="{% url 'home' %}" class="btn hero-btn">Go back home!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

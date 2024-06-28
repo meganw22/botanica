@@ -191,7 +191,7 @@
             "ease_of_care": "moderate",
             "pet_ok": true,
             "image": "jade-plant-large.jpg",
-            "description": "he jade plant, or Crassula ovata, is a popular succulent known for its thick, fleshy, oval-shaped leaves and tree-like appearance. Native to South Africa and Mozambique, this hardy plant can grow up to 90-180 cm tall indoors. The jade plant has glossy, dark green leaves that sometimes develop a red tinge around the edges when exposed to direct sunlight. It produces small, star-shaped white or pink flowers in clusters under the right conditions. Jade plants thrive in bright light and well-draining soil, requiring minimal watering. They are often associated with good luck and prosperity, making them a favorite in homes and offices."
+            "description": "The jade plant, or Crassula ovata, is a popular succulent known for its thick, fleshy, oval-shaped leaves and tree-like appearance. Native to South Africa and Mozambique, this hardy plant can grow up to 90-180 cm tall indoors. The jade plant has glossy, dark green leaves that sometimes develop a red tinge around the edges when exposed to direct sunlight. It produces small, star-shaped white or pink flowers in clusters under the right conditions. Jade plants thrive in bright light and well-draining soil, requiring minimal watering. They are often associated with good luck and prosperity, making them a favorite in homes and offices."
         }
     },
     {
@@ -325,7 +325,7 @@
         "pk": 2,
         "fields": {
             "plant": 1,
-            "size": "med",
+            "size": "md",
             "height": "20-30cm"
         }
     },
@@ -352,7 +352,7 @@
         "pk": 5,
         "fields": {
             "plant": 2,
-            "size": "med",
+            "size": "md",
             "height": "20-40cm"
         }
     },
@@ -379,7 +379,7 @@
         "pk": 8,
         "fields": {
             "plant": 3,
-            "size": "med",
+            "size": "md",
             "height": "20-40cm"
         }
     },
@@ -406,7 +406,7 @@
         "pk": 11,
         "fields": {
             "plant": 4,
-            "size": "med",
+            "size": "md",
             "height": "20-30cm"
         }
     },
@@ -433,7 +433,7 @@
         "pk": 14,
         "fields": {
             "plant": 5,
-            "size": "med",
+            "size": "md",
             "height": "30-60cm"
         }
     },
@@ -460,7 +460,7 @@
         "pk": 17,
         "fields": {
             "plant": 6,
-            "size": "med",
+            "size": "md",
             "height": "40-60cm"
         }
     },
@@ -487,7 +487,7 @@
         "pk": 20,
         "fields": {
             "plant": 7,
-            "size": "med",
+            "size": "md",
             "height": "20-30cm"
         }
     },
@@ -514,7 +514,7 @@
         "pk": 23,
         "fields": {
             "plant": 8,
-            "size": "med",
+            "size": "md",
             "height": "20-40cm"
         }
     },
@@ -541,7 +541,7 @@
         "pk": 26,
         "fields": {
             "plant": 9,
-            "size": "med",
+            "size": "md",
             "height": "20-30cm"
         }
     },
@@ -568,7 +568,7 @@
         "pk": 29,
         "fields": {
             "plant": 10,
-            "size": "med",
+            "size": "md",
             "height": "60-100cm"
         }
     },
@@ -595,7 +595,7 @@
         "pk": 32,
         "fields": {
             "plant": 11,
-            "size": "med",
+            "size": "md",
             "height": "15-30cm"
         }
     },
@@ -622,7 +622,7 @@
         "pk": 35,
         "fields": {
             "plant": 12,
-            "size": "med",
+            "size": "md",
             "height": "20-30cm"
         }
     },
@@ -649,7 +649,7 @@
         "pk": 38,
         "fields": {
             "plant": 13,
-            "size": "med",
+            "size": "md",
             "height": "40-60cm"
         }
     },
@@ -676,7 +676,7 @@
         "pk": 41,
         "fields": {
             "plant": 14,
-            "size": "med",
+            "size": "md",
             "height": "70-100cm"
         }
     },
@@ -703,7 +703,7 @@
         "pk": 44,
         "fields": {
             "plant": 15,
-            "size": "med",
+            "size": "md",
             "height": "30-70cm"
         }
     },
@@ -730,7 +730,7 @@
         "pk": 47,
         "fields": {
             "plant": 16,
-            "size": "med",
+            "size": "md",
             "height": "10-20cm"
         }
     },
@@ -757,7 +757,7 @@
         "pk": 50,
         "fields": {
             "plant": 17,
-            "size": "med",
+            "size": "md",
             "height": "70-100cm"
         }
     },
@@ -784,7 +784,7 @@
         "pk": 53,
         "fields": {
             "plant": 18,
-            "size": "med",
+            "size": "md",
             "height": "40-100cm"
         }
     },
@@ -811,7 +811,7 @@
         "pk": 56,
         "fields": {
             "plant": 19,
-            "size": "med",
+            "size": "md",
             "height": "20-30cm"
         }
     },
@@ -838,7 +838,7 @@
         "pk": 59,
         "fields": {
             "plant": 20,
-            "size": "med",
+            "size": "md",
             "height": "20-30cm"
         }
     },
@@ -865,7 +865,7 @@
         "pk": 62,
         "fields": {
             "plant": 21,
-            "size": "med",
+            "size": "md",
             "height": "20-30cm"
         }
     },
@@ -883,7 +883,7 @@
         "pk": 64,
         "fields": {
             "plant": 22,
-            "size": "med",
+            "size": "md",
             "height": "10-20cm"
         }
     },
@@ -910,7 +910,7 @@
         "pk": 67,
         "fields": {
             "plant": 23,
-            "size": "med",
+            "size": "md",
             "height": "10-25cm"
         }
     },
@@ -928,7 +928,7 @@
         "pk": 69,
         "fields": {
             "plant": 24,
-            "size": "med",
+            "size": "md",
             "height": "30-40cm"
         }
     },
@@ -946,7 +946,7 @@
         "pk": 2,
         "fields": {
             "product": 1,
-            "size": "med",
+            "size": "md",
             "price": "15.00"
         }
     },
@@ -973,7 +973,7 @@
         "pk": 5,
         "fields": {
             "product": 2,
-            "size": "med",
+            "size": "md",
             "price": "18.00"
         }
     },
@@ -1000,7 +1000,7 @@
         "pk": 8,
         "fields": {
             "product": 3,
-            "size": "med",
+            "size": "md",
             "price": "12.00"
         }
     },
@@ -1027,7 +1027,7 @@
         "pk": 11,
         "fields": {
             "product": 4,
-            "size": "med",
+            "size": "md",
             "price": "20.00"
         }
     },
@@ -1054,7 +1054,7 @@
         "pk": 14,
         "fields": {
             "product": 5,
-            "size": "med",
+            "size": "md",
             "price": "35.00"
         }
     },
@@ -1081,7 +1081,7 @@
         "pk": 17,
         "fields": {
             "product": 6,
-            "size": "med",
+            "size": "md",
             "price": "22.00"
         }
     },
@@ -1108,7 +1108,7 @@
         "pk": 20,
         "fields": {
             "product": 7,
-            "size": "med",
+            "size": "md",
             "price": "15.00"
         }
     },
@@ -1135,7 +1135,7 @@
         "pk": 23,
         "fields": {
             "product": 8,
-            "size": "med",
+            "size": "md",
             "price": "18.00"
         }
     },
@@ -1162,7 +1162,7 @@
         "pk": 26,
         "fields": {
             "product": 9,
-            "size": "med",
+            "size": "md",
             "price": "14.00"
         }
     },
@@ -1189,7 +1189,7 @@
         "pk": 29,
         "fields": {
             "product": 10,
-            "size": "med",
+            "size": "md",
             "price": "40.00"
         }
     },
@@ -1216,7 +1216,7 @@
         "pk": 32,
         "fields": {
             "product": 11,
-            "size": "med",
+            "size": "md",
             "price": "30.00"
         }
     },
@@ -1243,7 +1243,7 @@
         "pk": 35,
         "fields": {
             "product": 12,
-            "size": "med",
+            "size": "md",
             "price": "22.00"
         }
     },
@@ -1270,7 +1270,7 @@
         "pk": 38,
         "fields": {
             "product": 13,
-            "size": "med",
+            "size": "md",
             "price": "26.00"
         }
     },
@@ -1297,7 +1297,7 @@
         "pk": 41,
         "fields": {
             "product": 14,
-            "size": "med",
+            "size": "md",
             "price": "28.00"
         }
     },
@@ -1324,7 +1324,7 @@
         "pk": 44,
         "fields": {
             "product": 15,
-            "size": "med",
+            "size": "md",
             "price": "45.00"
         }
     },
@@ -1351,7 +1351,7 @@
         "pk": 47,
         "fields": {
             "product": 16,
-            "size": "med",
+            "size": "md",
             "price": "12.00"
         }
     },
@@ -1378,7 +1378,7 @@
         "pk": 50,
         "fields": {
             "product": 17,
-            "size": "med",
+            "size": "md",
             "price": "22.00"
         }
     },
@@ -1405,7 +1405,7 @@
         "pk": 53,
         "fields": {
             "product": 18,
-            "size": "med",
+            "size": "md",
             "price": "28.00"
         }
     },
@@ -1432,7 +1432,7 @@
         "pk": 56,
         "fields": {
             "product": 19,
-            "size": "med",
+            "size": "md",
             "price": "18.00"
         }
     },
@@ -1459,7 +1459,7 @@
         "pk": 59,
         "fields": {
             "product": 20,
-            "size": "med",
+            "size": "md",
             "price": "15.00"
         }
     },
@@ -1486,7 +1486,7 @@
         "pk": 62,
         "fields": {
             "product": 21,
-            "size": "med",
+            "size": "md",
             "price": "18.00"
         }
     },
@@ -1504,7 +1504,7 @@
         "pk": 64,
         "fields": {
             "product": 22,
-            "size": "med",
+            "size": "md",
             "price": "10.00"
         }
     },
@@ -1531,7 +1531,7 @@
         "pk": 67,
         "fields": {
             "product": 23,
-            "size": "med",
+            "size": "md",
             "price": "15.00"
         }
     },
@@ -1549,7 +1549,7 @@
         "pk": 69,
         "fields": {
             "product": 24,
-            "size": "med",
+            "size": "md",
             "price": "15.00"
         }
     }
