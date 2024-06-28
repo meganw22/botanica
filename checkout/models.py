@@ -84,17 +84,11 @@ class OrderItem(models.Model):
     """
     Model representing an item in an order.
     """
-    order = models.ForeignKey(
-        Order, null=False, blank=False, related_name='items',
-        on_delete=models.CASCADE)
-    product = models.ForeignKey(
-        Product, null=False, blank=False, on_delete=models.CASCADE)
-    product_size = models.CharField(
-        max_length=2, null=True, blank=False)
+    order = models.ForeignKey(Order, null=False, blank=False, related_name='items', on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, null=False, blank=False, on_delete=models.CASCADE)
+    product_size = models.CharField(max_length=36, null=True, blank=False)
     quantity_ordered = models.PositiveIntegerField()
-    item_total = models.DecimalField(
-        max_digits=10, decimal_places=2, editable=False, null=True,
-        blank=False)
+    item_total = models.DecimalField(max_digits=10, decimal_places=2, editable=False, null=True, blank=False)
 
     def save(self, *args, **kwargs):
         """

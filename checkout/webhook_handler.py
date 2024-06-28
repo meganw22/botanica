@@ -90,8 +90,7 @@ class StripeWH_Handler:
                     )
 
                 return HttpResponse(
-                    content=f'Webhook received: {event["type"]} | SUCCESS: \
-                    Created order in webhook',
+                    content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
                     status=200)
 
             except Exception as e:
