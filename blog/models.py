@@ -10,6 +10,7 @@ class Post(models.Model):
     content = models.TextField()
     published_date = models.DateTimeField(auto_now_add=True)
     likes = models.ManyToManyField(User, related_name='liked_posts', blank=True)
+    image = models.ImageField(upload_to='blog', default='no-image-available.png')
 
     def __str__(self):
         return self.title
