@@ -6,18 +6,29 @@
         <div class="col-12">
             <h1 class="display-4">{{ post.title }}</h1>
             <p class="text-muted">{{ post.published_date }}</p>
+
+            {% if post.image %}
+                <img src="{{ post.image.url }}" class="img-fluid mb-4" alt="{{ post.title }}">
+            {% else %}
+                <div class="img-fluid mb-4" style="height: 200px; background-color: lightgrey;">
+                </div>
+            {% endif %}
+
             <div class="content my-4">
                 {{ post.content | linebreaks }}
             </div>
+
             {% if request.user == post.author %}
                 <a href="{% url 'post_edit' post.pk %}" class="btn btn-primary">Edit Post</a>
             {% endif %}
+
             {% if request.user.is_staff %}
                 <form method="post" action="{% url 'post_delete' post.pk %}" class="d-inline">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger">Delete Post</button>
                 </form>
             {% endif %}
+
             <div class="like-section mt-4">
                 {% if user.is_authenticated %}
                     <form method="post" action="{% url 'like_post' post.pk %}" class="d-inline">
