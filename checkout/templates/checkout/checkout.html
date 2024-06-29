@@ -20,10 +20,10 @@
     <div class="row">
         <div class="col-lg-8">
             <p>Fill out the following form (*required information):</p>
-            
+
             <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
-                
+
                 <fieldset class="rounded px-3 mb-5">
                     <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
                     {{ order_form.customer_name|as_crispy_field }}
@@ -32,7 +32,7 @@
 
                 <fieldset class="rounded px-3 mb-5">
                     <legend class="fieldset-label text-black small px-2 w-auto">Delivery</legend>
-                    
+
                     {{ address_form.phone_number|as_crispy_field }}
                     {{ address_form.street_address1|as_crispy_field }}
                     {{ address_form.street_address2|as_crispy_field }}
@@ -49,7 +49,7 @@
                 </fieldset>
 
                 <fieldset class="button-container px-3">
-                    <button type="submit" id="submit-button" class="btn btn-custom-success btn-block mb-2">Continue to Payment</button>
+                    <button type="submit" id="submit-button" class="btn btn-custom-success btn-block mb-2">Place Order</button>
                     <a href="{% url 'shopping_bag' %}" class="btn btn-outline-secondary btn-block">Head back to bag</a>
                 </fieldset>
             </form>

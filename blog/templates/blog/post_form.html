@@ -4,9 +4,13 @@
 <div class="container my-5 content-spacing">
     <div class="row">
         <h1>New Post</h1>
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
+            <div class="form-group">
+                <label for="id_image">Image:</label>
+                <input type="file" name="image" id="id_image" class="form-control">
+            </div>
             <button type="submit">Save</button>
         </form>
     </div>
