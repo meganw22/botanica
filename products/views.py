@@ -21,7 +21,7 @@ def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
 
     heights = {}
-    for size in ['sm', 'med', 'lg']:
+    for size in ['sm', 'md', 'lg']:
         plant_size = PlantSize.objects.filter(plant=product, size=size).first()
         heights[size] = plant_size.height if plant_size else 'N/A'
 

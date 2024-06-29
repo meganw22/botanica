@@ -6,7 +6,9 @@
     <div class="row">
         <!-- Product Image Section -->
         <div class="col-md-6">
-            <img class="img-fluid" src="{% if product.image %}{{ product.image.url }}{% else %}../media/no-image-available.png{% endif %}" alt="{{ product.easy_name }}">
+            <img class="img-fluid"
+                src="{% if product.image %}{{ product.image.url }}{% else %}../media/no-image-available.png{% endif %}"
+                alt="{{ product.easy_name }}">
         </div>
 
         <!-- Product Details Section -->
@@ -32,55 +34,64 @@
             <p class="h4 my-5 ml-2">£<span id="priceDisplay" style="font-weight: bold;">{{ smallest_price }}</span></p>
 
             <!-- Height Options -->
+            {% if heights.sm != 'N/A' or heights.md != 'N/A' or heights.lg != 'N/A' %}
             <p class="mb-2 ml-2">Size (cm):</p>
             <div class="mb-3">
                 <div class="btn-group d-block mb-2" role="group" aria-label="Plant heights">
-                    {% if heights.sm != '' %}
-                        <button type="button" class="btn btn-outline-secondary square-btn" onclick="selectHeight('sm')">Small ({{ heights.sm }})</button>
+                    {% if heights.sm != 'N/A' %}
+                    <button type="button" class="btn btn-outline-secondary square-btn"
+                        onclick="selectHeight('sm')">Small ({{ heights.sm }})</button>
                     {% endif %}
-                    {% if heights.md != '' %}
-                        <button type="button" class="btn btn-outline-secondary square-btn" onclick="selectHeight('md')">Medium ({{ heights.md }})</button>
+                    {% if heights.md != 'N/A' %}
+                    <button type="button" class="btn btn-outline-secondary square-btn"
+                        onclick="selectHeight('md')">Medium ({{ heights.md }})</button>
                     {% endif %}
-                    {% if heights.lg != '' %}
-                        <button type="button" class="btn btn-outline-secondary square-btn" onclick="selectHeight('lg')">Large ({{ heights.lg }})</button>
+                    {% if heights.lg != 'N/A' %}
+                    <button type="button" class="btn btn-outline-secondary square-btn"
+                        onclick="selectHeight('lg')">Large ({{ heights.lg }})</button>
                     {% endif %}
                 </div>
-
-                <!-- Quantity Selector -->
-                <div class="d-flex align-items-center mb-3">
-                    Quantity:
-                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="decreaseQuantity(this)">-</button>
-                    <input type="number" name="quantity" value="1" min="1" class="form-control quantity-input mx-2 no-arrows" onchange="updateQuantity(this)">
-                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="increaseQuantity(this)">+</button>
-                </div>
-
-                <!-- Add to Bag -->
-                <form id="add-to-bag-form" method="POST" action="{% url 'add_to_bag' product.id %}">
-                    {% csrf_token %}
-                    <input type="hidden" name="quantity" id="quantity-input" value="1">
-                    <input type="hidden" name="selected_height" id="selected-height-input">
-                    <button type="submit" class="my-4 btn-custom-success btn-lg btn-block" onclick="validateForm(event)">
-                        <i class="fa fa-shopping-cart"></i> Add to Bag
-                    </button>
-                </form>
             </div>
-            <h4 class="mt-5">Need plant tips and tricks?</h4>
-            <p>Head to Botantica's <a href="{% url 'post_list' %}">The Plant Blog</a> for all your planting needs</p>
-        </div>
-    </div>
+            {% endif %}
 
-    <div class="row mt-5">
-        <div class="col-12">
-            <h3 class="mt-3">Description</h3>
-            <p>{{ product.description }}</p>
+
+            <!-- Quantity Selector -->
+            <div class="d-flex align-items-center mb-3">
+                Quantity:
+                <button type="button" class="btn btn-outline-secondary btn-sm"
+                    onclick="decreaseQuantity(this)">-</button>
+                <input type="number" name="quantity" value="1" min="1"
+                    class="form-control quantity-input mx-2 no-arrows" onchange="updateQuantity(this)">
+                <button type="button" class="btn btn-outline-secondary btn-sm"
+                    onclick="increaseQuantity(this)">+</button>
+            </div>
+
+            <!-- Add to Bag -->
+            <form id="add-to-bag-form" method="POST" action="{% url 'add_to_bag' product.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="quantity" id="quantity-input" value="1">
+                <input type="hidden" name="selected_height" id="selected-height-input">
+                <button type="submit" class="my-4 btn-custom-success btn-lg btn-block" onclick="validateForm(event)">
+                    <i class="fa fa-shopping-cart"></i> Add to Bag
+                </button>
+            </form>
         </div>
+        <h4 class="mt-5">Need plant tips and tricks?</h4>
+        <p>Head to Botantica's <a href="{% url 'post_list' %}">The Plant Blog</a> for all your planting needs</p>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-12">
+        <h3 class="mt-3">Description</h3>
+        <p>{{ product.description }}</p>
     </div>
 </div>
 
 <script id="prices-data" type="application/json">
     {
         "sm": "{{ prices.sm|default:0 }}",
-        "med": "{{ prices.med|default:0 }}",
+        "md": "{{ prices.md|default:0 }}",
         "lg": "{{ prices.lg|default:0 }}",
         "smallest": "{{ smallest_price|default:0 }}"
     }
