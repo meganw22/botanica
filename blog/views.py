@@ -17,21 +17,29 @@ def post_detail(request, pk):
     """
     post = get_object_or_404(Post, pk=pk)
     comments = post.comments.all()
+    comment_form = CommentForm()
+    
     if request.method == 'POST':
-        comment_form = CommentForm(request.POST)
-        if comment_form.is_valid():
-            new_comment = comment_form.save(commit=False)
-            new_comment.post = post
-            new_comment.author = request.user
-            new_comment.save()
-    else:
-        comment_form = CommentForm()
+        if request.user.is_authenticated:
+            comment_form = CommentForm(request.POST)
+            if comment_form.is_valid():
+                new_comment = comment_form.save(commit=False)
+                new_comment.post = post
+                new_comment.author = request.user
+                new_comment.save()
+                messages.success(request, 'Your comment has been added!')
+                return redirect('post_detail', pk=pk)
+        else:
+            messages.error(request, 'You need to be logged in to comment.')
+            return redirect('post_detail', pk=pk)
+    
     return render(request, 'blog/post_detail.html', {'post': post, 'comments': comments, 'comment_form': comment_form})
+
 
 @login_required
 def post_new(request):
     """
-    View to create a new blog post. Requires the user to be an admin.
+    View to create a new blog post. Requires the user to be logged in.
     """
     if request.method == 'POST':
         form = PostForm(request.POST)
@@ -65,6 +73,17 @@ def post_edit(request, pk):
     return render(request, 'blog/post_edit.html', {'form': form})
 
 @login_required
+@user_passes_test(lambda u: u.is_staff)
+def post_delete(request, pk):
+    """
+    View to delete a blog post. Requires the user to be an admin.
+    """
+    post = get_object_or_404(Post, pk=pk)
+    post.delete()
+    messages.success(request, 'Post deleted successfully.')
+    return redirect('post_list')
+
+@login_required
 def delete_comment(request, pk):
     """
     View to delete a comment. Only the comment author can delete their comment.
@@ -78,3 +97,18 @@ def delete_comment(request, pk):
     comment.delete()
     messages.success(request, 'Comment deleted successfully.')
     return redirect('post_detail', pk=post_pk)
+
+@login_required
+def like_post(request, pk):
+    """
+    View to handle liking a post.
+    """
+    post = get_object_or_404(Post, pk=pk)
+    if request.user in post.likes.all():
+        post.likes.remove(request.user)
+        liked = False
+    else:
+        post.likes.add(request.user)
+        liked = True
+
+    return redirect('post_detail', pk=pk)
