@@ -15,38 +15,78 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Address',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(
+                    auto_created=True,
+                    primary_key=True,
+                    serialize=False,
+                    verbose_name='ID'
+                    )),
                 ('street_address1', models.CharField(max_length=80)),
-                ('street_address2', models.CharField(blank=True, max_length=255, null=True)),
+                ('street_address2', models.CharField(
+                    blank=True, max_length=255, null=True)),
                 ('town_city', models.CharField(max_length=40)),
-                ('county', models.CharField(blank=True, max_length=80, null=True)),
-                ('postcode', models.CharField(blank=True, max_length=20, null=True)),
+                ('county', models.CharField(
+                    blank=True, max_length=80, null=True)),
+                ('postcode', models.CharField(
+                    blank=True, max_length=20, null=True)),
                 ('country', models.CharField(max_length=40)),
             ],
         ),
         migrations.CreateModel(
             name='Order',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('order_id', models.CharField(editable=False, max_length=36, unique=True)),
+                ('id', models.BigAutoField(
+                    auto_created=True,
+                    primary_key=True,
+                    serialize=False,
+                    verbose_name='ID')),
+                ('order_id', models.CharField(
+                    editable=False,
+                    max_length=36,
+                    unique=True)),
                 ('customer_name', models.CharField(max_length=50)),
                 ('email_address', models.EmailField(max_length=254)),
                 ('contact_number', models.CharField(max_length=20)),
                 ('date_created', models.DateTimeField(auto_now_add=True)),
-                ('delivery_fee', models.DecimalField(decimal_places=2, default=0, max_digits=10)),
-                ('total_cost', models.DecimalField(decimal_places=2, default=0, max_digits=15)),
-                ('final_amount', models.DecimalField(decimal_places=2, default=0, max_digits=15)),
-                ('shipping_address', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='shipping_orders', to='checkout.address')),
+                ('delivery_fee', models.DecimalField(
+                    decimal_places=2,
+                    default=0,
+                    max_digits=10)),
+                ('total_cost', models.DecimalField(
+                    decimal_places=2,
+                    default=0,
+                    max_digits=15)),
+                ('final_amount', models.DecimalField(
+                    decimal_places=2, default=0, max_digits=15)),
+                ('shipping_address', models.ForeignKey(
+                    blank=True,
+                    null=True,
+                    on_delete=django.db.models.deletion.SET_NULL,
+                    related_name='shipping_orders',
+                    to='checkout.address'
+                    )),
             ],
         ),
         migrations.CreateModel(
             name='OrderItem',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(
+                    auto_created=True,
+                    primary_key=True,
+                    serialize=False,
+                    verbose_name='ID'
+                    )),
                 ('product_size', models.CharField(max_length=2, null=True)),
                 ('quantity_ordered', models.PositiveIntegerField()),
-                ('item_total', models.DecimalField(decimal_places=2, editable=False, max_digits=10)),
-                ('order', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='items', to='checkout.order')),
+                ('item_total', models.DecimalField(
+                    decimal_places=2,
+                    editable=False,
+                    max_digits=10)),
+                ('order', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    related_name='items',
+                    to='checkout.order'
+                    )),
             ],
         ),
     ]

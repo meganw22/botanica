@@ -3,10 +3,10 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import messages
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
-import json
 from django.http import JsonResponse
 from django.core.serializers.json import DjangoJSONEncoder
 from django.shortcuts import get_list_or_404
+
 
 def post_list(request):
     """
@@ -15,6 +15,7 @@ def post_list(request):
     posts = Post.objects.all().order_by('-published_date')
     return render(request, 'blog/post_list.html', {'posts': posts})
 
+
 def post_detail(request, pk):
     """
     View to display the details of a single blog post and its comments.
@@ -22,7 +23,7 @@ def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     comments = post.comments.all()
     comment_form = CommentForm()
-    
+
     if request.method == 'POST':
         if request.user.is_authenticated:
             comment_form = CommentForm(request.POST)
@@ -36,8 +37,14 @@ def post_detail(request, pk):
         else:
             messages.error(request, 'You need to be logged in to comment.')
             return redirect('post_detail', pk=pk)
-    
-    return render(request, 'blog/post_detail.html', {'post': post, 'comments': comments, 'comment_form': comment_form})
+
+    return render(
+        request, 'blog/post_detail.html', {
+            'post': post,
+            'comments': comments,
+            'comment_form': comment_form
+            })
+
 
 @login_required
 def post_new(request):
@@ -55,10 +62,12 @@ def post_new(request):
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
 
+
 @login_required
 def post_edit(request, pk):
     """
-    View to edit an existing blog post. Requires the user to be the author of the post.
+    View to edit an existing blog post.
+    Requires the user to be the author of the post.
     """
     post = get_object_or_404(Post, pk=pk)
     if request.user != post.author:
@@ -75,6 +84,7 @@ def post_edit(request, pk):
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
 
+
 @login_required
 @user_passes_test(lambda u: u.is_staff)
 def post_delete(request, pk):
@@ -86,20 +96,24 @@ def post_delete(request, pk):
     messages.success(request, 'Post deleted successfully.')
     return redirect('post_list')
 
+
 @login_required
 def delete_comment(request, pk):
     """
-    View to delete a comment. Only the comment author can delete their comment.
+    View to delete a comment.
+    Only the comment author can delete their comment.
     """
     comment = get_object_or_404(Comment, pk=pk)
     if request.user != comment.author:
-        messages.error(request, 'You are not authorized to delete this comment.')
+        messages.error(
+            request, 'You are not authorized to delete this comment.')
         return redirect('post_detail', pk=comment.post.pk)
-    
+
     post_pk = comment.post.pk
     comment.delete()
     messages.success(request, 'Comment deleted successfully.')
     return redirect('post_detail', pk=post_pk)
+
 
 @login_required
 def like_post(request, pk):
@@ -128,4 +142,8 @@ def post_list_json(request):
             'published_date': post.published_date,
         } for post in posts
     ]
-    return JsonResponse(posts_data, safe=False, json_dumps_params={'indent': 2}, encoder=DjangoJSONEncoder)
+    return JsonResponse(
+        posts_data, safe=False,
+        json_dumps_params={'indent': 2},
+        encoder=DjangoJSONEncoder
+        )

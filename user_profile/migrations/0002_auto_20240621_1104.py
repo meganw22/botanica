@@ -14,14 +14,25 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Address',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('phone_number', models.CharField(blank=True, max_length=20, null=True)),
-                ('street_address1', models.CharField(blank=True, max_length=80, null=True)),
-                ('street_address2', models.CharField(blank=True, max_length=80, null=True)),
-                ('town_or_city', models.CharField(blank=True, max_length=40, null=True)),
-                ('county', models.CharField(blank=True, max_length=80, null=True)),
-                ('postcode', models.CharField(blank=True, max_length=20, null=True)),
-                ('country', models.CharField(blank=True, max_length=40, null=True)),
+                ('id', models.BigAutoField(
+                    auto_created=True,
+                    primary_key=True,
+                    serialize=False,
+                    verbose_name='ID')),
+                ('phone_number', models.CharField(
+                    blank=True, max_length=20, null=True)),
+                ('street_address1', models.CharField(
+                    blank=True, max_length=80, null=True)),
+                ('street_address2', models.CharField(
+                    blank=True, max_length=80, null=True)),
+                ('town_or_city', models.CharField(
+                    blank=True, max_length=40, null=True)),
+                ('county', models.CharField(
+                    blank=True, max_length=80, null=True)),
+                ('postcode', models.CharField(
+                    blank=True, max_length=20, null=True)),
+                ('country', models.CharField(
+                    blank=True, max_length=40, null=True)),
             ],
         ),
         migrations.RemoveField(
@@ -55,6 +66,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='userprofile',
             name='default_address',
-            field=models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='user_profile.address'),
+            field=models.OneToOneField(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to='user_profile.address'
+                ),
         ),
     ]

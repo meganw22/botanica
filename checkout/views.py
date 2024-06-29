@@ -1,12 +1,12 @@
 from decimal import Decimal
-from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from .forms import OrderForm, AddressForm
 from .models import Order, OrderItem
-from user_profile.models import Address, UserProfile
+from user_profile.models import UserProfile
 from products.models import Product, PlantPrice
 from bag.contexts import bag_contents
 import stripe

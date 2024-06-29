@@ -1,5 +1,4 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.db.models import Q
 from .models import Product, PlantSize, PlantPrice
 
 
@@ -70,8 +69,7 @@ def filter_products(request):
     return render(request, 'products/filter_products.html', context)
 
 
-def filter_category_products(request, light=None, ease_of_care=None,
-        size=None, order=None):
+def filter_category_products(request, light=None,  ease_of_care=None, size=None, order=None):
     """
     View to filter products by light, ease of care, size, and order.
     """

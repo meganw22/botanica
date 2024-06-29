@@ -14,16 +14,27 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterModelOptions(
             name='address',
-            options={'verbose_name': 'Address', 'verbose_name_plural': 'Addresses'},
+            options={
+                'verbose_name': 'Address',
+                'verbose_name_plural': 'Addresses'},
         ),
         migrations.AddField(
             model_name='orderitem',
             name='product',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='products.product'),
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to='products.product'
+                ),
         ),
         migrations.AlterField(
             model_name='orderitem',
             name='item_total',
-            field=models.DecimalField(decimal_places=2, editable=False, max_digits=10, null=True),
+            field=models.DecimalField(
+                decimal_places=2,
+                editable=False,
+                max_digits=10,
+                null=True),
         ),
     ]

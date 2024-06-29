@@ -18,10 +18,14 @@ class Product(models.Model):
         ('difficult', 'Difficult'),
     ]
 
-    easy_name = models.CharField(max_length=200)
-    scientific_name = models.CharField(max_length=200, null=True, blank=True)
-    light = models.CharField(max_length=6, choices=LIGHT_CHOICES, default='medium')
-    ease_of_care = models.CharField(max_length=9, choices=EASE_OF_CARE_CHOICES, default='moderate')
+    easy_name = models.CharField(
+        max_length=200)
+    scientific_name = models.CharField(
+        max_length=200, null=True, blank=True)
+    light = models.CharField(
+        max_length=6, choices=LIGHT_CHOICES, default='medium')
+    ease_of_care = models.CharField(
+        max_length=9, choices=EASE_OF_CARE_CHOICES, default='moderate')
     pet_ok = models.BooleanField(default=False)
     image = models.ImageField(upload_to='', default='no-image-available.png')
     description = models.TextField(default='No description available')
@@ -48,7 +52,8 @@ class PlantSize(models.Model):
         ('lg', 'Large'),
     ]
 
-    plant = models.ForeignKey(Product, related_name='sizes', on_delete=models.CASCADE)
+    plant = models.ForeignKey(
+        Product, related_name='sizes', on_delete=models.CASCADE)
     size = models.CharField(max_length=10, choices=SIZE_CHOICES)
     height = models.CharField(max_length=20, blank=True)
 
@@ -67,7 +72,8 @@ class PlantPrice(models.Model):
         ('lg', 'Large'),
     ]
 
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='prices')
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name='prices')
     size = models.CharField(max_length=10, choices=SIZE_CHOICES)
     price = models.DecimalField(max_digits=5, decimal_places=2)
 

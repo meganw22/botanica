@@ -1,6 +1,5 @@
 import os
 import dj_database_url
-import stripe
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -14,9 +13,9 @@ SECRET_KEY = os.environ.get(
 
 DEBUG = True
 
-ALLOWED_HOSTS = [ 
-    'localhost', 
-    '127.0.0.1', 
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
     'botanica-fa2bcebcf990.herokuapp.com',
     '8000-meganw22-botanica-vrmnayolm1t.ws.codeinstitute-ide.net'
 ]

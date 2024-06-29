@@ -17,32 +17,39 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='order',
             name='country',
-            field=models.CharField(default='Default Country', max_length=40),
+            field=models.CharField(
+                default='Default Country', max_length=40),
         ),
         migrations.AddField(
             model_name='order',
             name='county',
-            field=models.CharField(blank=True, default='Default County', max_length=80, null=True),
+            field=models.CharField(
+                blank=True, default='Default County',
+                max_length=80, null=True),
         ),
         migrations.AddField(
             model_name='order',
             name='postcode',
-            field=models.CharField(blank=True, max_length=20, null=True),
+            field=models.CharField(
+                blank=True, max_length=20, null=True),
         ),
         migrations.AddField(
             model_name='order',
             name='street_address1',
-            field=models.CharField(default='Default Street Address', max_length=80),
+            field=models.CharField(
+                default='Default Street Address', max_length=80),
         ),
         migrations.AddField(
             model_name='order',
             name='street_address2',
-            field=models.CharField(blank=True, max_length=255, null=True),
+            field=models.CharField(
+                blank=True, max_length=255, null=True),
         ),
         migrations.AddField(
             model_name='order',
             name='town_city',
-            field=models.CharField(default='Default Town', max_length=40),
+            field=models.CharField(
+                default='Default Town', max_length=40),
         ),
         migrations.DeleteModel(
             name='Address',

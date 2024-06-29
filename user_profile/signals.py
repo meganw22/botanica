@@ -7,7 +7,7 @@ from .models import UserProfile, Address
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     """
-    Signal to create a UserProfile and an associated Address 
+    Signal to create a UserProfile and an associated Address
     when a new User is created.
     """
     if created:

@@ -21,16 +21,28 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='product',
             name='ease_of_care',
-            field=models.CharField(choices=[('easy', 'Easy'), ('moderate', 'Moderate'), ('difficult', 'Difficult')], default='moderate', max_length=9),
+            field=models.CharField(choices=[
+                ('easy', 'Easy'),
+                ('moderate', 'Moderate'),
+                ('difficult', 'Difficult')
+                ], default='moderate', max_length=9),
         ),
         migrations.AddField(
             model_name='product',
             name='light',
-            field=models.CharField(choices=[('low', 'Low'), ('medium', 'Medium'), ('high', 'Bright')], default='medium', max_length=6),
+            field=models.CharField(choices=[
+                ('low', 'Low'),
+                ('medium', 'Medium'),
+                ('high', 'Bright')
+                ], default='medium', max_length=6),
         ),
         migrations.AlterField(
             model_name='product',
             name='height',
-            field=models.CharField(choices=[('short', 'Short'), ('medium', 'Medium'), ('tall', 'Tall')], default='medium', max_length=6),
+            field=models.CharField(choices=[
+                ('short', 'Short'),
+                ('medium', 'Medium'),
+                ('tall', 'Tall')
+                ], default='medium', max_length=6),
         ),
     ]

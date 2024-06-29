@@ -1,13 +1,16 @@
 from django.contrib import admin
 from .models import Product, PlantSize, PlantPrice
 
+
 class PlantSizeInline(admin.TabularInline):
     model = PlantSize
     extra = 0
 
+
 class PlantPriceInline(admin.TabularInline):
     model = PlantPrice
     extra = 0
+
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
@@ -28,9 +31,10 @@ class ProductAdmin(admin.ModelAdmin):
     ]
 
     ordering = (
-        'easy_name', 
+        'easy_name',
     )
 
     inlines = [PlantSizeInline, PlantPriceInline]
+
 
 admin.site.register(Product, ProductAdmin)

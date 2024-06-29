@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import profile, edit_profile, delete_account, confirm_delete_account
+from .views import delete_account, confirm_delete_account
 
 urlpatterns = [
     path('', views.profile, name='profile'),
@@ -8,4 +8,3 @@ urlpatterns = [
     path('delete/', confirm_delete_account, name='confirm_delete_account'),
     path('delete/confirm/', delete_account, name='delete_account'),
 ]
-

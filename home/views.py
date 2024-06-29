@@ -2,12 +2,13 @@ from django.shortcuts import render
 from products.models import Product
 from django.db.models import Q
 
-# Create your views here.
+
 def index(request):
     return render(request, 'home/index.html')
 
-# Search View
+
 def search(request):
+    """Search views"""
     query = request.GET.get('q')
     if query:
         results = Product.objects.filter(

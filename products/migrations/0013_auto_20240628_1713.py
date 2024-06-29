@@ -13,11 +13,19 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='plantprice',
             name='size',
-            field=models.CharField(choices=[('sm', 'Small'), ('md', 'Medium'), ('lg', 'Large')], max_length=10),
+            field=models.CharField(choices=[
+                ('sm', 'Small'),
+                ('md', 'Medium'),
+                ('lg', 'Large')
+                ], max_length=10),
         ),
         migrations.AlterField(
             model_name='plantsize',
             name='size',
-            field=models.CharField(choices=[('sm', 'Small'), ('md', 'Medium'), ('lg', 'Large')], max_length=10),
+            field=models.CharField(choices=[
+                ('sm', 'Small'),
+                ('md', 'Medium'),
+                ('lg', 'Large')],
+                max_length=10),
         ),
     ]

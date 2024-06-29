@@ -16,7 +16,6 @@ class StripeWH_Handler:
         """
         Handle a generic/unknown/unexpected webhook event
         """
-        logger.info(f'Unhandled Webhook received: {event["type"]}')
         return HttpResponse(
             content=f'Unhandled Webhook received: {event["type"]}',
             status=200)
@@ -29,8 +28,6 @@ class StripeWH_Handler:
         pid = intent['id']
         metadata = intent['metadata']
         bag = json.loads(metadata['bag'])
-        username = metadata['username']
-        save_info = metadata.get('save_info', False)
 
         billing_details = intent['charges']['data'][0]['billing_details']
         shipping_details = intent['shipping']
@@ -52,7 +49,6 @@ class StripeWH_Handler:
                 break
             except Order.DoesNotExist:
                 attempts += 1
-                logger.info(f'Order not found, attempt {attempts}')
                 time.sleep(1)
 
         if order_exists:
@@ -90,7 +86,9 @@ class StripeWH_Handler:
                     )
 
                 return HttpResponse(
-                    content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
+                    content=f'Webhook received: {
+                        event["type"]
+                        } | SUCCESS: Created order in webhook',
                     status=200)
 
             except Exception as e:

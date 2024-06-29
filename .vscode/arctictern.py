@@ -61,12 +61,13 @@ def get_versions():
     else:
         with open(".vscode/version.txt", "w") as f:
             f.write(str(THIS_VERSION))
-    
+
     r = requests.get(BASE_URL + ".vscode/version.txt")
     CURRENT_VERSION = float(r.content)
 
     return {"this_version": THIS_VERSION,
             "current_version": CURRENT_VERSION}
+
 
 def needs_upgrade():
     """
@@ -76,7 +77,7 @@ def needs_upgrade():
     """
 
     versions = get_versions()
-    
+
     print(f"Upstream version: {versions['current_version']}")
     print(f"Local version: {versions['this_version']}")
 
@@ -106,8 +107,9 @@ def build_post_upgrade():
         content += FINAL_LINES
         with open(".vscode/post_upgrade.sh", "w") as f:
             f.writelines(content)
-    
-    print("Built post_upgrade.sh. Restart your workspace for it to take effect.")
+
+    print(
+        "Built post_upgrade.sh. Restart your workspace for it to take effect.")
 
 
 def process(file, suffix):
@@ -115,7 +117,7 @@ def process(file, suffix):
     Replaces and optionally backs up the files that
     need to be changed.
     Arguments: file - a path and filename
-               suffix - the suffix to the BASE_URL
+                suffix - the suffix to the BASE_URL
     """
 
     if file == ".gitpod.dockerfile" or file == ".gitpod.yml":
@@ -133,7 +135,7 @@ def process(file, suffix):
         if result != 0:
             os.remove(f"{file}.tmp")
             return True
-    
+
     return False
 
 
@@ -153,7 +155,7 @@ def start_migration():
         result = process(file["filename"], file["url"])
         if result == True:
             push_and_recreate = True
-    
+
     if push_and_recreate:
         write_version()
 

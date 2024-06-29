@@ -3,6 +3,7 @@ import os
 from django.conf import settings
 from django.core.files.storage import default_storage
 
+
 class Command(BaseCommand):
     help = 'Upload local media files to S3'
 

@@ -43,6 +43,9 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='order',
             name='address',
-            field=models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='user_profile.address'),
+            field=models.OneToOneField(
+                blank=True, null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to='user_profile.address'),
         ),
     ]
