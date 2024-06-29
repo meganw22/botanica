@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from products.models import Product, PlantPrice
 from django.urls import reverse
+from django.utils.html import format_html
 
 
 def add_to_bag(request, product_id):
@@ -31,9 +32,15 @@ def add_to_bag(request, product_id):
             item['quantity'] += quantity
             messages.success(
                 request,
-                f'Updated quantity: {item["quantity"]}x {product.easy_name} '
-                f'({selected_height}).'
+                format_html(
+                    'Updated quantity: {}x {} ({}). '
+                    '<div class="mt-auto d-flex justify-content-between '
+                    'align-items-center"><a href="{}" class="btn '
+                    'btn-custom-success">Go to Bag</a></div>',
+                    item["quantity"], product.easy_name, selected_height,
+                    reverse("shopping_bag")
                 )
+            )
             break
     else:
         new_item = {
@@ -50,9 +57,14 @@ def add_to_bag(request, product_id):
         bag.append(new_item)
         messages.success(
             request,
-            f'Added {new_item["quantity"]}x {product.easy_name} '
-            f'({selected_height}) to the bag.'
+            format_html(
+                'Added {}x {} ({}) to the bag. <div class="mt-auto d-flex '
+                'justify-content-between align-items-center"><a href="{}" '
+                'class="btn btn-custom-success">Go to Bag</a></div>',
+                new_item["quantity"], product.easy_name, selected_height,
+                reverse("shopping_bag")
             )
+        )
 
     request.session['bag'] = bag
 
