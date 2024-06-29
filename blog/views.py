@@ -35,7 +35,6 @@ def post_detail(request, pk):
     
     return render(request, 'blog/post_detail.html', {'post': post, 'comments': comments, 'comment_form': comment_form})
 
-
 @login_required
 def post_new(request):
     """
