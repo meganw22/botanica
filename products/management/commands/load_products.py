@@ -35,9 +35,7 @@ class Command(BaseCommand):
                         'light': product_data['light'],
                         'ease_of_care': product_data['ease_of_care'],
                         'price': product_data.get('price', 0),
-                        'image': product_data.get(
-                            'image', 'default_images/no-image-available.png'
-                        ),
+                        'image': product_data.get('image'),
                         'description': product_data['description'],
                     }
                 )
@@ -48,8 +46,8 @@ class Command(BaseCommand):
                     height=product_data['height-sm']
                 )
                 PlantSize.objects.create(
-                    plant=product, size='med',
-                    height=product_data['height-med']
+                    plant=product, size='md',
+                    height=product_data['height-md']
                 )
                 PlantSize.objects.create(
                     plant=product, size='lg',
