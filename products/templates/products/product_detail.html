@@ -75,16 +75,16 @@
                     <i class="fa fa-shopping-cart"></i> Add to Bag
                 </button>
             </form>
+            <h4 class="mt-5">Need plant tips and tricks?</h4>
+            <p>Head to Botantica's <a href="{% url 'post_list' %}">The Plant Blog</a> for all your planting needs</p>
         </div>
-        <h4 class="mt-5">Need plant tips and tricks?</h4>
-        <p>Head to Botantica's <a href="{% url 'post_list' %}">The Plant Blog</a> for all your planting needs</p>
     </div>
-</div>
 
-<div class="row mt-5">
-    <div class="col-12">
-        <h3 class="mt-3">Description</h3>
-        <p>{{ product.description }}</p>
+    <div class="row mt-5">
+        <div class="col-12">
+            <h3 class="mt-3">Description</h3>
+            <p>{{ product.description }}</p>
+        </div>
     </div>
 </div>
 
@@ -97,59 +97,6 @@
     }
 </script>
 
-<script>
-    function selectHeight(height) {
-        document.getElementById('selected-height-input').value = height;
-        updatePriceDisplay(height);
-    }
-
-    function updatePriceDisplay(height) {
-        const prices = JSON.parse(document.getElementById('prices-data').textContent);
-        const price = prices[height] || prices['smallest'];
-        document.getElementById('priceDisplay').textContent = price;
-    }
-
-    function decreaseQuantity(button) {
-        var quantityInput = button.nextElementSibling;
-        var currentValue = parseInt(quantityInput.value);
-        if (currentValue > 1) {
-            quantityInput.value = currentValue - 1;
-        } else {
-            alert("Quantity cannot be less than 1.");
-        }
-        updateQuantity(quantityInput);
-    }
-
-    function increaseQuantity(button) {
-        var quantityInput = button.previousElementSibling;
-        var currentValue = parseInt(quantityInput.value);
-        if (currentValue < 99) {
-            quantityInput.value = currentValue + 1;
-        } else {
-            alert("Quantity cannot be more than 99.");
-        }
-        updateQuantity(quantityInput);
-    }
-
-    function updateQuantity(input) {
-        var value = parseInt(input.value);
-        if (isNaN(value) || value < 1) {
-            alert("Quantity must be a number between 1 and 99.");
-            input.value = 1;
-        } else if (value > 99) {
-            alert("Quantity must be a number between 1 and 99.");
-            input.value = 99;
-        }
-        document.getElementById('quantity-input').value = input.value;
-    }
-
-    function validateForm(event) {
-        const selectedHeight = document.getElementById('selected-height-input').value;
-        if (!selectedHeight) {
-            event.preventDefault();
-            alert('Please select a height before adding to the bag.');
-        }
-    }
-</script>
+<script src="{% static 'js/script.js' %}"></script>
 
 {% endblock %}
