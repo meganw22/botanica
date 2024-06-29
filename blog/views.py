@@ -45,6 +45,26 @@ def post_new(request):
     return render(request, 'blog/post_edit.html', {'form': form})
 
 @login_required
+def post_edit(request, pk):
+    """
+    View to edit an existing blog post. Requires the user to be the author of the post.
+    """
+    post = get_object_or_404(Post, pk=pk)
+    if request.user != post.author:
+        messages.error(request, 'You are not authorized to edit this post.')
+        return redirect('post_detail', pk=post.pk)
+
+    if request.method == 'POST':
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Post updated successfully.')
+            return redirect('post_detail', pk=post.pk)
+    else:
+        form = PostForm(instance=post)
+    return render(request, 'blog/post_edit.html', {'form': form})
+
+@login_required
 def delete_comment(request, pk):
     """
     View to delete a comment. Only the comment author can delete their comment.

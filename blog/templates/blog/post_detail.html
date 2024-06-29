@@ -9,6 +9,9 @@
             <div class="content my-4">
                 {{ post.content | linebreaks }}
             </div>
+            {% if request.user == post.author %}
+                <a href="{% url 'post_edit' post.pk %}" class="btn btn-primary">Edit Post</a>
+            {% endif %}
         </div>
     </div>
 
