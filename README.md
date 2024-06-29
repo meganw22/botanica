@@ -1,11 +1,11 @@
 # Botanica Houseplants
-see deloyed project here
+Find the deployed project [here](https://botanica-fa2bcebcf990.herokuapp.com/)!
 
 ## Introduction
-Botanica is an E-Commerce site 
+Botanica is your go to online destination for the most vibrant houseplants. We offer a wide selection of indoor plants, for both novice plant owners and experienced green thumbs!
+Enjoy our Plant care blog for tips and tricks to help you keep your plants thriving and enoy our seamless shopping experience complete with nature in mind.
 
 ## User Stories
-Agile tool used to organise user stories and development of the website.
 ### Customer
 ### Registered Customer
 ### Admin
@@ -25,7 +25,7 @@ Created using dbdiagram.io
 ### Nav Bar, auth displays, products page, Facebook page, future
 
 ## Full Deployment to Heroku:
-To make the locally running website active on a permanent server I needed to take multiple steps to for successful deployment: 
+To make the locally running website active on a permanent server I needed to take multiple steps to for successful deployment:
 -	Setting up an app in Heroku to deploy to a interactive public website.
 -	Creation of an external database to store data in a structured way that can be easily accessed managed and updated
 -	Setting up a hosting service for static and media files compatible with the Heroku server
@@ -40,7 +40,7 @@ To make the locally running website active on a permanent server I needed to tak
 ### Preparation of gitpod environment for deployment
 1.	Installed `dj_database_url` and `psycopg2` through the terminal and added them to `requirements.txt`.
 2.	Created a temporary `DATABASE_URL` in settings.py and created a superuser
-3.	Ran commands to make migrations and migrate 
+3.	Ran commands to make migrations and migrate
 4.	After running migrations, I confirmed that the ElephantSQL database was connected by checking `auth_user`.
 5.	I installed `gunicorn`, created a `Procfile`, and added Heroku to allowed hosts in settings.py.
 6.	Added, committed and pushed these changes to GitHub.
@@ -61,7 +61,7 @@ By following these steps, I successfully deployed my website to Heroku and integ
 
 
 # Testing (seperate document)
-## Manual Testing
-## Validator
+For the full range of Testing, see [TESTING.md](TESTING.md)
 
 ## Credits
+-
