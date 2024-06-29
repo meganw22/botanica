@@ -344,6 +344,23 @@ h1 {
     margin: 0;
 }
 
+/* ---------------------------------Plant Blog */
+
+.comment-content {
+    max-height: 3em;
+    overflow: hidden;
+    white-space: wrap;
+}
+
+textarea {
+    max-height: 3em;
+    overflow: auto;
+    display: block;
+    width: 40%;
+    padding: 0.375rem 0.75rem;
+    line-height: 1.5;
+}
+
 /* ---------------------------------Shopping bag */
 
 .shopping-cart .cart-item {
@@ -465,9 +482,4 @@ h1 {
         padding-top: 6em;
         padding-bottom: 4em;
     }
-
-    /* .lg-margin {
-        margin-left: 3rem;
-        margin-right: 3rem;
-    } */
 }

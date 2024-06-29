@@ -2,23 +2,44 @@
 
 {% block content %}
 <div class="container content-spacing mt-5">
-    <h1>{{ post.title }}</h1>
-    <p>{{ post.published_date }}</p>
-    <p>{{ post.content }}</p>
-
-    <h2>Comments</h2>
-    {% for comment in comments %}
-        <div class="comment">
-            <p>{{ comment.author }}: {{ comment.content }}</p>
-            <p>{{ comment.published_date }}</p>
+    <div class="row">
+        <div class="col-12">
+            <h1 class="display-4">{{ post.title }}</h1>
+            <p class="text-muted">{{ post.published_date }}</p>
+            <div class="content my-4">
+                {{ post.content | linebreaks }}
+            </div>
         </div>
-    {% endfor %}
+    </div>
 
-    <h2>Add a comment</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ comment_form.as_p }}
-        <button type="submit">Add Comment</button>
-    </form>
+    <div class="row mt-5">
+        <div class="col-12">
+            <h2 class="mb-4">Comments</h2>
+            {% for comment in comments %}
+                <div class="comment mb-3 p-3 border rounded">
+                    <p><strong>{{ comment.author }}</strong> said:</p>
+                    <p class="comment-content">{{ comment.content }}</p>
+                    <p class="text-muted small">{{ comment.published_date }}</p>
+                    {% if request.user == comment.author %}
+                        <form method="post" action="{% url 'delete_comment' comment.pk %}" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12">
+            <h2 class="mb-4">Add a comment</h2>
+            <form method="post" class="p-3 border rounded">
+                {% csrf_token %}
+                {{ comment_form.as_p }}
+                <button type="submit" class="btn btn-custom-success">Add Comment</button>
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock %}
