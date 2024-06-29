@@ -1,6 +1,7 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
 from . import views
+from .views import post_list_json
 
 urlpatterns = [
     path('', views.post_list, name='post_list'),
@@ -11,4 +12,5 @@ urlpatterns = [
     path('post/<int:pk>/like/', views.like_post, name='like_post'),
     path('post/<int:pk>/delete_comment/', views.delete_comment, name='delete_comment'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
+    path('api/posts/', post_list_json, name='post_list_json'),
 ]

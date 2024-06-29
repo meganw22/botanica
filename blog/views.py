@@ -3,6 +3,10 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import messages
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
+import json
+from django.http import JsonResponse
+from django.core.serializers.json import DjangoJSONEncoder
+from django.shortcuts import get_list_or_404
 
 def post_list(request):
     """
@@ -111,3 +115,17 @@ def like_post(request, pk):
         liked = True
 
     return redirect('post_detail', pk=pk)
+
+
+def post_list_json(request):
+    posts = get_list_or_404(Post)
+    posts_data = [
+        {
+            'id': post.id,
+            'title': post.title,
+            'author': post.author.username,
+            'content': post.content,
+            'published_date': post.published_date,
+        } for post in posts
+    ]
+    return JsonResponse(posts_data, safe=False, json_dumps_params={'indent': 2}, encoder=DjangoJSONEncoder)
