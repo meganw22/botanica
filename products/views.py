@@ -69,7 +69,8 @@ def filter_products(request):
     return render(request, 'products/filter_products.html', context)
 
 
-def filter_category_products(request, light=None,  ease_of_care=None, size=None, order=None):
+def filter_category_products(request, light=None,  ease_of_care=None,
+                             size=None, order=None):
     """
     View to filter products by light, ease of care, size, and order.
     """

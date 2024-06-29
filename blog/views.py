@@ -123,10 +123,10 @@ def like_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.user in post.likes.all():
         post.likes.remove(request.user)
-        liked = False
+        messages.info(request, "You have unliked the post.")
     else:
         post.likes.add(request.user)
-        liked = True
+        messages.success(request, "You have liked the post.")
 
     return redirect('post_detail', pk=pk)
 
