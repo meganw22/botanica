@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import UserProfile, Address
 from checkout.models import Order
+from django_countries import countries
 
 
 @login_required
@@ -56,7 +57,10 @@ def edit_profile(request):
             'country'
         ]
         for field in address_fields:
-            setattr(address, field, request.POST.get(field, '') or None)
+            value = request.POST.get(field, '')
+            if field == 'country' and value == '':
+                value = None
+            setattr(address, field, value or None)
         address.save()
 
         return redirect('profile')
@@ -64,6 +68,7 @@ def edit_profile(request):
     context = {
         'user_profile': user_profile,
         'address': user_profile.default_address,
+        'countries': countries
     }
     return render(request, 'user_profile/editprofile.html', context)
 
