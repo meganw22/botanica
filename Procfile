@@ -1,1 +1,1 @@
-web: gunicorn botanica.wsgi:application
+web: gunicorn botanica.wsgi:applicationit
