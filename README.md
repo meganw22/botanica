@@ -60,7 +60,7 @@ To make the locally running website active on a permanent server I needed to tak
 By following these steps, I successfully deployed my website to Heroku and integrated AWS for static and media file hosting.
 
 
-# Testing (seperate document)
+# Testing
 For the full range of Testing, see [TESTING.md](TESTING.md)
 
 ## Credits
