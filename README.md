@@ -79,7 +79,7 @@ By following these steps, I successfully deployed my website to Heroku and integ
 After the initial deployment, changes to the css in the static files may change and when the next auto build is sent to heroku these changes are always pushed.
 - In the terminal, log in to heroku using `heroku login -i` and then use `heroku run python manage.py collectstatic --noinput`.
 - Open up your app in Heroku, click `more` button and restart all dynos.
-Send New Migrations to Heroku
+### Send New Migrations to Heroku
 - If you find your latest migrations are not working on the deployed site, test the heroku migrations by `heroku run python3 manage.py showmigrations --app botanica`
 - Login to Heroku through you IDE (`heroku login -i`) and makemigrations using `heroku run python3 manage.py makemigrations --app botanica`
 - then migrate using `heroku run python3 manage.py migrate --app botanica`

@@ -14,7 +14,7 @@ class Post(models.Model):
     published_date = models.DateTimeField(auto_now_add=True)
     likes = models.ManyToManyField(
         User, related_name='liked_posts', blank=True)
-    image = models.ImageField(upload_to='blog', blank=True, null=True)
+    image = models.ImageField(upload_to='', blank=True, null=True)
 
     def __str__(self):
         return self.title
