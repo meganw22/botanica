@@ -11,8 +11,9 @@ def create_user_profile(sender, instance, created, **kwargs):
     when a new User is created.
     """
     if created:
-        address = Address.objects.create()
-        UserProfile.objects.create(user=instance, default_address=address)
+        user_profile = UserProfile.objects.create(user=instance)
+        address = Address.objects.create(user=instance)
+        user_profile.save()
 
 
 @receiver(post_save, sender=User)
@@ -22,7 +23,8 @@ def save_user_profile(sender, instance, **kwargs):
     If the UserProfile does not exist, it creates one along with an Address.
     """
     if not hasattr(instance, 'userprofile'):
-        address = Address.objects.create()
-        UserProfile.objects.create(user=instance, default_address=address)
+        user_profile = UserProfile.objects.create(user=instance)
+        address = Address.objects.create(user=instance)
+        user_profile.save()
     else:
         instance.userprofile.save()
