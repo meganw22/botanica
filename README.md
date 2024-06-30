@@ -6,9 +6,26 @@ Botanica is your go to online destination for the most vibrant houseplants. We o
 Enjoy our Plant care blog for tips and tricks to help you keep your plants thriving and enoy our seamless shopping experience complete with nature in mind.
 
 ## User Stories
-### Customer
-### Registered Customer
-### Admin
+The development of Botanica Houseplants is driven by a clear and well-defined purpose to address the needs of the target audiences, which include customers, registered users, and administrators. Each user story is used to improve the user experience, streamline processes, and provide features that cater to the specific needs of these groups.
+### As a Customer
+1. I want to view products and add items to my shopping bag depending on size and cost. This allows me to easily browse and select products based on my preferences, allow me to make informed decisions.
+2. I want to update or remove products from my bag before checking out. This provides me the flexibility to modify my orders as needed, ensuring my shopping bag contains only the items I want to purchase.
+3. I want to view my shopping bag and see the price of each item, delivery cost and grand total of my bag. This offers transparency on the total cost before making a purchase, enabling me to review and manage my budget effectively.
+4. I want to be able to make an informed decision on my purchase and see product descriptors. This provides detailed information about the products to aid in decision-making, helping me choose products that best meet my needs and preferences.
+5. I want to be able to view the plant blog for tips on plant maintenance. This offers additional value through expert advice on plant care, allowing me to learn how to better care for my plants, leading to higher satisfaction.
+6. I want to view the webpages in a consistent manner, so navigation is structured well and is intuitive and easy to follow, enabling me to easily find the information or products I am looking for.
+
+### As a registered user
+1. I want to be able to read, update, or delete my personal information. This ensures that I have control over my personal data, allowing me to keep my information up-to-date and maintain privacy.
+2. I want to receive feedback after making a purchase, so I know whether my transaction was successful or if there was an issue. This provides reassurance on the transaction status, allowing me to respond to the issue if required.
+3. I want to be able to read, write, update, and delete my comments on plant blog posts. This enhances interaction and engagement with the blog content, enabling me to participate in discussions and share my thoughts.
+4. I want to buy products through a secure checkout. This ensures that my payment information is protected, and that my data is secure.
+5. I want to be able to like and comment on plant blogs for more user interaction. This gives sense of community and engagement with the content, allowing me to interact with blog posts and other users, enhancing my experience.
+
+### As an Administrator
+1. I want to manage user roles and permissions, so I can control who has access to different parts of the website and its functionalities. This ensures the website runs smoothly with appropriate access controls, allowing me to assign roles to maintain security and efficiency.
+2. I want to ensure that customers have a simple signup/login process with any errors displayed to the user. This provides good user experience through a seamless registration process and reduces barriers for new users to sign up.
+3.  I want to manage the blog section of the website, where I can post articles about plant care tips, new arrivals, and other relevant information for customers. This keeps the content fresh and informative, driving engagement and return visits.
 
 ## Entity Relationship Diagrams (ERD)
 ![ERD-botanica](botanica-ERD.png)
