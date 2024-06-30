@@ -53,8 +53,8 @@ Using Google fonts, I selected the font 'Fredoka' to use throughout the website.
 
 ### Wireframes
 
-## Features
-### Base Template
+# Features
+## Base Template
 The base template has been implemented to be used on every page within the website, this gives a clean smooth user experience allowing users to always know where to navigate to.
 Within the Nav Bar, the title of the webpage has a link to return the user back to the homepage.
 
@@ -65,7 +65,7 @@ There are list items including options to `Shop all Plants`, explore `Categories
 ![nav-categories](https://github.com/meganw22/botanica/assets/141934888/56b43ef7-835e-43d8-8530-f7505802deaa)
 
 
-### User Login/Logout Pages
+## User Login/Logout Pages
 To login, the user has to select the user icon on the nav bar and click login:
 
 ![user-no-login](https://github.com/meganw22/botanica/assets/141934888/e26fa413-fc60-434f-80ee-ad8bfd512f02)
@@ -87,7 +87,7 @@ They will need to confirm the sign out through a secondary sign out page. User l
 ![signout-yes](https://github.com/meganw22/botanica/assets/141934888/580e0562-7e60-4f5e-bfab-055687cd3bef)
 
 
-### Plant Products
+## Plant Products
 Botanica has a variety of plants to choose from including plant features and requirements such as light levels, how easy or difficult a plant is to care for and whether the plant is safe around pets. These options are neatly displayed as filter items:
 
 ![all-plant-filters](https://github.com/meganw22/botanica/assets/141934888/80661631-179a-4df6-a7e4-dcf98fbcc76d)
@@ -102,7 +102,7 @@ Once the user has added a product to their bag, a success message will be displa
 ![success-add-bag](https://github.com/meganw22/botanica/assets/141934888/b0ce84d5-9dbc-4e63-994c-8e2bde0e580a)
 
 
-### The Plant Blog
+## The Plant Blog
 ![plant-blog](https://github.com/meganw22/botanica/assets/141934888/40d0b5f1-7799-4ac8-9cd2-d09c1b3c8eb1)
 
 
@@ -111,28 +111,44 @@ Registered users can delete their comments and unlike posts if they so wish and 
 
 ![blog-likes-comments](https://github.com/meganw22/botanica/assets/141934888/7cc7b384-5f9c-477a-94b2-6eec209f266a)
 
-### User Profile
+## User Profile
 The users profile can be viewed through clicking the User Icon in the Nav Bar and selecting `View Profile`
 When the Users profile renders, it shows options to `Manage Addresses`, `Edit Details`, `Delete Profile` and provides a comprehensive `Order History`
 
 ![login-user-profile](https://github.com/meganw22/botanica/assets/141934888/ffb09b0c-b67c-469f-a039-f754e2975874)
 
 
+## Checkout
+The Checkout page is made up of a validation form for the user to submit their name, address and payment details through a Stripe Integrated Payment system. 
+
+The User has the ability to choose an existing address or enter a new address. 
+
+![checkout-new](https://github.com/meganw22/botanica/assets/141934888/db702578-b5e8-421a-a377-fbcf0451daf9)
+
+The existing address is saved from the users first order:
+
+![checkout-existing](https://github.com/meganw22/botanica/assets/141934888/da5441c9-a9bd-49bb-a354-30d41c55754a)
+
+Double authentication has been applied and when submitting the correct card number and valid form details the user is directed to a secure confirmation page:
+
+![checkout-2-auth](https://github.com/meganw22/botanica/assets/141934888/fc94286a-61ed-403f-92da-a100494449df)
+
+If the user choses fail, the user is redirected to the checkout page and prompted to try a different card and try again.
+Once the user clicks `complete` on the dual authentication pop up, they are directed to a `Success page` with their order details:
+
+![success-order](https://github.com/meganw22/botanica/assets/141934888/cf641ba5-08d8-40b1-a8b0-8d71186a032a)
 
 
-
-### Checkout
-
-### Facebook Business page
+## Facebook Business page
 I have created a Facebook Business page to market my website, find the link to the market [here](https://www.facebook.com/profile.php?id=61561624593985&is_tour_dismissed)
 
 ![Botanica-facebook-1](https://github.com/meganw22/botanica/assets/141934888/1b77c361-07cc-4ba0-a397-109cde5facb4)
 ![Botanica-facebook-2](https://github.com/meganw22/botanica/assets/141934888/ff953272-6695-4631-a40e-47ca4c2d1c3a)
 
 
-### Future Implementations
+## Future Implementations
 
-## Full Deployment to Heroku:
+# Full Deployment to Heroku:
 To make the locally running website active on a permanent server I needed to take multiple steps to for successful deployment:
 -	Setting up an app in Heroku to deploy to an interactive public website.
 -	Creation of an external database to store data in a structured way that can be easily accessed managed and updated
