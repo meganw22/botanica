@@ -1,14 +1,19 @@
 # Botanica Houseplants
-Find the deployed project [here](https://botanica-fa2bcebcf990.herokuapp.com/)!
+![header](https://github.com/meganw22/botanica/assets/141934888/99761b8f-da72-45c3-a88d-1f033d5c4560)
+
+**Find the deployed project [here](https://botanica-fa2bcebcf990.herokuapp.com/)!**
 
 ## Introduction
 Botanica is your go to online destination for the most vibrant houseplants. We offer a wide selection of indoor plants, for both novice plant owners and experienced green thumbs!
 Enjoy our Plant care blog for tips and tricks to help you keep your plants thriving and enoy our seamless shopping experience complete with nature in mind.
 
 ## User Stories
-The development of Botanica Houseplants is driven by a clear and well-defined purpose to address the needs of the target audiences, which include customers, registered users, and administrators. Each user story is used to improve the user experience, streamline processes, and provide features that cater to the specific needs of these groups.
-An agile tool was used in the method of planning this project which can be observed in the image and further explanation is provided below:
-![User Stories Image]()
+- The development of Botanica Houseplants is driven by a clear and well-defined purpose to address the needs of the target audiences, which include customers, registered users, and administrators.
+- Each user story is used to improve the user experience, streamline processes, and provide features that cater to the specific needs of these groups.
+- An agile tool was used in the method of planning this project which can be observed in the image and further explanation is provided below:
+
+![user-stories](https://github.com/meganw22/botanica/assets/141934888/de29d90b-9d64-4285-95dc-28c7e9b5a270)
+
 ### As a Customer
 1. I want to view products and add items to my shopping bag depending on size and cost. This allows me to easily browse and select products based on my preferences, allow me to make informed decisions.
 2. I want to update or remove products from my bag before checking out. This provides me the flexibility to modify my orders as needed, ensuring my shopping bag contains only the items I want to purchase.
@@ -34,14 +39,33 @@ An agile tool was used in the method of planning this project which can be obser
 Created using dbdiagram.io
 
 ## User Experience
-### Wireframes
-#### home
-#### products, bag, checkout, profile
+Good user experience is very important to me, I like to have practical simplicity with easy navigation to encourage website visitors to explore the website with good intentions of making a purchase.
+I know I have achieved my goals of good user experience and have recieved feedback from test users about the design and layout of the website.
+
 ### Colour Scheme
-## Font
+I chose to keep my colours in keeping with nature and desided on earthy greens, whites and greys with a contrasting peach colour to accent all the buttons in the site.
+![colour-scheme](https://github.com/meganw22/botanica/assets/141934888/262625f6-d1e4-4530-9961-48df02592e62)
+
+### Font
+Using Google fonts, I selected the font 'Fredoka' to use throughout the website. I found it to be a simple, quirky and very easy to read.
+
+### Wireframes
 
 ## Features
-### Nav Bar, auth displays, products page, Facebook page, future
+### Base Template
+The base template has ben implemented to be used on every page within the website, this gives a clean smooth user experience allowing users to always know where to navigate to.
+Within the Nav Bar, the title of the webpage has a link to return the user back to the homepage. 
+![nav-bar](https://github.com/meganw22/botanica/assets/141934888/48307d51-d40c-494d-9146-26fc21ac3d10)
+There are list items including options to `Shop all Plants`, explore 'Categories', visit `The Plant Blog`, use the search bar to find a specific plant, navigate to your bag and discover the user profile.
+![nav-categories](https://github.com/meganw22/botanica/assets/141934888/56b43ef7-835e-43d8-8530-f7505802deaa)
+
+
+### Authenticated Displays
+### Plant products
+### The Plant Blog 
+### Checkout
+### Facebook Business page
+### Future Implementations
 
 ## Full Deployment to Heroku:
 To make the locally running website active on a permanent server I needed to take multiple steps to for successful deployment:
