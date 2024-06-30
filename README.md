@@ -4,8 +4,28 @@
 **Find the deployed project [here](https://botanica-fa2bcebcf990.herokuapp.com/)!**
 
 ## Introduction
-Botanica is your go to online destination for the most vibrant houseplants. We offer a wide selection of indoor plants, for both novice plant owners and experienced green thumbs!
-Enjoy our Plant care blog for tips and tricks to help you keep your plants thriving and enoy our seamless shopping experience complete with nature in mind.
+The e-commerce application "Botanica" is an online store that specialises in selling a selection of indoor plants, for both novice plant owners and experienced green thumbs. The business model focuses on providing customers with a wide range of plants and plant care tips, providing a user-friendly platform for users to enjoy a seamless shopping experience complete with nature in mind
+Below is a detailed overview of the e-commerce business model underlying the application.
+
+### Business Model Type: B2C (Business to Consumer)
+
+Botanica operates as a B2C e-commerce business, selling products directly to consumers from product browsing to payment and delivery.
+
+
+| Business Model Canvas |
+| --- | --- |
+| **Component** | **Description** |
+| **Key Partners** | Plant suppliers, courier services, payment processors (Stripe) |
+| **Key Activities** | Product sourcing, order processing, website maintenance, customer support |
+| **Key Resources** | Inventory, e-commerce platform, customer database, marketing content |
+| **Value Propositions** | Quality plants and accessories, educational content, user-friendly shopping experience |
+| **Customer Relationships** | Email marketing, social media engagement |
+| **Channels** | Website, email, social media |
+| **Customer Segments** | Plant enthusiasts, home decor enthusiasts, pet owners |
+| **Cost Structure** | Product procurement, website maintenance, marketing expenses, shipping costs |
+| **Revenue Streams** | Product sales, delivery fees |
+
+This comprehensive e-commerce business model ensures that Botanica can effectively serve its customers while maintaining a profitable and sustainable operation.
 
 ## User Stories
 ### Project Purpose 
