@@ -3,12 +3,14 @@ from django.contrib.auth.decorators import login_required
 from .models import UserProfile, Address
 from checkout.models import Order
 from django_countries import countries
+from django.contrib import messages
 
 
 @login_required
 def profile(request):
     """
-    User Profile View: Display the user's profile with order history.
+    User Profile View: Display the user's
+    profile with address and order history.
     """
     user = request.user
     orders = (
@@ -17,10 +19,14 @@ def profile(request):
     )
     latest_order = orders.order_by(
         '-date_created'
-        ).first() if orders.exists() else None
+    ).first() if orders.exists() else None
+
+    user_profile, created = UserProfile.objects.get_or_create(user=user)
+    addresses = Address.objects.filter(user=user)
 
     context = {
         'user': user,
+        'addresses': addresses,
         'orders': orders,
         'latest_order': latest_order,
     }
@@ -41,11 +47,11 @@ def edit_profile(request):
         user.email = request.POST.get('email', '')
         user.save()
 
-        address = user_profile.default_address
-        if not address:
-            address = Address.objects.create()
-            user_profile.default_address = address
-            user_profile.save()
+        address_id = request.POST.get('address_id')
+        if address_id:
+            address = Address.objects.get(id=address_id, user=user)
+        else:
+            address = Address(user=user)
 
         address_fields = [
             'phone_number',
@@ -63,11 +69,14 @@ def edit_profile(request):
             setattr(address, field, value or None)
         address.save()
 
+        messages.success(request, 'Your profile was updated successfully!')
         return redirect('profile')
+
+    addresses = Address.objects.filter(user=user)
 
     context = {
         'user_profile': user_profile,
-        'address': user_profile.default_address,
+        'addresses': addresses,
         'countries': countries
     }
     return render(request, 'user_profile/editprofile.html', context)

@@ -22,41 +22,33 @@
             <div class="p-3 py-5">
                 <div
                     class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Your Address</h4>
+                    <h4 class="text-right">Your Addresses</h4>
                 </div>
-                {% if user.userprofile.default_address %}
-                <div class="card">
+                {% if addresses %}
+                {% for address in addresses %}
+                <div class="card mb-3">
                     <div class="card-body">
-                        <h5 class="card-title">Your Default Address</h5>
-                        <p class="card-text">
-                            {% if user.userprofile.default_address.street_address1 %}
-                            {{ user.userprofile.default_address.street_address1 }}<br>
-                            {% endif %}
-                            {% if user.userprofile.default_address.street_address2 %}
-                            {{ user.userprofile.default_address.street_address2 }}<br>
-                            {% endif %}
-                            {% if user.userprofile.default_address.town_or_city %}
-                            {{ user.userprofile.default_address.town_or_city }}<br>
-                            {% endif %}
-                            {% if user.userprofile.default_address.county %}
-                            {{ user.userprofile.default_address.county }}<br>
-                            {% endif %}
-                            {% if user.userprofile.default_address.postcode %}
-                            {{ user.userprofile.default_address.postcode }}<br>
-                            {% endif %}
-                            {% if user.userprofile.default_address.country %}
-                            {{ user.userprofile.default_address.country }}
-                            {% endif %}
-                        </p>
+                        <h5 class="card-title">Address {{ forloop.counter }}
+                        </h5>
+                        <p class="card-text"><strong>Phone Number:</strong>
+                            {{ address.phone_number }}</p>
+                        <p class="card-text"><strong>Street Address 1:</strong>
+                            {{ address.street_address1 }}</p>
+                        <p class="card-text"><strong>Street Address 2:</strong>
+                            {{ address.street_address2 }}</p>
+                        <p class="card-text"><strong>Town or City:</strong>
+                            {{ address.town_or_city }}</p>
+                        <p class="card-text"><strong>County:</strong>
+                            {{ address.county }}</p>
+                        <p class="card-text"><strong>Postcode:</strong>
+                            {{ address.postcode }}</p>
+                        <p class="card-text"><strong>Country:</strong>
+                            {{ address.country }}</p>
                     </div>
                 </div>
+                {% endfor %}
                 {% else %}
-                <div class="row mt-2">
-                    <div class="col-md-12">
-                        <p>Address details will be shown here once you update
-                            your profile!</p>
-                    </div>
-                </div>
+                <p>No addresses on file.</p>
                 {% endif %}
             </div>
         </div>

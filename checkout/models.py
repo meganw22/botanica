@@ -58,8 +58,9 @@ class Order(models.Model):
         if self.customer_name and self.email_address:
             user_profile, created = UserProfile.objects.get_or_create(
                 user=self.user)
-            if not user_profile.default_address:
-                user_profile.default_address = Address.objects.create(
+            if self.address:
+                Address.objects.create(
+                    user=self.user,
                     phone_number=self.phone_number,
                     street_address1=self.address.street_address1,
                     street_address2=self.address.street_address2,
@@ -68,7 +69,6 @@ class Order(models.Model):
                     postcode=self.address.postcode,
                     country=self.address.country,
                 )
-                user_profile.save()
 
     def __str__(self):
         return f'Order {self.order_id}'

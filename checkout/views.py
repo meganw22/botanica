@@ -55,7 +55,7 @@ def checkout(request):
         address_form = AddressForm(request.POST)
         if order_form.is_valid() and address_form.is_valid():
             order = order_form.save(commit=False)
-            address = address_form.save()
+            address = address_form.save(commit=False)
             address.user = request.user
             address.save()
             order.address = address
@@ -80,32 +80,22 @@ def checkout(request):
                         item_total=Decimal(price) * item['quantity'],
                     )
 
-                # Update user's default address
-                user_profile, created = UserProfile.objects.get_or_create(
-                    user=request.user)
-                user_profile.default_address = address
-                user_profile.save()
-
-                # Clear the bag items from the session
                 request.session['bag'] = []
 
                 messages.success(
                     request, f"Order {order.order_id} placed successfully!")
                 return redirect('checkout_success', order_id=order.order_id)
             except IntegrityError:
-                messages.error(
-                    request, "An error occurred while placing the order.")
+                messages.error(request, "An error occurred while placing the order.")
                 return redirect('checkout')
         else:
-            messages.error(request, "There was an error with your form. \
-                Please check your information.")
+            messages.error(request, "There was an error with your form. Please check your information.")
     else:
         order_form = OrderForm()
         address_form = AddressForm()
 
     if not stripe_public_key:
-        messages.warning(request, 'Stripe public key is missing. \
-            Did you forget to set it in your environment?')
+        messages.warning(request, 'Stripe public key is missing. Did you forget to set it in your environment?')
 
     template = 'checkout/checkout.html'
     context = {

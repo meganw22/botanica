@@ -7,6 +7,7 @@ class Address(models.Model):
     """
     Model to store address details.
     """
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='addresses', null=True, blank=True)
     phone_number = models.CharField(max_length=20, null=True, blank=True)
     street_address1 = models.CharField(max_length=80, null=True, blank=True)
     street_address2 = models.CharField(max_length=80, null=True, blank=True)
@@ -24,8 +25,6 @@ class UserProfile(models.Model):
     Model to store user profile details.
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    default_address = models.OneToOneField(
-        Address, null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.user.username

@@ -369,7 +369,7 @@ textarea {
     line-height: 1.5;
 }
 
-.card-img-top {
+.blog-imgs {
     width: 100%;
     height: auto;
     object-fit: cover;
