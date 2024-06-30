@@ -54,17 +54,43 @@ Using Google fonts, I selected the font 'Fredoka' to use throughout the website.
 ## Features
 ### Base Template
 The base template has ben implemented to be used on every page within the website, this gives a clean smooth user experience allowing users to always know where to navigate to.
-Within the Nav Bar, the title of the webpage has a link to return the user back to the homepage. 
+Within the Nav Bar, the title of the webpage has a link to return the user back to the homepage.
+
 ![nav-bar](https://github.com/meganw22/botanica/assets/141934888/48307d51-d40c-494d-9146-26fc21ac3d10)
+
 There are list items including options to `Shop all Plants`, explore 'Categories', visit `The Plant Blog`, use the search bar to find a specific plant, navigate to your bag and discover the user profile.
+
 ![nav-categories](https://github.com/meganw22/botanica/assets/141934888/56b43ef7-835e-43d8-8530-f7505802deaa)
 
 
 ### Authenticated Displays
-### Plant products
-### The Plant Blog 
+### Plant Products
+Botanica has a variety of plants to choose from including plant features and requirements such as light levels, how easy or difficult a plant is to care for and whether the plant is safe around pets. These options are neatly displayed as filter items:
+insert [all plant filters img]
+
+Each plant has a rendered view of the plant name, scientific name, filter selections, an image of the selected plant and a brief description.
+
+[insert med fern page]
+
+Once the user is satisfied with their choice they are able to add the plant directly to their bag and are given the option to choose a height and a quantity between 1-99 items. Or the user can take a shortcut link to the plant blog if they require more advice with purchasing.
+Once the user has added a product to their bag, a success message will be displayed confirming the item has been added to the bag.
+
+[insert success--add bag ]
+
+### The Plant Blog
+[insert plant blog]
+
+The Plant blog can be accessed via the nav bar and has several posts created to inform the user of tips and tricks for maintaining their plants. Once logged in users can comment and like posts. The blog provides a greater sense of community with other plant enthusiasts who need help with their plants too.
+Registered users can delete their comments and unlike posts if they so wish and only an a user with Admin access can create, update or delete posts.
+
+[insert comments likes img]
+
 ### Checkout
+
 ### Facebook Business page
+I have created a Facebook Business page to market my website, find the link to the market (here)[https://www.facebook.com/profile.php?id=61561624593985&is_tour_dismissed]
+[image facebook page]
+
 ### Future Implementations
 
 ## Full Deployment to Heroku:
