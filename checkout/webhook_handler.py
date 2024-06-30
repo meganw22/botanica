@@ -1,10 +1,9 @@
 from django.http import HttpResponse
-from .models import Order, OrderItem
+from .models import Order, OrderItem, Address
 from products.models import Product, PlantPrice
 from decimal import Decimal
 import json
 import time
-
 
 class StripeWH_Handler:
     """Handle Stripe webhooks"""
@@ -28,6 +27,7 @@ class StripeWH_Handler:
         pid = intent['id']
         metadata = intent['metadata']
         bag = json.loads(metadata['bag'])
+        user_id = metadata.get('user_id')
 
         billing_details = intent['charges']['data'][0]['billing_details']
         shipping_details = intent['shipping']
@@ -59,6 +59,30 @@ class StripeWH_Handler:
 
         if not order_exists:
             try:
+                # Check if the address already exists for the user
+                address = Address.objects.filter(
+                    user_id=user_id,
+                    phone_number=shipping_details['phone'],
+                    street_address1=shipping_details['address']['line1'],
+                    street_address2=shipping_details['address']['line2'],
+                    town_or_city=shipping_details['address']['city'],
+                    county=shipping_details['address'].get('state', ''),
+                    postcode=shipping_details['address']['postal_code'],
+                    country=shipping_details['address']['country'],
+                ).first()
+
+                if not address:
+                    address = Address.objects.create(
+                        user_id=user_id,
+                        phone_number=shipping_details['phone'],
+                        street_address1=shipping_details['address']['line1'],
+                        street_address2=shipping_details['address']['line2'],
+                        town_or_city=shipping_details['address']['city'],
+                        county=shipping_details['address'].get('state', ''),
+                        postcode=shipping_details['address']['postal_code'],
+                        country=shipping_details['address']['country'],
+                    )
+
                 order = Order.objects.create(
                     customer_name=shipping_details['name'],
                     email_address=billing_details['email'],
@@ -71,6 +95,7 @@ class StripeWH_Handler:
                     county=shipping_details['address'].get('state', ''),
                     grand_total=grand_total,
                     stripe_pid=pid,
+                    address=address,
                 )
 
                 for item_data in bag:
@@ -86,9 +111,7 @@ class StripeWH_Handler:
                     )
 
                 return HttpResponse(
-                    content=f'Webhook received: {
-                        event["type"]
-                        } | SUCCESS: Created order in webhook',
+                    content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
                     status=200)
 
             except Exception as e:

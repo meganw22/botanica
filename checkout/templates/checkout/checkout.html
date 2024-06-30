@@ -25,32 +25,83 @@
                 {% csrf_token %}
 
                 <fieldset class="rounded px-3 mb-5">
-                    <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
+                    <legend class="fieldset-label small text-black px-2 w-auto">
+                        Details</legend>
                     {{ order_form.customer_name|as_crispy_field }}
                     {{ order_form.email_address|as_crispy_field }}
                 </fieldset>
 
                 <fieldset class="rounded px-3 mb-5">
-                    <legend class="fieldset-label text-black small px-2 w-auto">Delivery</legend>
+                    <legend class="fieldset-label text-black small px-2 w-auto">
+                        Delivery</legend>
 
-                    {{ address_form.phone_number|as_crispy_field }}
-                    {{ address_form.street_address1|as_crispy_field }}
-                    {{ address_form.street_address2|as_crispy_field }}
-                    {{ address_form.town_or_city|as_crispy_field }}
-                    {{ address_form.county|as_crispy_field }}
-                    {{ address_form.postcode|as_crispy_field }}
-                    {{ address_form.country|as_crispy_field }}
+                    {% if addresses %}
+                    <h5>Select an existing address:</h5>
+                    <div class="mb-3">
+                        {% for address in addresses %}
+                        <div class="form-check">
+                            <input
+                                class="form-check-input existing-address-radio"
+                                type="radio" name="selected_address"
+                                id="address{{ address.id }}"
+                                value="{{ address.id }}"
+                                data-phone_number="{{ address.phone_number }}"
+                                data-street_address1="{{ address.street_address1 }}"
+                                data-street_address2="{{ address.street_address2 }}"
+                                data-town_or_city="{{ address.town_or_city }}"
+                                data-county="{{ address.county }}"
+                                data-postcode="{{ address.postcode }}"
+                                data-country="{{ address.country }}">
+                            <label class="form-check-label"
+                                for="address{{ address.id }}">
+                                {{ address.phone_number }},
+                                {{ address.street_address1 }}{% if address.street_address2 %},
+                                {{ address.street_address2 }}{% endif %},
+                                {{ address.town_or_city }},
+                                {{ address.county }}, {{ address.postcode }},
+                                {{ address.country.name }}
+                            </label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <h5>Or enter a new address:</h5>
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio"
+                                name="selected_address" id="new_address"
+                                value="" checked>
+                            <label class="form-check-label" for="new_address">
+                                Enter a new address
+                            </label>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <div class="mb-3 new-address-form">
+                        {{ address_form.phone_number|as_crispy_field }}
+                        {{ address_form.street_address1|as_crispy_field }}
+                        {{ address_form.street_address2|as_crispy_field }}
+                        {{ address_form.town_or_city|as_crispy_field }}
+                        {{ address_form.county|as_crispy_field }}
+                        {{ address_form.postcode|as_crispy_field }}
+                        {{ address_form.country|as_crispy_field }}
+                    </div>
                 </fieldset>
 
                 <fieldset class="px-3 mb-5">
                     <div id="card-element" class="StripeElement"></div>
                     <div id="card-errors" role="alert"></div>
-                    <input type="hidden" name="client_secret" id="id_client_secret_input">
+                    <input type="hidden" name="client_secret"
+                        id="id_client_secret_input">
                 </fieldset>
 
                 <fieldset class="button-container px-3">
-                    <button type="submit" id="submit-button" class="btn btn-custom-success btn-block mb-2">Place Order</button>
-                    <a href="{% url 'shopping_bag' %}" class="btn btn-outline-secondary btn-block">Head back to bag</a>
+                    <button type="submit" id="submit-button"
+                        class="btn btn-custom-success btn-block mb-2">Place
+                        Order</button>
+                    <a href="{% url 'shopping_bag' %}"
+                        class="btn btn-outline-secondary btn-block">Head back to
+                        bag</a>
                 </fieldset>
             </form>
         </div>
@@ -59,12 +110,16 @@
                 <h2>Order Summary</h2>
                 <div class="items-summary">
                     {% for item in bag %}
-                    <div class="item-summary mb-3 d-flex justify-content-between align-items-center">
+                    <div
+                        class="item-summary mb-3 d-flex justify-content-between align-items-center">
                         <span>
-                            <img src="{{ item.image_url }}" alt="{{ item.name }}" class="img-fluid pr-2" style="max-height: 50px;">
+                            <img src="{{ item.image_url }}"
+                                alt="{{ item.name }}" class="img-fluid pr-2"
+                                style="max-height: 50px;">
                         </span>
                         <span>
-                            <strong>{{ item.name }} </strong> x {{ item.quantity }} ({{ item.height }})
+                            <strong>{{ item.name }} </strong> x
+                            {{ item.quantity }} ({{ item.height }})
                         </span>
                         <span class="ml-auto">
                             £{{ item.price | floatformat:2 }}
@@ -99,8 +154,127 @@
 {% endblock %}
 
 {% block postloadjs %}
-    {{ block.super }}
-    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
-    {{ client_secret|json_script:"id_client_secret" }}
-    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
+{{ block.super }}
+{{ stripe_public_key|json_script:"id_stripe_public_key" }}
+{{ client_secret|json_script:"id_client_secret" }}
+<script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const addressRadios = document.querySelectorAll(
+            'input[name="selected_address"]');
+        const newAddressForm = document.querySelector(
+            '.new-address-form');
+        const newAddressFields = newAddressForm.querySelectorAll(
+            'input, select');
+
+        function toggleNewAddressForm(show) {
+            if (show) {
+                newAddressForm.style.display = 'block';
+                newAddressFields.forEach(field => {
+                    field.required = true;
+                    field.disabled = false;
+                });
+            } else {
+                newAddressForm.style.display = 'none';
+                newAddressFields.forEach(field => {
+                    field.required = false;
+                    field.disabled = true;
+                });
+            }
+        }
+
+        function populateAddressFields(addressData) {
+            document.querySelector('input[name="phone_number"]').value =
+                addressData.phone_number;
+            document.querySelector('input[name="street_address1"]')
+                .value = addressData.street_address1;
+            document.querySelector('input[name="street_address2"]')
+                .value = addressData.street_address2;
+            document.querySelector('input[name="town_or_city"]').value =
+                addressData.town_or_city;
+            document.querySelector('input[name="county"]').value =
+                addressData.county;
+            document.querySelector('input[name="postcode"]').value =
+                addressData.postcode;
+            document.querySelector('select[name="country"]').value =
+                addressData.country;
+        }
+
+        addressRadios.forEach(radio => {
+            radio.addEventListener('change', function () {
+                if (this.value === "") {
+                    toggleNewAddressForm(true);
+                    populateAddressFields({
+                        phone_number: '',
+                        street_address1: '',
+                        street_address2: '',
+                        town_or_city: '',
+                        county: '',
+                        postcode: '',
+                        country: ''
+                    });
+                } else {
+                    toggleNewAddressForm(false);
+                    populateAddressFields({
+                        phone_number: this
+                            .dataset
+                            .phone_number,
+                        street_address1: this
+                            .dataset
+                            .street_address1,
+                        street_address2: this
+                            .dataset
+                            .street_address2,
+                        town_or_city: this
+                            .dataset
+                            .town_or_city,
+                        county: this.dataset
+                            .county,
+                        postcode: this.dataset
+                            .postcode,
+                        country: this.dataset
+                            .country
+                    });
+                }
+            });
+        });
+
+        // Initial check: Show new address form if no address is selected or "new address" is selected
+        if (!document.querySelector(
+                'input[name="selected_address"]:checked') || document
+            .querySelector('input[name="selected_address"]:checked')
+            .value === "") {
+            toggleNewAddressForm(true);
+        } else {
+            toggleNewAddressForm(false);
+            const selectedAddress = document.querySelector(
+                'input[name="selected_address"]:checked');
+            populateAddressFields({
+                phone_number: selectedAddress.dataset
+                    .phone_number,
+                street_address1: selectedAddress.dataset
+                    .street_address1,
+                street_address2: selectedAddress.dataset
+                    .street_address2,
+                town_or_city: selectedAddress.dataset
+                    .town_or_city,
+                county: selectedAddress.dataset.county,
+                postcode: selectedAddress.dataset.postcode,
+                country: selectedAddress.dataset.country
+            });
+        }
+    });
+
+    document.getElementById('payment-form').addEventListener('submit',
+        function (event) {
+            const countryField = document.querySelector(
+                '.new-address-form select[name="country"]');
+            if (countryField && countryField.value === "") {
+                event.preventDefault();
+                alert("Please select a country.");
+                countryField.focus();
+            }
+        });
+
+</script>
 {% endblock %}

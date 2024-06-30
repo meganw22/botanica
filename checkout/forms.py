@@ -21,7 +21,7 @@ class AddressForm(forms.ModelForm):
         placeholders = {
             'phone_number': 'Phone Number *',
             'street_address1': 'Street Address 1 *',
-            'street_address2': 'Street Address 2',
+            'street_address2': 'Street Address 2 *',
             'town_or_city': 'Town/City *',
             'county': 'County *',
             'postcode': 'Postcode *',
@@ -38,7 +38,7 @@ class AddressForm(forms.ModelForm):
 
         self.fields['phone_number'].required = True
         self.fields['street_address1'].required = True
-        self.fields['street_address2'].required = False
+        self.fields['street_address2'].required = True
         self.fields['town_or_city'].required = True
         self.fields['county'].required = True
         self.fields['postcode'].required = True

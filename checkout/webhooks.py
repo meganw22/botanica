@@ -1,53 +1,54 @@
-from django.conf import settings
-from django.http import HttpResponse
-from django.views.decorators.http import require_POST
-from django.views.decorators.csrf import csrf_exempt
-from checkout.webhook_handler import StripeWH_Handler
 import stripe
+from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
+from django.views import View
+from .models import Order
 
-
-@require_POST
 @csrf_exempt
-def webhook(request):
-    """Listen for webhooks from Stripe"""
-    # Setup
-    wh_secret = settings.STRIPE_WH_SECRET
-    stripe.api_key = settings.STRIPE_SECRET_KEY
-
-    # Get the webhook data and verify its signature
+def stripe_webhook(request):
     payload = request.body
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
     event = None
 
     try:
         event = stripe.Webhook.construct_event(
-            payload, sig_header, wh_secret
+            payload, sig_header, settings.STRIPE_WEBHOOK_SECRET
         )
-    except ValueError:
+    except ValueError as e:
         # Invalid payload
         return HttpResponse(status=400)
-    except stripe.error.SignatureVerificationError:
+    except stripe.error.SignatureVerificationError as e:
         # Invalid signature
         return HttpResponse(status=400)
-    except Exception as e:
-        return HttpResponse(content=str(e), status=400)
 
-    # Set up a webhook handler
-    handler = StripeWH_Handler(request)
+    # Handle the event
+    if event['type'] == 'checkout.session.completed':
+        session = event['data']['object']
 
-    # Map webhook events to relevant handler functions
-    event_map = {
-        'payment_intent.succeeded': handler.handle_payment_intent_succeeded,
-        'payment_intent.payment_failed': handler.handle_payment_intent_failed,
-    }
+        # Fulfill the purchase
+        handle_checkout_session(session)
 
-    # Get the webhook type from Stripe
-    event_type = event['type']
+    # Passed signature verification
+    return HttpResponse(status=200)
 
-    # If there's a handler for it, get it from the event map
-    # Use the generic one by default
-    event_handler = event_map.get(event_type, handler.handle_event)
+def handle_checkout_session(session):
+    # Retrieve the order using the session ID
+    try:
+        order = Order.objects.get(stripe_pid=session['payment_intent'])
+    except Order.DoesNotExist:
+        return HttpResponse(status=404)
 
-    # Call the event handler with the event
-    response = event_handler(event)
-    return response
+    # Check if the order has already been processed to avoid duplication
+    if not order.processed:
+        # Mark the order as processed
+        order.processed = True
+        order.save()
+
+        # Add additional processing logic here (e.g., sending email confirmation)
+
+        # Example: Avoid duplicate address creation
+        if order.address and not order.address.user:
+            address = order.address
+            address.user = order.user
+            address.save()

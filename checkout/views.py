@@ -1,4 +1,3 @@
-from decimal import Decimal
 from django.shortcuts import render, redirect, HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
@@ -6,12 +5,15 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from .forms import OrderForm, AddressForm
 from .models import Order, OrderItem
-from user_profile.models import UserProfile
+from user_profile.models import UserProfile, Address
 from products.models import Product, PlantPrice
 from bag.contexts import bag_contents
 import stripe
 import json
 from django.db import IntegrityError
+from decimal import Decimal
+from django.views.decorators.csrf import csrf_exempt
+from .webhook_handler import StripeWH_Handler
 
 
 @require_POST
@@ -50,28 +52,42 @@ def checkout(request):
         currency=settings.STRIPE_CURRENCY,
     )
 
+    user = request.user
+    addresses = Address.objects.filter(user=user)
+
     if request.method == 'POST':
         order_form = OrderForm(request.POST)
         address_form = AddressForm(request.POST)
-        if order_form.is_valid() and address_form.is_valid():
+
+        selected_address_id = request.POST.get('selected_address')
+        if selected_address_id:
+            address = Address.objects.get(id=selected_address_id, user=user)
+        else:
+            address = None
+
+        if order_form.is_valid() and (selected_address_id or address_form.is_valid()):
             order = order_form.save(commit=False)
-            address = address_form.save(commit=False)
-            address.user = request.user
-            address.save()
-            order.address = address
-            order.user = request.user
-            order.email_address = request.user.email
+            order.user = user
+            order.email_address = user.email
+            if selected_address_id:
+                order.address = address
+            else:
+                address = address_form.save(commit=False)
+                address.user = user
+                address.save()
+                order.address = address
+
             client_secret = request.POST.get('client_secret')
             if client_secret:
                 order.stripe_pid = client_secret.split('_secret')[0]
+
             try:
                 order.save()
 
                 # Save the order items
                 for item in bag:
                     product = Product.objects.get(id=item['id'])
-                    price = PlantPrice.objects.get(
-                        product=product, size=item['height']).price
+                    price = PlantPrice.objects.get(product=product, size=item['height']).price
                     OrderItem.objects.create(
                         order=order,
                         product=product,
@@ -80,10 +96,10 @@ def checkout(request):
                         item_total=Decimal(price) * item['quantity'],
                     )
 
+                # Clear the bag items from the session
                 request.session['bag'] = []
 
-                messages.success(
-                    request, f"Order {order.order_id} placed successfully!")
+                messages.success(request, f"Order {order.order_id} placed successfully!")
                 return redirect('checkout_success', order_id=order.order_id)
             except IntegrityError:
                 messages.error(request, "An error occurred while placing the order.")
@@ -101,6 +117,7 @@ def checkout(request):
     context = {
         'order_form': order_form,
         'address_form': address_form,
+        'addresses': addresses,
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
     }
@@ -111,6 +128,7 @@ def checkout(request):
 
 @login_required
 def checkout_success(request, order_id):
+    """View for a successful checkout"""
     try:
         order = Order.objects.get(order_id=order_id)
 
@@ -121,3 +139,40 @@ def checkout_success(request, order_id):
     except Order.DoesNotExist:
         messages.error(request, "Order not found.")
         return redirect('checkout')
+
+
+@csrf_exempt
+def stripe_webhook(request):
+    payload = request.body
+    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
+    event = None
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, settings.STRIPE_WEBHOOK_SECRET
+        )
+    except ValueError as e:
+        # Invalid payload
+        return HttpResponse(status=400)
+    except stripe.error.SignatureVerificationError as e:
+        # Invalid signature
+        return HttpResponse(status=400)
+
+    # Set up a Stripe webhook handler
+    handler = StripeWH_Handler(request)
+
+    # Map webhook events to relevant handler functions
+    event_map = {
+        'payment_intent.succeeded': handler.handle_payment_intent_succeeded,
+        'payment_intent.payment_failed': handler.handle_payment_intent_payment_failed,
+    }
+
+    # Get the event type from Stripe
+    event_type = event['type']
+
+    # Get the handler function for the event type
+    event_handler = event_map.get(event_type, handler.handle_event)
+
+    # Call the event handler with the event
+    response = event_handler(event)
+    return response
