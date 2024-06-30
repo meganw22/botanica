@@ -8,13 +8,14 @@ Botanica is your go to online destination for the most vibrant houseplants. We o
 Enjoy our Plant care blog for tips and tricks to help you keep your plants thriving and enoy our seamless shopping experience complete with nature in mind.
 
 ## User Stories
+### Project Purpose 
 - The development of Botanica Houseplants is driven by a clear and well-defined purpose to address the needs of the target audiences, which include customers, registered users, and administrators.
 - Each user story is used to improve the user experience, streamline processes, and provide features that cater to the specific needs of these groups.
 - An agile tool was used in the method of planning this project which can be observed in the image and further explanation is provided below:
 
 ![user-stories](https://github.com/meganw22/botanica/assets/141934888/de29d90b-9d64-4285-95dc-28c7e9b5a270)
 
-### As a Customer
+### As a customer
 1. I want to view products and add items to my shopping bag depending on size and cost. This allows me to easily browse and select products based on my preferences, allow me to make informed decisions.
 2. I want to update or remove products from my bag before checking out. This provides me the flexibility to modify my orders as needed, ensuring my shopping bag contains only the items I want to purchase.
 3. I want to view my shopping bag and see the price of each item, delivery cost and grand total of my bag. This offers transparency on the total cost before making a purchase, enabling me to review and manage my budget effectively.
@@ -35,15 +36,16 @@ Enjoy our Plant care blog for tips and tricks to help you keep your plants thriv
 3.  I want to manage the blog section of the website, where I can post articles about plant care tips, new arrivals, and other relevant information for customers. This keeps the content fresh and informative, driving engagement and return visits.
 
 ## Entity Relationship Diagrams (ERD)
+The backend of this project is primarily constructed using Python and the Django framework. It employs Django Models to manage the interaction with the database, facilitating the passing of information to and from the database. The following Entity-Relationship Diagram (ERD) provides a visual representation of the models created in this project and shows how they are interconnected.
 ![ERD-botanica](botanica-ERD.png)
 Created using dbdiagram.io
 
 ## User Experience
 Good user experience is very important to me, I like to have practical simplicity with easy navigation to encourage website visitors to explore the website with good intentions of making a purchase.
-I know I have achieved my goals of good user experience and have recieved feedback from test users about the design and layout of the website.
+I know I have achieved my goals of good user experience and have received  feedback from test users about the design and layout of the website.
 
 ### Colour Scheme
-I chose to keep my colours in keeping with nature and desided on earthy greens, whites and greys with a contrasting peach colour to accent all the buttons in the site.
+I chose to keep my colours in keeping with nature and decided on earthy greens, whites and greys with a contrasting peach colour to accent all the buttons in the site.
 ![colour-scheme](https://github.com/meganw22/botanica/assets/141934888/262625f6-d1e4-4530-9961-48df02592e62)
 
 ### Font
@@ -53,49 +55,86 @@ Using Google fonts, I selected the font 'Fredoka' to use throughout the website.
 
 ## Features
 ### Base Template
-The base template has ben implemented to be used on every page within the website, this gives a clean smooth user experience allowing users to always know where to navigate to.
+The base template has been implemented to be used on every page within the website, this gives a clean smooth user experience allowing users to always know where to navigate to.
 Within the Nav Bar, the title of the webpage has a link to return the user back to the homepage.
 
 ![nav-bar](https://github.com/meganw22/botanica/assets/141934888/48307d51-d40c-494d-9146-26fc21ac3d10)
 
-There are list items including options to `Shop all Plants`, explore 'Categories', visit `The Plant Blog`, use the search bar to find a specific plant, navigate to your bag and discover the user profile.
+There are list items including options to `Shop all Plants`, explore `Categories`, visit `The Plant Blog`, use the search bar to find a specific plant, navigate to your `bag` and discover the user profile.
 
 ![nav-categories](https://github.com/meganw22/botanica/assets/141934888/56b43ef7-835e-43d8-8530-f7505802deaa)
 
 
-### Authenticated Displays
+### User Login/Logout Pages
+To login, the user has to select the user icon on the nav bar and click login:
+
+![user-no-login](https://github.com/meganw22/botanica/assets/141934888/e26fa413-fc60-434f-80ee-ad8bfd512f02)
+
+They will be directed to this page, where if necessary they will need to sign up first. There is no multi-factor authentication active for Botanica's sign up page.
+
+![sign-in-page](https://github.com/meganw22/botanica/assets/141934888/2c9a9887-8635-49e1-923f-da2255db207c)
+
+Once logged in the user has more access and can proceed to checkout, edit their profile and like and leave comments on the blog. The user is given conformation of successful login through a toast message:
+
+![login-toast](https://github.com/meganw22/botanica/assets/141934888/d18f9a69-a26b-45e7-a37e-91692a63b5b6)
+
+To Sign out, the user has to navigate to the nav bar user icon and select the dropdown button to Log out:
+
+![user-logged-in](https://github.com/meganw22/botanica/assets/141934888/60f5bcad-329d-4df9-9bf2-c04d51efa8d6)
+
+They will need to confirm the sign out through a secondary sign out page. User log out is confirmed with a toast message:
+
+![signout-yes](https://github.com/meganw22/botanica/assets/141934888/580e0562-7e60-4f5e-bfab-055687cd3bef)
+
+
 ### Plant Products
 Botanica has a variety of plants to choose from including plant features and requirements such as light levels, how easy or difficult a plant is to care for and whether the plant is safe around pets. These options are neatly displayed as filter items:
-insert [all plant filters img]
+
+![all-plant-filters](https://github.com/meganw22/botanica/assets/141934888/80661631-179a-4df6-a7e4-dcf98fbcc76d)
 
 Each plant has a rendered view of the plant name, scientific name, filter selections, an image of the selected plant and a brief description.
 
-[insert med fern page]
+![med-fern-page](https://github.com/meganw22/botanica/assets/141934888/433367fd-e101-47f6-a4f4-288331e1e361)
 
 Once the user is satisfied with their choice they are able to add the plant directly to their bag and are given the option to choose a height and a quantity between 1-99 items. Or the user can take a shortcut link to the plant blog if they require more advice with purchasing.
 Once the user has added a product to their bag, a success message will be displayed confirming the item has been added to the bag.
 
-[insert success--add bag ]
+![success-add-bag](https://github.com/meganw22/botanica/assets/141934888/b0ce84d5-9dbc-4e63-994c-8e2bde0e580a)
+
 
 ### The Plant Blog
-[insert plant blog]
+![plant-blog](https://github.com/meganw22/botanica/assets/141934888/40d0b5f1-7799-4ac8-9cd2-d09c1b3c8eb1)
+
 
 The Plant blog can be accessed via the nav bar and has several posts created to inform the user of tips and tricks for maintaining their plants. Once logged in users can comment and like posts. The blog provides a greater sense of community with other plant enthusiasts who need help with their plants too.
-Registered users can delete their comments and unlike posts if they so wish and only an a user with Admin access can create, update or delete posts.
+Registered users can delete their comments and unlike posts if they so wish and only a user with Admin access can create, update or delete posts.
 
-[insert comments likes img]
+![blog-likes-comments](https://github.com/meganw22/botanica/assets/141934888/7cc7b384-5f9c-477a-94b2-6eec209f266a)
+
+### User Profile
+The users profile can be viewed through clicking the User Icon in the Nav Bar and selecting `View Profile`
+When the Users profile renders, it shows options to `Manage Addresses`, `Edit Details`, `Delete Profile` and provides a comprehensive `Order History`
+
+![login-user-profile](https://github.com/meganw22/botanica/assets/141934888/ffb09b0c-b67c-469f-a039-f754e2975874)
+
+
+
+
 
 ### Checkout
 
 ### Facebook Business page
-I have created a Facebook Business page to market my website, find the link to the market (here)[https://www.facebook.com/profile.php?id=61561624593985&is_tour_dismissed]
-[image facebook page]
+I have created a Facebook Business page to market my website, find the link to the market [here](https://www.facebook.com/profile.php?id=61561624593985&is_tour_dismissed)
+
+![Botanica-facebook-1](https://github.com/meganw22/botanica/assets/141934888/1b77c361-07cc-4ba0-a397-109cde5facb4)
+![Botanica-facebook-2](https://github.com/meganw22/botanica/assets/141934888/ff953272-6695-4631-a40e-47ca4c2d1c3a)
+
 
 ### Future Implementations
 
 ## Full Deployment to Heroku:
 To make the locally running website active on a permanent server I needed to take multiple steps to for successful deployment:
--	Setting up an app in Heroku to deploy to a interactive public website.
+-	Setting up an app in Heroku to deploy to an interactive public website.
 -	Creation of an external database to store data in a structured way that can be easily accessed managed and updated
 -	Setting up a hosting service for static and media files compatible with the Heroku server
 ### Created a database through ElephantSQL:
@@ -146,16 +185,23 @@ After the initial deployment, changes to the css in the static files may change 
 - Name your new fork and allow it to generate.
 - Now you can open your new repo and edit without affecting the original code.
 
-## Main technologies used.
-HTML
-CSS
-JavaScript
-Python + Django
-Relational Database - Elephant SQL
-Stripe Payments
+## Main Technologies Used
+1. HTML & CSS
+2. Bootstrap
+3. JavaScript
+4. Python
+5. Django
+6. Heroku
+7. Elephant SQL
+8. Stripe
+9. AWS Buckets and IAM
+10. Chrome Dev tools
 
 # Testing
 For the full range of Testing, see [TESTING.md](TESTING.md)
 
 ## Credits
--
+- Code Institute Boutique Ado project template and guidance
+- Pexels for free stock images
+- Many very helpful websites including W3Schools, Stack Overflow, YouTube, Shopify and Django documentation
+- 
