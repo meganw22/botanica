@@ -7,6 +7,8 @@ Enjoy our Plant care blog for tips and tricks to help you keep your plants thriv
 
 ## User Stories
 The development of Botanica Houseplants is driven by a clear and well-defined purpose to address the needs of the target audiences, which include customers, registered users, and administrators. Each user story is used to improve the user experience, streamline processes, and provide features that cater to the specific needs of these groups.
+An agile tool was used in the method of planning this project which can be observed in the image and further explanation is provided below:
+![User Stories Image]()
 ### As a Customer
 1. I want to view products and add items to my shopping bag depending on size and cost. This allows me to easily browse and select products based on my preferences, allow me to make informed decisions.
 2. I want to update or remove products from my bag before checking out. This provides me the flexibility to modify my orders as needed, ensuring my shopping bag contains only the items I want to purchase.
