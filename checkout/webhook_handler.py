@@ -42,7 +42,7 @@ class StripeWH_Handler:
         order = None
         attempts = 0
 
-        while attempts < 5:
+        while attempts < 1:
             try:
                 order = Order.objects.get(stripe_pid=pid)
                 order_exists = True

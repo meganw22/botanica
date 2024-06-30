@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'path.to.custom_middleware.RemoveXFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'botanica.urls'
