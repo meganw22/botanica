@@ -14,6 +14,8 @@
                 <span class="text-black-50">{{ user.email }}</span>
                 <a href="{% url 'edit_profile' %}"
                     class="btn btn-custom-success mt-3">Edit Details</a>
+                <a href="{% url 'manage_addresses' %}"
+                    class="btn btn-custom-success mt-3">Manage Addresses</a>
                 <a href="{% url 'confirm_delete_account' %}"
                     class="btn btn-danger mt-3">Delete Account</a>
             </div>

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import UserProfile, Address
 from checkout.models import Order
@@ -39,14 +39,29 @@ def edit_profile(request):
     Edit Profile View: Allow the user to edit their profile information.
     """
     user = request.user
-    user_profile = UserProfile.objects.get(user=user)
 
     if request.method == 'POST':
         user.first_name = request.POST.get('first_name', '')
         user.last_name = request.POST.get('last_name', '')
         user.email = request.POST.get('email', '')
         user.save()
+        messages.success(request, 'Your profile was updated successfully!')
+        return redirect('profile')
 
+    context = {
+        'user': user,
+    }
+    return render(request, 'user_profile/edit_profile.html', context)
+
+
+@login_required
+def manage_addresses(request):
+    """
+    Manage Addresses View: Allow the user to add, update, or delete addresses.
+    """
+    user = request.user
+
+    if request.method == 'POST':
         address_id = request.POST.get('address_id')
         if address_id:
             address = Address.objects.get(id=address_id, user=user)
@@ -67,19 +82,65 @@ def edit_profile(request):
             if field == 'country' and value == '':
                 value = None
             setattr(address, field, value or None)
+        if not address.street_address2:
+            address.street_address2 = None
         address.save()
-
-        messages.success(request, 'Your profile was updated successfully!')
-        return redirect('profile')
+        messages.success(request, 'Address updated successfully!')
+        return redirect('manage_addresses')
 
     addresses = Address.objects.filter(user=user)
 
     context = {
-        'user_profile': user_profile,
         'addresses': addresses,
         'countries': countries
     }
-    return render(request, 'user_profile/editprofile.html', context)
+    return render(request, 'user_profile/manage_addresses.html', context)
+
+
+@login_required
+def edit_address(request, address_id):
+    """
+    Edit Address View: Allow the user to edit an existing address.
+    """
+    user = request.user
+    address = get_object_or_404(Address, id=address_id, user=user)
+
+    if request.method == 'POST':
+        address_fields = [
+            'phone_number',
+            'street_address1',
+            'street_address2',
+            'town_or_city',
+            'county',
+            'postcode',
+            'country'
+        ]
+        for field in address_fields:
+            value = request.POST.get(field, '')
+            if field == 'country' and value == '':
+                value = None
+            setattr(address, field, value or None)
+        address.save()
+        messages.success(request, 'Address updated successfully!')
+        return redirect('manage_addresses')
+
+    context = {
+        'address': address,
+        'countries': countries
+    }
+    return render(request, 'user_profile/edit_address.html', context)
+
+
+@login_required
+def delete_address(request, address_id):
+    """
+    Delete Address View: Allow the user to delete an existing address.
+    """
+    user = request.user
+    address = get_object_or_404(Address, id=address_id, user=user)
+    address.delete()
+    messages.success(request, 'Address deleted successfully!')
+    return redirect('manage_addresses')
 
 
 @login_required
