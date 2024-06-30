@@ -30,6 +30,7 @@ def newsletter_signup(request):
     """Sign up to newsletter"""
     if request.method == 'POST':
         email = request.POST.get('email')
-        messages.success(request, 'Thank you for signing up for our newsletter!')
+        messages.success(
+            request, 'Thank you for signing up for our newsletter!')
         return redirect('home')
     return HttpResponse(status=405)

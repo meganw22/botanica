@@ -7,21 +7,28 @@
     {% block meta %}
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Houseplants, Indoor plants, Plant care blog, Houseplant shop, Easy care plants, Pet-friendly plants, Low light plants, Houseplant advice, Plant tips, Easy to take care of houseplants, Buy houseplants online UK, Pet-friendly indoor plants, Easy low light plants, Plants for green thumbs, Home décor house plants, Where to buy indoor plants online, Indoor plant watering tips, Common houseplant pests and solutions">
-    <link rel="icon" href="https://botanica-plants.s3.eu-north-1.amazonaws.com/media/favicon.png" type="image/png">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description"
+        content="Houseplants, Indoor plants, Plant care blog, Houseplant shop, Easy care plants, Pet-friendly plants, Low light plants, Houseplant advice, Plant tips, Easy to take care of houseplants, Buy houseplants online UK, Pet-friendly indoor plants, Easy low light plants, Plants for green thumbs, Home décor house plants, Where to buy indoor plants online, Indoor plant watering tips, Common houseplant pests and solutions">
+    <link rel="icon"
+        href="https://botanica-plants.s3.eu-north-1.amazonaws.com/media/favicon.png"
+        type="image/png">
     {% endblock %}
 
     {% block extra_meta %}
     {% endblock %}
 
     {% block corecss %}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous">
     {% endblock %}
 
     {% block extra_css %}
-    <script src="https://kit.fontawesome.com/953780aa69.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/953780aa69.js"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
     {% endblock %}
@@ -29,12 +36,17 @@
     {% block corejs %}
     <script src="{% static 'js/script.js' %}"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.js"
-        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous">
     </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous">
     </script>
     <!-- Stripe -->
     <script src="https://js.stripe.com/v3/"></script>
@@ -47,159 +59,199 @@
 </head>
 
 <body>
-
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm">
-            <div class="container">
-                <a class="navbar-brand title-name" href="{% url 'home' %}">Botanica</a>
-                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-                    data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <!-- Nav items -->
-                <div class="collapse navbar-collapse" id="navbarContent">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'products' %}">Shop All Plants</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Categories
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{% url 'filter_bright_light' %}">Bright Light</a>
-                                <a class="dropdown-item" href="{% url 'filter_low_light' %}">Low Light</a>
-                                <a class="dropdown-item" href="{% url 'filter_easy_maintenance' %}">Easy maintenance
-                                    plants</a>
-                                <a class="dropdown-item" href="{% url 'filter_expert' %}">For the expert plant
-                                    carers</a>
-                                <a class="dropdown-item" href="{% url 'filter_price_asc' %}">Lowest to Highest Price</a>
-                                <a class="dropdown-item" href="{% url 'filter_price_desc' %}">Highest to Lowest
-                                    Prices</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'post_list' %}">The Plant Blog</a>
-                        </li>
-                    </ul>
-                    <!-- Search bar -->
-                    <ul class="navbar-nav ml-auto d-flex align-items-center">
-                        <li class="nav-item">
-                            <form class="form-inline" action="{% url 'search' %}" method="get"
-                                onsubmit="return validateSearchForm(this)">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Search plants"
-                                    aria-label="Search" name="q" id="searchInput">
-                                <button class="btn btn-link nav-link" type="submit"><i
-                                        class="fas fa-search"></i></button>
-                            </form>
-                        </li>
-                        <!-- Bag icon -->
-                        <li class="nav-item d-flex align-items-center">
-                            <a class="nav-link" href="{% url 'shopping_bag' %}">
-                                <i class="fas fa-shopping-bag"></i>
-                                {% if total_quantity > 0 %}
-                                <span class="badge custom-badge">{{ total_quantity }}</span>
-                                {% endif %}
-                            </a>
-                        </li>
-                        <!-- User icon -->
-                        <li class="nav-item dropdown d-flex align-items-center pl-2">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-user"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                                {% if user.is_authenticated %}
-                                <a class="dropdown-item" href="{% url 'profile' %}">View Profile</a>
-                                <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
-                                {% else %}
-                                <span class="dropdown-item-text">No user logged in</span>
-                                <a class="dropdown-item" href="{% url 'account_login' %}">Click here to Login</a>
-                                {% endif %}
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand title-name"
+                href="{% url 'home' %}">Botanica</a>
+            <button class="navbar-toggler collapsed" type="button"
+                data-toggle="collapse" data-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Nav items -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'products' %}">Shop All
+                            Plants</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#"
+                            id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            Categories
+                        </a>
+                        <div class="dropdown-menu"
+                            aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item"
+                                href="{% url 'filter_bright_light' %}">Bright
+                                Light</a>
+                            <a class="dropdown-item"
+                                href="{% url 'filter_low_light' %}">Low
+                                Light</a>
+                            <a class="dropdown-item"
+                                href="{% url 'filter_easy_maintenance' %}">Easy
+                                maintenance
+                                plants</a>
+                            <a class="dropdown-item"
+                                href="{% url 'filter_expert' %}">For the expert
+                                plant
+                                carers</a>
+                            <a class="dropdown-item"
+                                href="{% url 'filter_price_asc' %}">Lowest to
+                                Highest Price</a>
+                            <a class="dropdown-item"
+                                href="{% url 'filter_price_desc' %}">Highest to
+                                Lowest
+                                Prices</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'post_list' %}">The
+                            Plant Blog</a>
+                    </li>
+                </ul>
+                <!-- Search bar -->
+                <ul class="navbar-nav ml-auto d-flex align-items-center">
+                    <li class="nav-item">
+                        <form class="form-inline" action="{% url 'search' %}"
+                            method="get"
+                            onsubmit="return validateSearchForm(this)">
+                            <input class="form-control mr-sm-2" type="search"
+                                placeholder="Search plants" aria-label="Search"
+                                name="q" id="searchInput">
+                            <button class="btn btn-link nav-link"
+                                type="submit"><i
+                                    class="fas fa-search"></i></button>
+                        </form>
+                    </li>
+                    <!-- Bag icon -->
+                    <li class="nav-item d-flex align-items-center">
+                        <a class="nav-link" href="{% url 'shopping_bag' %}">
+                            <i class="fas fa-shopping-bag"></i>
+                            {% if total_quantity > 0 %}
+                            <span
+                                class="badge custom-badge">{{ total_quantity }}</span>
+                            {% endif %}
+                        </a>
+                    </li>
+                    <!-- User icon -->
+                    <li
+                        class="nav-item dropdown d-flex align-items-center pl-2">
+                        <a class="nav-link dropdown-toggle" href="#"
+                            id="userDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right"
+                            aria-labelledby="userDropdown">
+                            {% if user.is_authenticated %}
+                            <a class="dropdown-item"
+                                href="{% url 'profile' %}">View Profile</a>
+                            <a class="dropdown-item"
+                                href="{% url 'account_logout' %}">Logout</a>
+                            {% else %}
+                            <span class="dropdown-item-text">No user logged
+                                in</span>
+                            <a class="dropdown-item"
+                                href="{% url 'account_login' %}">Click here to
+                                Login</a>
+                            {% endif %}
+                        </div>
+                    </li>
+                </ul>
             </div>
-        </nav>
-
-        <script>
-            $(document).ready(function () {
-                $('.navbar-toggler').click(function () {
-                    $(this).toggleClass('collapsed');
-                });
-            });
-        </script>
-
-        <script>
-            $(document).ready(function () {
-                $('.navbar-toggler').click(function () {
-                    $(this).toggleClass('collapsed');
-                    if ($(this).hasClass('collapsed')) {
-                        $(this).find('.navbar-toggler-icon').css('background-image',
-                            'url("data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'rgba(0, 0, 0, 0.5)\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E")'
-                            );
-                    } else {
-                        $(this).find('.navbar-toggler-icon').css('background-image',
-                            'url("data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'rgba(0, 0, 0, 0.75)\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M7 7l16 16M23 7L7 23\'/%3E%3C/svg%3E")'
-                            );
-                    }
-                });
-            });
-        </script>
-
-        {% if messages %}
-        <div class="message-container">
-            {% for message in messages %}
-            {% with message.level as level %}
-            {% if level == 40 %}
-            {% include 'includes/toasts/toast_error.html' %}
-            {% elif level == 30 %}
-            {% include 'includes/toasts/toast_warning.html' %}
-            {% elif level == 25 %}
-            {% include 'includes/toasts/toast_success.html' %}
-            {% else %}
-            {% include 'includes/toasts/toast_info.html' %}
-            {% endif %}
-            {% endwith %}
-            {% endfor %}
         </div>
+    </nav>
+
+    <script>
+        $(document).ready(function () {
+            $('.navbar-toggler').click(function () {
+                $(this).toggleClass('collapsed');
+            });
+        });
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('.navbar-toggler').click(function () {
+                $(this).toggleClass('collapsed');
+                if ($(this).hasClass('collapsed')) {
+                    $(this).find('.navbar-toggler-icon').css(
+                        'background-image',
+                        'url("data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'rgba(0, 0, 0, 0.5)\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E")'
+                    );
+                } else {
+                    $(this).find('.navbar-toggler-icon').css(
+                        'background-image',
+                        'url("data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'rgba(0, 0, 0, 0.75)\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M7 7l16 16M23 7L7 23\'/%3E%3C/svg%3E")'
+                    );
+                }
+            });
+        });
+
+    </script>
+
+    {% if messages %}
+    <div class="message-container">
+        {% for message in messages %}
+        {% with message.level as level %}
+        {% if level == 40 %}
+        {% include 'includes/toasts/toast_error.html' %}
+        {% elif level == 30 %}
+        {% include 'includes/toasts/toast_warning.html' %}
+        {% elif level == 25 %}
+        {% include 'includes/toasts/toast_success.html' %}
+        {% else %}
+        {% include 'includes/toasts/toast_info.html' %}
         {% endif %}
+        {% endwith %}
+        {% endfor %}
+    </div>
+    {% endif %}
 
-        {% block page_header %}
+    {% block page_header %}
+    {% endblock %}
+
+    <div class="content">
+        {% block content %}
         {% endblock %}
+    </div>
 
-        <div class="content">
-            {% block content %}
-            {% endblock %}
-        </div>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <div class="row text-center">
-                    <div class="col-md-12">
-                        <span class="footer-socials">
-                            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-                            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-                            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        </span>
-                    </div>
-                </div>
-                <div class="footer-legal text-center">
-                    <p style="padding: 0;">&copy; 2024 Botanica Houseplants. All rights reserved.</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <span class="footer-socials">
+                        <a href="https://facebook.com" target="_blank"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com" target="_blank"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://linkedin.com" target="_blank"><i
+                                class="fab fa-linkedin-in"></i></a>
+                    </span>
                 </div>
             </div>
-        </footer>
+            <div class="footer-legal text-center">
+                <p style="padding: 0;">&copy; 2024 Botanica Houseplants. All
+                    rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-        {% block postloadjs %}
-        <script type="text/javascript">
-            $('.toast').toast('show');
-        </script>
-        {% endblock %}
-    </body>
+    {% block postloadjs %}
+    <script>
+        $('.toast').toast('show');
+
+    </script>
+    {% endblock %}
+</body>
 
 </html>

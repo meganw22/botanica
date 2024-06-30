@@ -7,7 +7,9 @@ class Address(models.Model):
     """
     Model to store address details.
     """
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='addresses', null=True, blank=True)
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='addresses',
+        null=True, blank=True)
     phone_number = models.CharField(max_length=20, null=True, blank=True)
     street_address1 = models.CharField(max_length=80, null=True, blank=True)
     street_address2 = models.CharField(max_length=80, null=True, blank=True)

@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from .forms import OrderForm, AddressForm
 from .models import Order, OrderItem
-from user_profile.models import UserProfile, Address
+from user_profile.models import Address
 from products.models import Product, PlantPrice
 from bag.contexts import bag_contents
 import stripe
@@ -87,7 +87,8 @@ def checkout(request):
                 # Save the order items
                 for item in bag:
                     product = Product.objects.get(id=item['id'])
-                    price = PlantPrice.objects.get(product=product, size=item['height']).price
+                    price = PlantPrice.objects.get(
+                        product=product, size=item['height']).price
                     OrderItem.objects.create(
                         order=order,
                         product=product,
@@ -99,19 +100,27 @@ def checkout(request):
                 # Clear the bag items from the session
                 request.session['bag'] = []
 
-                messages.success(request, f"Order {order.order_id} placed successfully!")
+                messages.success(
+                    request, f"Order {order.order_id} placed successfully!")
                 return redirect('checkout_success', order_id=order.order_id)
             except IntegrityError:
-                messages.error(request, "An error occurred while placing the order.")
+                messages.error(
+                    request, "An error occurred while placing the order.")
                 return redirect('checkout')
         else:
-            messages.error(request, "There was an error with your form. Please check your information.")
+            messages.error(
+                request,
+                "There was an error with your form."
+                "Please check your information.")
     else:
         order_form = OrderForm()
         address_form = AddressForm()
 
     if not stripe_public_key:
-        messages.warning(request, 'Stripe public key is missing. Did you forget to set it in your environment?')
+        messages.warning(
+            request,
+            'Stripe public key is missing.'
+            'Did you forget to set it in your environment?')
 
     template = 'checkout/checkout.html'
     context = {
@@ -151,10 +160,10 @@ def stripe_webhook(request):
         event = stripe.Webhook.construct_event(
             payload, sig_header, settings.STRIPE_WEBHOOK_SECRET
         )
-    except ValueError as e:
+    except ValueError:
         # Invalid payload
         return HttpResponse(status=400)
-    except stripe.error.SignatureVerificationError as e:
+    except stripe.error.SignatureVerificationError:
         # Invalid signature
         return HttpResponse(status=400)
 
