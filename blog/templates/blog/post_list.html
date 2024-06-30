@@ -20,6 +20,7 @@
                         <img class="img-fluid"
                             src="{% if post.image %}{{ post.image.url }}{% else %}../media/no-image-available.png{% endif %}"
                             alt="{{ post.title }}">
+                            <p>Image URL: {{ post.image.url }}</p>
                     </div>
                 </a>
                 <div class="card-body d-flex flex-column">

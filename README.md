@@ -75,6 +75,15 @@ To make the locally running website active on a permanent server I needed to tak
 2.	Updated Heroku Config Vars with new static variables and removed the disable static file variable.
 3.	Finally, I added AWS variables to settings.py, committed, and pushed these changes to Heroku.
 By following these steps, I successfully deployed my website to Heroku and integrated AWS for static and media file hosting.
+### Ongoing Deployment troubleshooting
+After the initial deployment, changes to the css in the static files may change and when the next auto build is sent to heroku these changes are always pushed.
+- In the terminal, log in to heroku using `heroku login -i` and then use `heroku run python manage.py collectstatic --noinput`.
+- Open up your app in Heroku, click `more` button and restart all dynos.
+Send New Migrations to Heroku
+- If you find your latest migrations are not working on the deployed site, test the heroku migrations by `heroku run python3 manage.py showmigrations --app botanica`
+- Login to Heroku through you IDE (`heroku login -i`) and makemigrations using `heroku run python3 manage.py makemigrations --app botanica`
+- then migrate using `heroku run python3 manage.py migrate --app botanica`
+- Rerun show migrations command and confirm migrations are completed.
 
 ## Cloning and Forking Repositories
 ### Cloning
