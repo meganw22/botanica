@@ -59,6 +59,22 @@ To make the locally running website active on a permanent server I needed to tak
 3.	Finally, I added AWS variables to settings.py, committed, and pushed these changes to Heroku.
 By following these steps, I successfully deployed my website to Heroku and integrated AWS for static and media file hosting.
 
+## Cloning and Forking Repositories
+### Cloning
+-
+### Forking
+- Open up Botanica on [github](https://github.com/meganw22/botanica/tree/main) and navigate to the top right corner of the repository.
+- Here you will find the 'fork' button, click that button
+- Name your new fork and allow it to generate.
+- Now you can open your new repo and edit without affecting the original code.
+
+## Main technologies used.
+HTML
+CSS
+JavaScript
+Python + Django
+Relational Database - Elephant SQL
+Stripe Payments
 
 # Testing
 For the full range of Testing, see [TESTING.md](TESTING.md)

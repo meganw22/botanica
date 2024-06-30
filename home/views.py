@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from products.models import Product
 from django.db.models import Q
+from django.http import HttpResponse
+from django.contrib import messages
 
 
 def index(request):
@@ -22,3 +24,12 @@ def search(request):
         'query': query,
     }
     return render(request, 'home/search_results.html', context)
+
+
+def newsletter_signup(request):
+    """Sign up to newsletter"""
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        messages.success(request, 'Thank you for signing up for our newsletter!')
+        return redirect('home')
+    return HttpResponse(status=405)

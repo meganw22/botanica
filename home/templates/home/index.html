@@ -76,6 +76,29 @@
             </div>
         </div>
     </div>
+    <!-- New Section for Facebook and Newsletter -->
+    <div class="row px-5 fb-newsletter-styles">
+        <div class="col-lg-6 col-12 order-1 order-md-1 d-flex align-items-center justify-content-center">
+            <div class="text-center">
+                <h2>Follow Us on Facebook</h2>
+                <a href="https://www.facebook.com/profile.php?id=61561624593985&is_tour_dismissed" target="_blank" class="btn btn-custom-success">
+                    Visit our Facebook Page
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-6 col-12 order-2 order-md-2 d-flex align-items-center justify-content-center">
+            <div class="text-center">
+                <h2>Sign Up for Our Newsletter</h2>
+                <form method="post" action="{% url 'newsletter_signup' %}">
+                    {% csrf_token %}
+                    <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-custom-success mt-2">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
+
+
 
 {% endblock %}
