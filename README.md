@@ -11,19 +11,20 @@ Below is a detailed overview of the e-commerce business model underlying the app
 
 Botanica operates as a B2C e-commerce business, selling products directly to consumers from product browsing to payment and delivery.
 
+## Business Model Canvas
 
-| Business Model Canvas |
-| --- | --- |
-| **Component** | **Description** |
-| **Key Partners** | Plant suppliers, courier services, payment processors (Stripe) |
-| **Key Activities** | Product sourcing, order processing, website maintenance, customer support |
-| **Key Resources** | Inventory, e-commerce platform, customer database, marketing content |
+| Component            | Description                                                   |
+|----------------------|---------------------------------------------------------------|
+| **Key Partners**     | Plant suppliers, courier services, payment processors (Stripe)|
+| **Key Activities**   | Product sourcing, order processing, website maintenance, customer support |
+| **Key Resources**    | Inventory, e-commerce platform, customer database, marketing content |
 | **Value Propositions** | Quality plants and accessories, educational content, user-friendly shopping experience |
 | **Customer Relationships** | Email marketing, social media engagement |
-| **Channels** | Website, email, social media |
-| **Customer Segments** | Plant enthusiasts, home decor enthusiasts, pet owners |
-| **Cost Structure** | Product procurement, website maintenance, marketing expenses, shipping costs |
-| **Revenue Streams** | Product sales, delivery fees |
+| **Channels**         | Website, email, social media                                  |
+| **Customer Segments**| Plant enthusiasts, home decor enthusiasts, pet owners         |
+| **Cost Structure**   | Product procurement, website maintenance, marketing expenses, shipping costs |
+| **Revenue Streams**  | Product sales, delivery fees                                  |
+
 
 This comprehensive e-commerce business model ensures that Botanica can effectively serve its customers while maintaining a profitable and sustainable operation.
 
@@ -212,15 +213,6 @@ After the initial deployment, changes to the css in the static files may change 
 - then migrate using `heroku run python3 manage.py migrate --app botanica`
 - Rerun show migrations command and confirm migrations are completed.
 
-## Cloning and Forking Repositories
-### Cloning
--
-### Forking
-- Open up Botanica on [github](https://github.com/meganw22/botanica/tree/main) and navigate to the top right corner of the repository.
-- Here you will find the 'fork' button, click that button
-- Name your new fork and allow it to generate.
-- Now you can open your new repo and edit without affecting the original code.
-
 ## Main Technologies Used
 1. HTML & CSS
 2. Bootstrap
@@ -240,4 +232,4 @@ For the full range of Testing, see [TESTING.md](TESTING.md)
 - Code Institute Boutique Ado project template and guidance
 - Pexels for free stock images
 - Many very helpful websites including W3Schools, Stack Overflow, YouTube, Shopify and Django documentation
-- 
+- And finally to my Mentor, Luke Buchanan - Thank you!
