@@ -98,7 +98,36 @@ Extensive Manual Testing has been completed:
 
 
 ## Fixed Bugs
+### Quantity Selector 
+I found that the quantity selectors could cause some havoc within the Botanica website, so I committed to finding a fix for this bug:
 
+#### 0 items could be added to bag
+When testing a 0 quantity addition to the bag, it would successfully add 0 items to the bag and register the quantity number in the order summary:
+
+![Screenshot 2024-06-29 085334](https://github.com/meganw22/botanica/assets/141934888/07303363-c446-470c-acb9-0d7f5e250432)
+
+Navigating to the bag, the item number would show 0 items and would display the price, but the price would not render in the order total.
+
+![Screenshot 2024-06-29 085811](https://github.com/meganw22/botanica/assets/141934888/16d1760f-47a2-49df-86bc-eccb5df30aee)
+
+This would also register in the order summary, allow a 'successful' checkout, and register 0 items in the Django admin order items summary.
+
+![Screenshot 2024-06-29 085923](https://github.com/meganw22/botanica/assets/141934888/00bebbd7-ff86-4d5d-85bc-38c008662750)
+
+#### Millions of items could be added to the bag
+On the other end of the scale, unlimited items could be added to the bag successfully.
+
+![Screenshot 2024-06-29 090123](https://github.com/meganw22/botanica/assets/141934888/dccae57c-64b6-4781-8269-f79f0def45fd)
+
+![Screenshot 2024-06-29 090241](https://github.com/meganw22/botanica/assets/141934888/fe3d7c8d-c4ab-44fa-9e2c-1c06d1bea471)
+
+However, the Stripe payment system would throw an error when the order total exceeded £1 million.
+
+![Screenshot 2024-06-29 090258](https://github.com/meganw22/botanica/assets/141934888/ed6c8fa9-281d-4f0c-9615-fd2ddd8942b3)
+
+Understandably so, as I would also be concerned if someone was purposefully buying £1 million worth of plants online. Naturally, this was a bug I needed to fix. I created some lines of JavaScript to restrict the quantity selector to only allow ordering of 1 to 99 items per order item.
+
+This validation removed all errors and allowed the user to buy sensibly.
 
 ## HTML validator
 
