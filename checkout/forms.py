@@ -30,9 +30,7 @@ class AddressForm(forms.ModelForm):
 
         self.fields['phone_number'].widget.attrs['autofocus'] = True
         for field in self.fields:
-            self.fields[field].widget.attrs['placeholder'] = (
-                placeholders[field]
-                )
+            self.fields[field].widget.attrs['placeholder'] = placeholders[field]
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
             self.fields[field].label = False
 
@@ -60,7 +58,6 @@ class OrderForm(forms.ModelForm):
         placeholders = {
             'customer_name': 'Full Name',
             'email_address': 'Email Address',
-            'phone_number': 'Phone Number',
         }
 
         self.fields['customer_name'].widget.attrs['autofocus'] = True
@@ -72,3 +69,6 @@ class OrderForm(forms.ModelForm):
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
             self.fields[field].label = False
+
+        self.fields['customer_name'].widget.attrs['autocomplete'] = 'off'
+        self.fields['email_address'].widget.attrs['autocomplete'] = 'off'
