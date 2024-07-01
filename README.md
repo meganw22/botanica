@@ -1,7 +1,7 @@
 # Botanica Houseplants
 ![header](https://github.com/meganw22/botanica/assets/141934888/99761b8f-da72-45c3-a88d-1f033d5c4560)
 
-**Find the deployed project [here](https://botanica-fa2bcebcf990.herokuapp.com/)!**
+### **Find the deployed project [here](https://botanica-fa2bcebcf990.herokuapp.com/)!**
 
 ## Introduction
 The e-commerce application "Botanica" is an online store that specialises in selling a selection of indoor plants, for both novice plant owners and experienced green thumbs. The business model focuses on providing customers with a wide range of plants and plant care tips, providing a user-friendly platform for users to enjoy a seamless shopping experience complete with nature in mind
@@ -73,6 +73,7 @@ I chose to keep my colours in keeping with nature and decided on earthy greens, 
 Using Google fonts, I selected the font 'Fredoka' to use throughout the website. I found it to be a simple, quirky and very easy to read.
 
 ### Wireframes
+Use this link to navigate to [Botanica Wireframes](wireframes.md)
 
 # Features
 ## Base Template
@@ -166,8 +167,15 @@ I have created a Facebook Business page to market my website, find the link to t
 ![Botanica-facebook-1](https://github.com/meganw22/botanica/assets/141934888/1b77c361-07cc-4ba0-a397-109cde5facb4)
 ![Botanica-facebook-2](https://github.com/meganw22/botanica/assets/141934888/ff953272-6695-4631-a40e-47ca4c2d1c3a)
 
+## SEO
+I have implemented various Search Engine Optimization (SEO) techniques in my project to enhance its visibility on search engines. I have created meta tags in my base template to provide search engines with relevant information about the content of my site, added a sitemap.xml file to help search engines understand the structure of my website and added robots.txt file to guide web spiders on which pages should be crawled and indexed. These files allow my site to be effectivley searched and scanned by search engines. I have not included any sponsored links or websites, nor do I have any links that I do not want users to follow. Therefore, I have not implemented the nofollow or sponsored rel attributes at this time.
 
 ## Future Implementations
+### User Reviews
+I would like to create a new model to allow users to leave reviews for plants, including ratings of 1 to 5 stars and a comment if they wish. This will improve the customer experience by providing valuable feedback on Botanicas plants and helping other customers make informed purchasing decisions. Reviews will be displayed on the product detail page and additional categories can be made to show off the favourite plants and best reviewed plants. Further integration of reviews can allow users to view their reviews in their user profile and update their order histories with reviews.
+
+### Recommendation logic
+I would love to learn to implement a recommendation logic algorithm underneath plant items. This system will suggest similar plants to users before checkout. This will use machine learning algorithms to analyse user behavior, preferences, and past purchases to recommend plants that are likely to be of interest. It would be a challenge to implement but a great feature to have in the future as well as a good method of promoting and encouraging more plant sales.
 
 # Full Deployment to Heroku:
 To make the locally running website active on a permanent server I needed to take multiple steps to for successful deployment:
