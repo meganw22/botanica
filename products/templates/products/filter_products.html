@@ -68,9 +68,6 @@
                 {% if request.GET.price %}
                     <li><strong>Max price: </strong>£{{ request.GET.price }}</li>
                 {% endif %}
-                {% if not request.GET.light and not request.GET.height and not request.GET.ease_of_care and not request.GET.price %}
-                    <li>Showing all products</li>
-                {% endif %}
             </ul>
         </div>
     </div>
