@@ -4,6 +4,27 @@ from .models import UserProfile, Address
 from checkout.models import Order
 from django_countries import countries
 from django.contrib import messages
+from itertools import groupby
+
+
+def get_unique_addresses(addresses):
+    """Ensure no duplicate addresses are shown"""
+    unique_addresses = []
+    seen_addresses = set()
+    for address in addresses:
+        full_address = (
+            address.phone_number,
+            address.street_address1,
+            address.street_address2,
+            address.town_or_city,
+            address.county,
+            address.postcode,
+            address.country.name
+        )
+        if full_address not in seen_addresses:
+            seen_addresses.add(full_address)
+            unique_addresses.append(address)
+    return unique_addresses
 
 
 @login_required
@@ -23,10 +44,11 @@ def profile(request):
 
     user_profile, created = UserProfile.objects.get_or_create(user=user)
     addresses = Address.objects.filter(user=user)
+    unique_addresses = get_unique_addresses(addresses)
 
     context = {
         'user': user,
-        'addresses': addresses,
+        'addresses': unique_addresses,
         'orders': orders,
         'latest_order': latest_order,
     }

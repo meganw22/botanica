@@ -14,6 +14,7 @@ from django.db import IntegrityError
 from decimal import Decimal
 from django.views.decorators.csrf import csrf_exempt
 from .webhook_handler import StripeWH_Handler
+from itertools import groupby
 
 
 @require_POST
@@ -31,6 +32,25 @@ def cache_checkout_data(request):
         messages.error(request, 'Sorry, your payment cannot be processed \
             at this time. Please try again later.')
         return HttpResponse(content=str(e), status=400)
+
+
+def get_unique_addresses(addresses):
+    unique_addresses = []
+    seen_addresses = set()
+    for address in addresses:
+        full_address = (
+            address.phone_number,
+            address.street_address1,
+            address.street_address2,
+            address.town_or_city,
+            address.county,
+            address.postcode,
+            address.country.name
+        )
+        if full_address not in seen_addresses:
+            seen_addresses.add(full_address)
+            unique_addresses.append(address)
+    return unique_addresses
 
 
 @login_required
@@ -54,6 +74,7 @@ def checkout(request):
 
     user = request.user
     addresses = Address.objects.filter(user=user)
+    unique_addresses = get_unique_addresses(addresses)
 
     if request.method == 'POST':
         order_form = OrderForm(request.POST)
@@ -126,14 +147,13 @@ def checkout(request):
     context = {
         'order_form': order_form,
         'address_form': address_form,
-        'addresses': addresses,
+        'addresses': unique_addresses,
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
     }
 
     context.update(bag_contents(request))
     return render(request, template, context)
-
 
 @login_required
 def checkout_success(request, order_id):
