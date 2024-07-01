@@ -29,7 +29,7 @@ Botanica operates as a B2C e-commerce business, selling products directly to con
 This comprehensive e-commerce business model ensures that Botanica can effectively serve its customers while maintaining a profitable and sustainable operation.
 
 ## User Stories
-### Project Purpose 
+### Project Purpose
 - The development of Botanica Houseplants is driven by a clear and well-defined purpose to address the needs of the target audiences, which include customers, registered users, and administrators.
 - Each user story is used to improve the user experience, streamline processes, and provide features that cater to the specific needs of these groups.
 - An agile tool was used in the method of planning this project which can be observed in the image and further explanation is provided below:
@@ -72,7 +72,7 @@ I chose to keep my colours in keeping with nature and decided on earthy greens, 
 ### Font
 Using Google fonts, I selected the font 'Fredoka' to use throughout the website. I found it to be a simple, quirky and very easy to read.
 
-### Wireframes
+## Wireframes
 Use this link to navigate to [Botanica Wireframes](wireframes.md)
 
 # Features
@@ -141,9 +141,9 @@ When the Users profile renders, it shows options to `Manage Addresses`, `Edit De
 
 
 ## Checkout
-The Checkout page is made up of a validation form for the user to submit their name, address and payment details through a Stripe Integrated Payment system. 
+The Checkout page is made up of a validation form for the user to submit their name, address and payment details through a Stripe Integrated Payment system.
 
-The User has the ability to choose an existing address or enter a new address. 
+The User has the ability to choose an existing address or enter a new address.
 
 ![checkout-new](https://github.com/meganw22/botanica/assets/141934888/db702578-b5e8-421a-a377-fbcf0451daf9)
 
