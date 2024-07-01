@@ -26,8 +26,8 @@
             <div class="collapse" id="filterCollapse">
                 <form action="{% url 'filter_products' %}" method="get" class="form-inline">
                     <div class="form-group mr-3">
-                        <label for="light" class="mr-4">Light</label>
-                        <select name="light" id="light" class="form-control">
+                        <label for="light_mobile" class="mr-4">Light</label>
+                        <select name="light" id="light_mobile" class="form-control">
                             <option value="">All</option>
                             <option value="low">Low</option>
                             <option value="medium">Medium</option>
@@ -35,16 +35,16 @@
                         </select>
                     </div>
                     <div class="form-group mr-3">
-                        <label for="pet_ok" class="mr-3">Pet Friendly</label>
-                        <select name="pet_ok" id="pet_ok" class="form-control">
+                        <label for="pet_ok_mobile" class="mr-3">Pet Friendly</label>
+                        <select name="pet_ok" id="pet_ok_mobile" class="form-control">
                             <option value="">All</option>
                             <option value="true">Yes</option>
                             <option value="false">No</option>
                         </select>
                     </div>
                     <div class="form-group mr-3">
-                        <label for="ease_of_care" class="mr-3">Ease of Care</label>
-                        <select name="ease_of_care" id="ease_of_care" class="form-control">
+                        <label for="ease_of_care_mobile" class="mr-3">Ease of Care</label>
+                        <select name="ease_of_care" id="ease_of_care_mobile" class="form-control">
                             <option value="">All</option>
                             <option value="easy">Easy</option>
                             <option value="moderate">Moderate</option>
@@ -52,8 +52,8 @@
                         </select>
                     </div>
                     <div class="form-group mr-3">
-                        <label for="price" class="mr-3">Max Price</label>
-                        <input type="number" name="price" min="1" id="price" class="form-control" placeholder="Max Price" oninput="validatePrice()">
+                        <label for="price_mobile" class="mr-3">Max Price</label>
+                        <input type="number" name="price" min="1" id="price_mobile" class="form-control" placeholder="Max Price" oninput="validatePrice('price_mobile')">
                     </div>
                     <button class="btn btn-custom-success" type="submit">Filter</button>
                 </form>
@@ -61,8 +61,8 @@
             <div class="d-none d-md-block">
                 <form action="{% url 'filter_products' %}" method="get" class="form-inline">
                     <div class="form-group mr-3">
-                        <label for="light" class="mr-3">Light</label>
-                        <select name="light" id="light" class="form-control">
+                        <label for="light_desktop" class="mr-3">Light</label>
+                        <select name="light" id="light_desktop" class="form-control">
                             <option value="">All</option>
                             <option value="low">Low</option>
                             <option value="medium">Medium</option>
@@ -70,16 +70,15 @@
                         </select>
                     </div>
                     <div class="form-group mr-3">
-                        <label for="pet_ok" class="mr-3">Pet Friendly</label>
-                        <select name="pet_ok" id="pet_ok" class="form-control">
+                        <label for="pet_ok_desktop" class="mr-3">Pet Friendly</label>
+                        <select name="pet_ok" id="pet_ok_desktop" class="form-control">
                             <option value="">All</option>
                             <option value="true">Yes</option>
-                            <option value="false">No</option>
-                        </select>
+                            <option value="false">No</select>
                     </div>
                     <div class="form-group mr-3">
-                        <label for="ease_of_care" class="mr-3">Ease of Care</label>
-                        <select name="ease_of_care" id="ease_of_care" class="form-control">
+                        <label for="ease_of_care_desktop" class="mr-3">Ease of Care</label>
+                        <select name="ease_of_care" id="ease_of_care_desktop" class="form-control">
                             <option value="">All</option>
                             <option value="easy">Easy</option>
                             <option value="moderate">Moderate</option>
@@ -87,8 +86,8 @@
                         </select>
                     </div>
                     <div class="form-group mr-3">
-                        <label for="price" class="mr-3">Max Price</label>
-                        <input type="number" name="price" min="1" id="price" class="form-control" placeholder="Max Price" oninput="validatePrice()">
+                        <label for="price_desktop" class="mr-3">Max Price</label>
+                        <input type="number" name="price" min="1" id="price_desktop" class="form-control" placeholder="Max Price" oninput="validatePrice('price_desktop')">
                     </div>
                     <button class="btn btn-custom-success" type="submit">Filter</button>
                 </form>
@@ -126,8 +125,8 @@
 {% endblock %}
 
 <script>
-    function validatePrice() {
-        var priceInput = document.getElementById('price');
+    function validatePrice(inputId) {
+        var priceInput = document.getElementById(inputId);
         if (priceInput.value < 1) {
             priceInput.setCustomValidity('Please enter a positive number.');
         } else {
